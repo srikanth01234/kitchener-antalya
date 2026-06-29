@@ -1,8 +1,41 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect, useRef, useState } from 'react';
 
 export default function GalleryGrid() {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="w-full bg-[#faf6f0] pb-24 px-6 md:px-12 relative overflow-hidden">
+    <section 
+      ref={containerRef}
+      className={`w-full bg-[#faf6f0] pb-24 px-6 md:px-12 relative overflow-hidden transition-all duration-700 ${isVisible ? 'is-visible' : ''}`}
+    >
       
       <div className="max-w-[1300px] mx-auto relative z-10">
         
@@ -11,7 +44,7 @@ export default function GalleryGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-5 auto-rows-[250px] lg:auto-rows-[300px]">
           
           {/* 1. Left Tall Image (Col 1-3, Row 1-2) */}
-          <div className="lg:col-span-3 lg:row-span-2 rounded-2xl overflow-hidden group relative shadow-md">
+          <div className="lg:col-span-3 lg:row-span-2 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item">
             <img 
               src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" 
               alt="Restaurant Interior" 
@@ -22,7 +55,10 @@ export default function GalleryGrid() {
           </div>
 
           {/* 2. Middle Left Stack - Top Image (Col 4-6, Row 1) */}
-          <div className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden group relative shadow-md">
+          <div 
+            className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+            style={{ transitionDelay: '100ms' }}
+          >
             <img 
               src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop" 
               alt="Charcoal Grilling" 
@@ -31,7 +67,10 @@ export default function GalleryGrid() {
           </div>
 
           {/* 3. Middle Left Stack - Bottom Image (Col 4-6, Row 2) */}
-          <div className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden group relative shadow-md">
+          <div 
+            className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+            style={{ transitionDelay: '200ms' }}
+          >
             <img 
               src="https://images.unsplash.com/photo-1519671282429-b44660ead0a7?q=80&w=800&auto=format&fit=crop" 
               alt="Turkish Tea and Baklava" 
@@ -40,7 +79,10 @@ export default function GalleryGrid() {
           </div>
 
           {/* 4. Center Large Video (Col 7-9, Row 1-2) */}
-          <div className="lg:col-span-3 lg:row-span-2 rounded-2xl overflow-hidden group relative shadow-md">
+          <div 
+            className="lg:col-span-3 lg:row-span-2 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+            style={{ transitionDelay: '300ms' }}
+          >
             <img 
               src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=800&auto=format&fit=crop" 
               alt="Long Dining Table" 
@@ -60,7 +102,10 @@ export default function GalleryGrid() {
           <div className="lg:col-span-3 lg:row-span-2 grid grid-cols-2 grid-rows-2 gap-4 lg:gap-5">
             
             {/* Top Left */}
-            <div className="rounded-2xl overflow-hidden group relative shadow-md">
+            <div 
+              className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+              style={{ transitionDelay: '400ms' }}
+            >
               <img 
                 src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop" 
                 alt="Meze Spread" 
@@ -69,7 +114,10 @@ export default function GalleryGrid() {
             </div>
             
             {/* Top Right */}
-            <div className="rounded-2xl overflow-hidden group relative shadow-md">
+            <div 
+              className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+              style={{ transitionDelay: '500ms' }}
+            >
               <img 
                 src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=400&auto=format&fit=crop" 
                 alt="Interior Plates" 
@@ -78,7 +126,10 @@ export default function GalleryGrid() {
             </div>
             
             {/* Bottom Left */}
-            <div className="rounded-2xl overflow-hidden group relative shadow-md">
+            <div 
+              className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+              style={{ transitionDelay: '600ms' }}
+            >
               <img 
                 src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400&auto=format&fit=crop" 
                 alt="Chef Preparing Food" 
@@ -87,7 +138,10 @@ export default function GalleryGrid() {
             </div>
             
             {/* Bottom Right */}
-            <div className="rounded-2xl overflow-hidden group relative shadow-md">
+            <div 
+              className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+              style={{ transitionDelay: '700ms' }}
+            >
               <img 
                 src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=400&auto=format&fit=crop" 
                 alt="Baklava Dessert" 
@@ -100,7 +154,10 @@ export default function GalleryGrid() {
         </div>
 
         {/* Decorative Circular Badge ("CAPTURING THE ESSENCE") */}
-        <div className="hidden lg:flex absolute top-[40%] -right-16 w-28 h-28 bg-[#faf6f0] border-[1px] border-[#c5a880]/30 rounded-full items-center justify-center shadow-sm z-30 transform -translate-y-1/2">
+        <div 
+          className="hidden lg:flex absolute top-[40%] -right-16 w-28 h-28 bg-[#faf6f0] border-[1px] border-[#c5a880]/30 rounded-full items-center justify-center shadow-sm z-30 transform -translate-y-1/2 scroll-reveal-scale-in"
+          style={{ transitionDelay: '800ms' }}
+        >
            {/* Outer circular text (approximation using SVG textPath) */}
            <svg className="absolute inset-0 w-full h-full animate-spin-slow text-[#c5a880]" viewBox="0 0 100 100">
              <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" />

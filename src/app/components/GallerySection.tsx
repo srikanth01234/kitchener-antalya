@@ -1,8 +1,42 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 
 const GallerySection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="gallery" className="relative w-full py-20 md:py-28 bg-[#faf6f0] overflow-hidden">
+    <section 
+      ref={containerRef}
+      id="gallery" 
+      className={`relative w-full pt-8 md:pt-10 pb-10 md:pb-12 bg-[#faf6f0] overflow-hidden transition-all duration-700 ${isVisible ? "is-visible" : ""}`}
+    >
       {/* Background Pattern - subtle */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#2d2219 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 
@@ -10,20 +44,20 @@ const GallerySection = () => {
         
         {/* --- HEADER --- */}
         <div className="flex flex-col items-center text-center mb-12 md:mb-16">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-4 scroll-reveal-gallery-ribbon">
             <span className="w-8 h-[1px] bg-[#c5a880]"></span>
             <span className="text-[#c5a880] text-xs font-bold tracking-[4px] uppercase">
               Antalya
             </span>
             <span className="w-8 h-[1px] bg-[#c5a880]"></span>
           </div>
-          <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#2d2219] mb-6">
+          <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#2d2219] mb-6 scroll-reveal-gallery-title">
             Our <span className="text-primary">Gallery</span>
           </h2>
-          <p className="font-sans text-sm md:text-base text-[#2d2219]/80 font-medium">
+          <p className="font-sans text-sm md:text-base text-[#2d2219]/80 font-medium scroll-reveal-gallery-sub">
             Moments from our kitchen, restaurant & special events
           </p>
-          <div className="mt-6 flex items-center justify-center">
+          <div className="mt-6 flex items-center justify-center scroll-reveal-gallery-divider">
             <svg className="w-24 h-auto text-[#c5a880]/60" viewBox="0 0 100 12" fill="none">
               <path d="M0 6H40" stroke="currentColor" strokeWidth="1" />
               <path d="M60 6H100" stroke="currentColor" strokeWidth="1" />
@@ -38,7 +72,7 @@ const GallerySection = () => {
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
           
           {/* Left Column - Large Image */}
-          <div className="relative h-[400px] sm:h-[500px] lg:h-auto min-h-[600px] rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-lg">
+          <div className="relative h-[400px] sm:h-[500px] lg:h-auto min-h-[600px] rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-lg scroll-reveal-gallery-left">
             <img 
               src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1200&h=1600" 
               alt="Restaurant Interior" 
@@ -48,7 +82,7 @@ const GallerySection = () => {
             <div className="absolute inset-0 bg-black/10 pointer-events-none" />
             
             {/* Floating Card */}
-            <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 bg-[#faf6f0] border border-[#c5a880]/40 rounded-xl p-6 md:p-8 w-[240px] md:w-[280px] shadow-xl flex flex-col items-center text-center">
+            <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 bg-[#faf6f0] border border-[#c5a880]/40 rounded-xl p-6 md:p-8 w-[240px] md:w-[280px] shadow-xl flex flex-col items-center text-center scroll-reveal-gallery-card">
               <div className="w-12 h-12 rounded-full border border-[#c5a880] flex items-center justify-center mb-4 text-[#c5a880]">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
@@ -73,7 +107,7 @@ const GallerySection = () => {
           <div className="flex flex-col gap-4 md:gap-6">
             
             {/* Image 1: Signature Dishes */}
-            <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md">
+            <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md scroll-reveal-gallery-row-1">
               <img 
                 src="https://images.unsplash.com/photo-1544025162-81111420d4d9?auto=format&fit=crop&q=80&w=800&h=400" 
                 alt="Signature Dishes" 
@@ -93,7 +127,7 @@ const GallerySection = () => {
             </div>
 
             {/* Image 2: Outdoor Ambience */}
-            <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md">
+            <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md scroll-reveal-gallery-row-2">
               <img 
                 src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=800&h=400" 
                 alt="Outdoor Ambience" 
@@ -113,7 +147,7 @@ const GallerySection = () => {
             </div>
 
             {/* Image 3: Private Events */}
-            <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md">
+            <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md scroll-reveal-gallery-row-3">
               <img 
                 src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&q=80&w=800&h=400" 
                 alt="Private Events" 
@@ -133,7 +167,7 @@ const GallerySection = () => {
             </div>
 
             {/* Image 4: Turkish Delights */}
-            <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md">
+            <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md scroll-reveal-gallery-row-4">
               <img 
                 src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&q=80&w=800&h=400" 
                 alt="Turkish Delights" 
@@ -156,7 +190,7 @@ const GallerySection = () => {
         </div>
 
         {/* --- VIEW FULL GALLERY BUTTON --- */}
-        <div className="mt-12 md:mt-16">
+        <div className="mt-12 md:mt-16 scroll-reveal-gallery-btn">
           <a
             href="#gallery"
             className="group flex items-center justify-center gap-3 border border-[#c5a880] hover:border-[#2d2219] bg-transparent px-8 py-4 rounded-sm text-xs font-bold tracking-[3px] uppercase text-[#2d2219] transition-all duration-300"

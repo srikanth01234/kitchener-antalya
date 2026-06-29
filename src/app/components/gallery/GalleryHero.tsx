@@ -9,7 +9,7 @@ export default function GalleryHero() {
         <img 
           src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1920&auto=format&fit=crop" 
           alt="Gallery Hero Background" 
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover opacity-30 gallery-hero-bg"
         />
         {/* Gradient overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a120b] via-[#1a120b]/80 to-transparent"></div>
@@ -19,18 +19,18 @@ export default function GalleryHero() {
       <div className="relative z-10 w-full max-w-[1300px] mx-auto px-6 md:px-12 flex flex-col items-start pt-10">
         
         {/* Script Subheading */}
-        <span className="font-script text-[#c5a880] text-3xl md:text-4xl lg:text-5xl mb-2 ml-1">
+        <span className="font-script text-[#c5a880] text-3xl md:text-4xl lg:text-5xl mb-2 ml-1 gallery-hero-fade-up">
           Our Gallery
         </span>
         
         {/* Main Heading */}
-        <h1 className="font-serif text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tight mb-8">
+        <h1 className="font-serif text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tight mb-8 gallery-hero-fade-up-d1">
           Moments That <br/>
-          Tell <span className="text-[#9c1010]">Our Story</span>
+          Tell <span className="text-[#e10613]">Our Story</span>
         </h1>
 
         {/* Breadcrumbs */}
-        <div className="flex items-center gap-3 text-white/70 text-[11px] font-bold tracking-[2px] uppercase">
+        <div className="flex items-center gap-3 text-white/70 text-[11px] font-bold tracking-[2px] uppercase gallery-hero-fade-up-d2">
           <a href="/" className="hover:text-white transition-colors">Home</a>
           <span className="text-[#c5a880] text-[10px]">/</span>
           <span className="text-white">Gallery</span>

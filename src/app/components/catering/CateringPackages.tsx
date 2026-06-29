@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 interface PackageData {
@@ -66,10 +66,51 @@ const packages: Record<string, PackageData> = {
 
 export default function CateringPackages() {
   const [activeTab, setActiveTab] = useState<string>("gold");
-  const currentPkg = packages[activeTab];
+  const [renderedTab, setRenderedTab] = useState<string>("gold");
+  const [isTabTransitioning, setIsTabTransitioning] = useState(false);
+
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  const handleTabClick = (tab: string) => {
+    if (tab === renderedTab || isTabTransitioning) return;
+    setIsTabTransitioning(true);
+    setActiveTab(tab);
+    setTimeout(() => {
+      setRenderedTab(tab);
+      setIsTabTransitioning(false);
+    }, 250);
+  };
+
+  const currentPkg = packages[renderedTab];
 
   return (
-    <section className="relative w-full py-24 lg:py-32 bg-[#120e0b] text-[#faf6f0] overflow-hidden">
+    <section 
+      ref={containerRef}
+      className="relative w-full py-12 lg:py-16 bg-[#120e0b] text-[#faf6f0] overflow-hidden select-none"
+    >
       {/* Background flourish textures */}
       <div className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }}></div>
 
@@ -79,14 +120,16 @@ export default function CateringPackages() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* LEFT COLUMN: Title & Features Box */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
+          <div className={`lg:col-span-5 flex flex-col justify-center transition-all duration-1000 ease-out transform ${
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+          }`}>
             
             {/* Overtitle */}
             <div className="flex items-center gap-3 mb-6">
-              <svg className="w-4 h-4 text-[#c5a880] fill-current" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-[#dfb784] fill-current" viewBox="0 0 24 24">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
-              <span className="font-sans text-[#c5a880] text-xs font-extrabold tracking-[3px] uppercase">
+              <span className="font-sans text-[#dfb784] text-xs font-extrabold tracking-[3px] uppercase">
                 CHOOSE YOUR EXPERIENCE
               </span>
             </div>
@@ -105,7 +148,7 @@ export default function CateringPackages() {
             </div>
 
             {/* Description */}
-            <p className="font-sans text-[#faf6f0]/70 text-sm sm:text-base leading-relaxed mb-10 max-w-md">
+            <p className="font-sans text-[#faf6f0]/90 text-sm sm:text-base leading-relaxed mb-10 max-w-md font-medium">
               Carefully curated packages to suit your guest count, style, and preferences. Exceptional flavours, beautifully served.
             </p>
 
@@ -127,7 +170,7 @@ export default function CateringPackages() {
                 </div>
                 <div>
                   <h4 className="font-sans font-bold text-white text-sm mb-1">Authentic Turkish Cuisine</h4>
-                  <p className="font-sans text-xs text-[#faf6f0]/60">Traditional recipes with modern presentation</p>
+                  <p className="font-sans text-xs text-[#faf6f0]/85">Traditional recipes with modern presentation</p>
                 </div>
               </div>
 
@@ -141,7 +184,7 @@ export default function CateringPackages() {
                 </div>
                 <div>
                   <h4 className="font-sans font-bold text-white text-sm mb-1">Fresh & Quality Ingredients</h4>
-                  <p className="font-sans text-xs text-[#faf6f0]/60">Only the finest, handpicked ingredients</p>
+                  <p className="font-sans text-xs text-[#faf6f0]/85">Only the finest, handpicked ingredients</p>
                 </div>
               </div>
 
@@ -154,7 +197,7 @@ export default function CateringPackages() {
                 </div>
                 <div>
                   <h4 className="font-sans font-bold text-white text-sm mb-1">Professional Service</h4>
-                  <p className="font-sans text-xs text-[#faf6f0]/60">Experienced team dedicated to your event</p>
+                  <p className="font-sans text-xs text-[#faf6f0]/85">Experienced team dedicated to your event</p>
                 </div>
               </div>
 
@@ -167,7 +210,7 @@ export default function CateringPackages() {
                 </div>
                 <div>
                   <h4 className="font-sans font-bold text-white text-sm mb-1">On-Time Delivery</h4>
-                  <p className="font-sans text-xs text-[#faf6f0]/60">Reliable, punctual, and stress-free experience</p>
+                  <p className="font-sans text-xs text-[#faf6f0]/85">Reliable, punctual, and stress-free experience</p>
                 </div>
               </div>
 
@@ -175,15 +218,17 @@ export default function CateringPackages() {
           </div>
 
           {/* RIGHT COLUMN: Interactive Packages Card */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-end w-full">
+          <div className={`lg:col-span-7 flex flex-col items-center lg:items-end w-full transition-all duration-1000 ease-out transform ${
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+          }`}>
             
             {/* TABS CONTAINER */}
             <div className="flex bg-[#231e1a] rounded-full p-1.5 mb-10 w-full max-w-lg border border-[#c5a880]/10 shadow-lg relative z-20">
               
               {/* Silver Tab */}
               <button
-                onClick={() => setActiveTab("silver")}
-                className={`flex-1 py-3.5 px-4 rounded-full text-xs font-bold tracking-[2px] uppercase transition-all duration-300 ${
+                onClick={() => handleTabClick("silver")}
+                className={`flex-1 py-3.5 px-4 rounded-full text-xs font-bold tracking-[2px] uppercase transition-all duration-300 cursor-pointer ${
                   activeTab === "silver"
                     ? "bg-[#faf6f0] text-[#2d2219] shadow-md"
                     : "text-[#faf6f0]/60 hover:text-white"
@@ -194,8 +239,8 @@ export default function CateringPackages() {
 
               {/* Gold Tab */}
               <button
-                onClick={() => setActiveTab("gold")}
-                className={`flex-1 py-3.5 px-4 rounded-full text-xs font-bold tracking-[2px] uppercase transition-all duration-300 ${
+                onClick={() => handleTabClick("gold")}
+                className={`flex-1 py-3.5 px-4 rounded-full text-xs font-bold tracking-[2px] uppercase transition-all duration-300 cursor-pointer ${
                   activeTab === "gold"
                     ? "bg-gradient-to-r from-[#b58c58] to-[#d4af37] text-white shadow-md"
                     : "text-[#faf6f0]/60 hover:text-white"
@@ -206,8 +251,8 @@ export default function CateringPackages() {
 
               {/* Platinum Tab */}
               <button
-                onClick={() => setActiveTab("platinum")}
-                className={`flex-1 py-3.5 px-4 rounded-full text-xs font-bold tracking-[2px] uppercase transition-all duration-300 ${
+                onClick={() => handleTabClick("platinum")}
+                className={`flex-1 py-3.5 px-4 rounded-full text-xs font-bold tracking-[2px] uppercase transition-all duration-300 cursor-pointer ${
                   activeTab === "platinum"
                     ? "bg-white/10 text-white border border-white/20 shadow-md"
                     : "text-[#faf6f0]/60 hover:text-white"
@@ -218,7 +263,9 @@ export default function CateringPackages() {
             </div>
 
             {/* DETAIL DISPLAY CARD */}
-            <div className="bg-[#faf6f0] text-[#2d2219] rounded-3xl overflow-hidden shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] flex flex-col md:flex-row w-full max-w-3xl border border-[#c5a880]/20 min-h-[500px]">
+            <div className={`bg-[#faf6f0] text-[#2d2219] rounded-3xl overflow-hidden shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] flex flex-col md:flex-row w-full max-w-3xl border border-[#c5a880]/20 min-h-[500px] transition-all duration-300 transform ${
+              isTabTransitioning ? "opacity-0 scale-98 blur-[1px]" : "opacity-100 scale-100 blur-0"
+            }`}>
               
               {/* Left Side: Package Image */}
               <div className="w-full md:w-[45%] h-64 md:h-auto relative shrink-0">
@@ -248,7 +295,7 @@ export default function CateringPackages() {
                   </h3>
 
                   {/* Description */}
-                  <p className="font-sans text-xs sm:text-sm text-[#2d2219]/70 leading-relaxed mb-6 font-medium">
+                  <p className="font-sans text-xs sm:text-sm text-[#2d2219]/90 leading-relaxed mb-6 font-semibold">
                     {currentPkg.desc}
                   </p>
 
@@ -268,7 +315,7 @@ export default function CateringPackages() {
                             <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                           </svg>
                         </div>
-                        <span className="font-sans text-xs font-bold text-[#2d2219]/80">{inc}</span>
+                        <span className="font-sans text-xs font-extrabold text-[#2d2219]">{inc}</span>
                       </li>
                     ))}
                   </ul>
@@ -291,7 +338,7 @@ export default function CateringPackages() {
 
                   <Link 
                     href="/contact"
-                    className="w-full sm:w-auto bg-[#c5a880] hover:bg-[#b0936b] text-white px-6 py-3.5 rounded-sm text-[10px] font-extrabold tracking-[2px] uppercase transition-colors flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto bg-[#c5a880] hover:bg-[#b0936b] text-white px-6 py-3.5 rounded-sm text-[10px] font-extrabold tracking-[2px] uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer"
                   >
                     View Full Menu
                     <span>&rarr;</span>
@@ -307,7 +354,9 @@ export default function CateringPackages() {
         </div>
 
         {/* BOTTOM CALLOUT BANNER */}
-        <div className="mt-20 lg:mt-28 border border-[#c5a880]/20 bg-white/[0.02] rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 w-full max-w-5xl mx-auto shadow-inner relative overflow-hidden">
+        <div className={`mt-8 lg:mt-10 border border-[#c5a880]/20 bg-white/[0.02] rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 w-full max-w-5xl mx-auto shadow-inner relative overflow-hidden transition-all duration-[1200ms] delay-300 ease-out transform ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}>
           {/* Subtle line decor */}
           <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[#c5a880]/30 to-transparent"></div>
           
@@ -326,7 +375,7 @@ export default function CateringPackages() {
 
           <Link
             href="/contact"
-            className="w-full md:w-auto text-center border border-white hover:border-[#c5a880] hover:text-[#c5a880] text-white px-8 py-3.5 rounded-sm text-xs font-extrabold tracking-[2px] uppercase transition-colors shrink-0 flex items-center justify-center gap-2"
+            className="w-full md:w-auto text-center border border-white hover:border-[#c5a880] hover:text-[#c5a880] text-white px-8 py-3.5 rounded-sm text-xs font-extrabold tracking-[2px] uppercase transition-colors shrink-0 flex items-center justify-center gap-2 cursor-pointer"
           >
             Contact Us
             <span>&rarr;</span>

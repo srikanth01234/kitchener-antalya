@@ -1,7 +1,37 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 export default function BlogGrid() {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   const stories = [
     {
       id: 1,
@@ -46,15 +76,18 @@ export default function BlogGrid() {
   ];
 
   return (
-    <section className="w-full py-20 bg-[#faf6f0]">
+    <section 
+      ref={containerRef}
+      className={`w-full py-20 bg-[#faf6f0] transition-all duration-700 ${isVisible ? 'is-visible' : ''}`}
+    >
       <div className="max-w-[1300px] mx-auto px-6 md:px-12">
         
         {/* Header */}
         <div className="flex flex-col items-center mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl text-[#2d2219] font-medium tracking-tight mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl text-[#2d2219] font-medium tracking-tight mb-4 scroll-reveal-fade-up">
             More Stories
           </h2>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 scroll-reveal-fade-up" style={{ transitionDelay: '150ms' }}>
             <div className="w-12 h-[1px] bg-[#c5a880]/40"></div>
             <div className="w-1.5 h-1.5 rounded-full bg-[#c5a880]/70 rotate-45"></div>
             <div className="w-12 h-[1px] bg-[#c5a880]/40"></div>
@@ -63,8 +96,12 @@ export default function BlogGrid() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          {stories.map(story => (
-            <div key={story.id} className="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-[#e5dacf]/40">
+          {stories.map((story, idx) => (
+            <div 
+              key={story.id} 
+              className="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col group border border-[#e5dacf]/40 scroll-reveal-grid-item"
+              style={{ transitionDelay: `${150 + idx * 150}ms` }}
+            >
               
               {/* Image Container */}
               <div className="relative aspect-[4/3] overflow-hidden">
@@ -88,14 +125,14 @@ export default function BlogGrid() {
                 <h3 className="font-serif text-xl md:text-2xl text-[#2d2219] font-medium leading-[1.3] mb-3">
                   {story.title.split('\n').map((line, i) => (
                     <React.Fragment key={i}>
-                      {i === 1 ? <span className="text-[#9c1010]">{line}</span> : line}
+                      {i === 1 ? <span className="text-[#e10613]">{line}</span> : line}
                       {i === 0 && <br/>}
                     </React.Fragment>
                   ))}
                 </h3>
 
                 {/* Date */}
-                <div className="flex items-center gap-2 text-[#2d2219]/50 text-[11px] font-semibold mb-4 uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-[#2d2219]/75 text-[11px] font-semibold mb-4 uppercase tracking-wider">
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
@@ -103,12 +140,12 @@ export default function BlogGrid() {
                 </div>
 
                 {/* Excerpt */}
-                <p className="text-[#2d2219]/70 text-[13px] leading-relaxed mb-6 flex-1">
+                <p className="text-[#2d2219]/90 text-[13px] leading-relaxed mb-6 flex-1">
                   {story.excerpt}
                 </p>
 
                 {/* Link */}
-                <Link href="#" className="flex items-center gap-2 text-[#9c1010] font-bold tracking-[2px] text-[10px] uppercase hover:text-[#7a0c0c] transition-colors mt-auto">
+                <Link href="#" className="flex items-center gap-2 text-[#e10613] font-bold tracking-[2px] text-[10px] uppercase hover:text-[#c00510] transition-colors mt-auto">
                   Read More
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

@@ -15,7 +15,7 @@ export const metadata = {
 
 export default function CateringPage() {
   return (
-    <main className="min-h-screen bg-[#faf6f0] selection:bg-[#9c1010] selection:text-white flex flex-col">
+    <main className="min-h-screen bg-[#faf6f0] selection:bg-[#e10613] selection:text-white flex flex-col">
       <Navbar />
       
       <CateringHero />

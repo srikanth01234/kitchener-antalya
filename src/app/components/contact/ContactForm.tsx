@@ -1,11 +1,41 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const ContactForm = () => {
   const [message, setMessage] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <div className="relative w-full bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12 overflow-hidden">
+    <div 
+      ref={containerRef}
+      className={`relative w-full bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12 overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+    >
       {/* Top Right Islamic Pattern Watermark */}
       <div
         className="absolute top-0 right-0 w-48 h-48 opacity-[0.03] pointer-events-none rounded-tr-3xl"
@@ -20,7 +50,7 @@ const ContactForm = () => {
         <svg className="w-3 h-3 text-[#B89564] mb-3" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
         </svg>
-        <h2 className="font-serif text-2xl md:text-3xl text-[#333] tracking-wide mb-4">
+        <h2 className="font-serif text-2xl md:text-3xl text-gray-900 tracking-wide mb-4">
           SEND US A <span className="text-[#7a1f1f]">MESSAGE</span>
         </h2>
         <div className="w-16 h-[1px] bg-[#e6e2d8]" />
@@ -33,7 +63,7 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Name */}
           <div className="flex flex-col gap-2">
-            <label className="font-sans text-xs font-bold tracking-widest text-[#333] uppercase">
+            <label className="font-sans text-xs font-bold tracking-widest text-gray-900 uppercase">
               YOUR NAME <span className="text-[#7a1f1f]">*</span>
             </label>
             <div className="relative">
@@ -45,14 +75,14 @@ const ContactForm = () => {
               <input
                 type="text"
                 placeholder="Enter your full name"
-                className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-[#333] placeholder-gray-400"
+                className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-gray-900 placeholder-gray-500"
               />
             </div>
           </div>
 
           {/* Email */}
           <div className="flex flex-col gap-2">
-            <label className="font-sans text-xs font-bold tracking-widest text-[#333] uppercase">
+            <label className="font-sans text-xs font-bold tracking-widest text-gray-900 uppercase">
               EMAIL ADDRESS <span className="text-[#7a1f1f]">*</span>
             </label>
             <div className="relative">
@@ -64,7 +94,7 @@ const ContactForm = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-[#333] placeholder-gray-400"
+                className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-gray-900 placeholder-gray-500"
               />
             </div>
           </div>
@@ -74,7 +104,7 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Phone */}
           <div className="flex flex-col gap-2">
-            <label className="font-sans text-xs font-bold tracking-widest text-[#333] uppercase">
+            <label className="font-sans text-xs font-bold tracking-widest text-gray-900 uppercase">
               PHONE NUMBER
             </label>
             <div className="relative">
@@ -86,18 +116,18 @@ const ContactForm = () => {
               <input
                 type="tel"
                 placeholder="(519) 000-0000"
-                className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-[#333] placeholder-gray-400"
+                className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-gray-900 placeholder-gray-500"
               />
             </div>
           </div>
 
           {/* Subject */}
           <div className="flex flex-col gap-2">
-            <label className="font-sans text-xs font-bold tracking-widest text-[#333] uppercase">
+            <label className="font-sans text-xs font-bold tracking-widest text-gray-900 uppercase">
               SUBJECT
             </label>
             <div className="relative">
-              <select defaultValue="" className="w-full pl-4 pr-10 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-gray-500 appearance-none">
+              <select defaultValue="" className="w-full pl-4 pr-10 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-gray-800 appearance-none">
                 <option value="" disabled>How can we help?</option>
                 <option value="reservation">Reservation</option>
                 <option value="event">Private Event</option>
@@ -117,7 +147,7 @@ const ContactForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Date */}
           <div className="flex flex-col gap-2">
-            <label className="font-sans text-xs font-bold tracking-widest text-[#333] uppercase">
+            <label className="font-sans text-xs font-bold tracking-widest text-gray-900 uppercase">
               PREFERRED DATE
             </label>
             <div className="relative">
@@ -128,14 +158,14 @@ const ContactForm = () => {
               </div>
               <input
                 type="date"
-                className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-gray-500"
+                className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-gray-800"
               />
             </div>
           </div>
 
           {/* Time */}
           <div className="flex flex-col gap-2">
-            <label className="font-sans text-xs font-bold tracking-widest text-[#333] uppercase">
+            <label className="font-sans text-xs font-bold tracking-widest text-gray-900 uppercase">
               PREFERRED TIME
             </label>
             <div className="relative">
@@ -146,7 +176,7 @@ const ContactForm = () => {
               </div>
               <input
                 type="time"
-                className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-gray-500"
+                className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-gray-800"
               />
             </div>
           </div>
@@ -154,7 +184,7 @@ const ContactForm = () => {
 
         {/* Message */}
         <div className="flex flex-col gap-2">
-          <label className="font-sans text-xs font-bold tracking-widest text-[#333] uppercase">
+          <label className="font-sans text-xs font-bold tracking-widest text-gray-900 uppercase">
             YOUR MESSAGE <span className="text-[#7a1f1f]">*</span>
           </label>
           <div className="relative">
@@ -164,7 +194,7 @@ const ContactForm = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               maxLength={500}
-              className="w-full px-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-[#333] placeholder-gray-400 resize-none"
+              className="w-full px-4 py-3 rounded-lg border border-[#e6e2d8] bg-[#fdfdfb] focus:bg-white focus:outline-none focus:border-[#B89564] focus:ring-1 focus:ring-[#B89564] transition-colors text-sm text-gray-900 placeholder-gray-500 resize-none"
             />
             <div className="absolute bottom-3 right-3 flex items-center gap-1">
               {/* Resize icon graphic placeholder (bottom right corner visual) */}
@@ -173,7 +203,7 @@ const ContactForm = () => {
               </svg>
             </div>
           </div>
-          <div className="text-right text-xs text-gray-400 font-sans mt-1">
+          <div className="text-right text-xs text-gray-600 font-sans mt-1">
             {message.length}/500
           </div>
         </div>

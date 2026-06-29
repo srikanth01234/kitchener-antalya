@@ -1,21 +1,57 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const ContactInfo = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="w-full relative h-full min-h-[950px] flex flex-col justify-end">
+    <div 
+      ref={containerRef}
+      className={`w-full relative h-full min-h-[950px] flex flex-col justify-end transition-all duration-700 ${isVisible ? 'is-visible' : ''}`}
+    >
       {/* Background Arched Image */}
       <div className="absolute top-0 left-0 right-0 bottom-48 rounded-t-[10rem] md:rounded-t-[15rem] overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop"
           alt="Candlelit Dining Table"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover hero-zoom-in"
         />
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
       {/* Top Left Badge */}
-      <div className="absolute top-12 left-0 md:-left-8 w-24 h-24 bg-[#fdfdfb] rounded-full border border-[#B89564] shadow-lg flex items-center justify-center z-10">
+      <div 
+        className="absolute top-12 left-0 md:-left-8 w-24 h-24 bg-[#fdfdfb] rounded-full border border-[#B89564] shadow-lg flex items-center justify-center z-10 scroll-reveal-scale-in"
+        style={{ transitionDelay: '200ms' }}
+      >
         <div className="w-[85%] h-[85%] rounded-full border border-dashed border-[#B89564] flex items-center justify-center">
           <svg className="w-8 h-8 text-[#B89564]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.2-3 .554v9.962a14.735 14.735 0 003 1.01m6-9.238a8.967 8.967 0 016-2.292c1.052 0 2.062.2 3 .554v9.962a14.735 14.735 0 01-3 1.01m-6-9.238v10.962m0-10.962v.001" />
@@ -24,7 +60,10 @@ const ContactInfo = () => {
       </div>
 
       {/* Bottom Floating Card */}
-      <div className="relative w-full z-10 bg-[#fdfdfb] rounded-t-[4rem] rounded-b-2xl pt-12 pb-8 px-8 shadow-xl border border-gray-100 mt-auto">
+      <div 
+        className="relative w-full z-10 bg-[#fdfdfb] rounded-t-[4rem] rounded-b-2xl pt-12 pb-8 px-8 shadow-xl border border-gray-100 mt-auto scroll-reveal-fade-up"
+        style={{ transitionDelay: '300ms' }}
+      >
         {/* Faint Skyline SVG Placeholder */}
         <div className="absolute top-4 left-1/2 -translate-x-1/2 w-48 opacity-10 pointer-events-none">
           <svg viewBox="0 0 200 40" fill="none" stroke="#B89564" strokeWidth="1">
@@ -56,7 +95,7 @@ const ContactInfo = () => {
             </div>
             <div className="flex flex-col pt-1">
               <span className="font-sans font-bold text-xs tracking-widest text-[#333] uppercase mb-1">VISIT US</span>
-              <span className="font-sans text-sm text-gray-500 leading-relaxed">
+              <span className="font-sans text-sm text-gray-900 leading-relaxed">
                 1187 Fischer-Hallman Rd #435,<br/> Kitchener, ON N2E 4H9
               </span>
             </div>
@@ -71,7 +110,7 @@ const ContactInfo = () => {
             </div>
             <div className="flex flex-col pt-1">
               <span className="font-sans font-bold text-xs tracking-widest text-[#333] uppercase mb-1">CALL US</span>
-              <span className="font-sans text-sm text-gray-500">
+              <span className="font-sans text-sm text-gray-900">
                 519-581-6363
               </span>
             </div>
@@ -86,7 +125,7 @@ const ContactInfo = () => {
             </div>
             <div className="flex flex-col pt-1">
               <span className="font-sans font-bold text-xs tracking-widest text-[#333] uppercase mb-1">EMAIL US</span>
-              <span className="font-sans text-sm text-gray-500">
+              <span className="font-sans text-sm text-gray-900">
                 hello@antalyarestaurant.ca
               </span>
             </div>
@@ -115,7 +154,7 @@ const ContactInfo = () => {
             <Link href="#" className="w-10 h-10 rounded-full border border-[#e6e2d8] flex items-center justify-center text-[#B89564] hover:bg-[#B89564] hover:text-white transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
             </Link>
           </div>

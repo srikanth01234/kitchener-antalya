@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 
 const features = [
   {
@@ -40,8 +42,36 @@ const features = [
 ];
 
 export default function CateringFeaturesQuote() {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="w-full flex flex-col lg:flex-row border-t border-[#e5dacf]/30">
+    <section 
+      ref={containerRef}
+      className="w-full flex flex-col lg:flex-row border-t border-[#e5dacf]/30 select-none overflow-hidden"
+    >
       
       {/* LEFT: Dark Features Panel */}
       <div className="w-full lg:w-[55%] bg-[#1a1715] text-[#faf6f0] py-16 lg:py-24 px-8 lg:px-16 xl:px-24 flex flex-col justify-center relative overflow-hidden">
@@ -50,7 +80,13 @@ export default function CateringFeaturesQuote() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-16 relative z-10">
           {features.map((feature, idx) => (
-            <div key={idx} className="flex flex-col relative group">
+            <div 
+              key={idx} 
+              style={{ transitionDelay: `${idx * 150}ms` }}
+              className={`flex flex-col relative group transition-all duration-[1000ms] ease-out transform ${
+                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+              }`}
+            >
               {/* Subtle hover effect light */}
               <div className="absolute -inset-4 bg-gradient-to-br from-[#c5a880]/5 to-transparent opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-500 blur-xl pointer-events-none"></div>
               
@@ -60,7 +96,7 @@ export default function CateringFeaturesQuote() {
               <h4 className="font-serif text-xl sm:text-2xl text-white mb-3">
                 {feature.title}
               </h4>
-              <p className="font-sans text-[#faf6f0]/60 text-sm leading-relaxed">
+              <p className="font-sans text-[#faf6f0]/85 text-sm leading-relaxed font-medium">
                 {feature.desc}
               </p>
 
@@ -82,14 +118,16 @@ export default function CateringFeaturesQuote() {
           style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?q=80&w=1500&auto=format&fit=crop")' }}
         ></div>
         
-        <div className="relative z-10 max-w-lg">
+        <div className={`relative z-10 max-w-lg transition-all duration-1000 delay-300 ease-out transform ${
+          isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+        }`}>
           {/* Large Quote Mark */}
-          <span className="block font-serif text-[#9c1010] text-7xl sm:text-8xl leading-none mb-[-20px] opacity-80">
+          <span className="block font-serif text-[#e10613] text-7xl sm:text-8xl leading-none mb-[-20px] opacity-80">
             “
           </span>
           
           <p className="font-serif text-2xl sm:text-3xl lg:text-[2rem] text-[#2d2219] leading-snug mb-8 relative z-10">
-            At Antalya, we don&apos;t just cater food, we create experiences that bring <span className="font-script text-[#9c1010] text-4xl sm:text-5xl lg:text-6xl align-middle ml-2 -rotate-2 inline-block">people together.</span>
+            At Antalya, we don&apos;t just cater food, we create experiences that bring <span className="font-script text-[#e10613] text-4xl sm:text-5xl lg:text-6xl align-middle ml-2 -rotate-2 inline-block">people together.</span>
           </p>
 
           <div className="flex items-center gap-4 mt-8">

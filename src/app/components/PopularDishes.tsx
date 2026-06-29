@@ -1,6 +1,36 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 
 export default function PopularDishes() {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px -60px 0px",
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   const dishes = [
     {
       id: "01",
@@ -23,12 +53,15 @@ export default function PopularDishes() {
   ];
 
   return (
-    <section className="relative w-full bg-[#faf6f0] text-[#2d2219] pt-4 lg:pt-6 pb-6 flex flex-col items-center overflow-hidden z-20">
+    <section
+      ref={containerRef}
+      className={`relative w-full bg-[#faf6f0] text-[#2d2219] pt-0 pb-6 flex flex-col items-center overflow-hidden z-30 transition-all duration-700 ${isVisible ? "is-visible" : ""}`}
+    >
       
       {/* Background Drawings */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {/* Flame top-right */}
-        <div className="absolute top-0 -right-20 w-[700px] h-[700px] text-[#c5a880] opacity-[0.07]">
+        <div className="absolute top-0 -right-20 w-[700px] h-[700px] text-[#c5a880] opacity-[0.07] scroll-reveal-bg scroll-reveal-bg-flame">
           <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current" strokeWidth="0.3">
             <path d="M50 90 Q 30 70, 50 30 Q 70 60, 50 90" />
             <path d="M40 80 Q 20 50, 60 10 Q 80 40, 40 80" />
@@ -37,7 +70,7 @@ export default function PopularDishes() {
         </div>
 
         {/* Mosque right-middle */}
-        <div className="absolute top-[40%] right-0 w-[500px] h-[400px] text-[#c5a880] opacity-[0.15]">
+        <div className="absolute top-[40%] right-0 w-[500px] h-[400px] text-[#c5a880] opacity-[0.15] scroll-reveal-bg scroll-reveal-bg-mosque">
           <svg viewBox="0 0 200 100" className="w-full h-full fill-none stroke-current" strokeWidth="0.3">
             <path d="M0 90 L200 90" />
             <rect x="30" y="40" width="8" height="50" />
@@ -52,7 +85,7 @@ export default function PopularDishes() {
         </div>
 
         {/* Leaf Branch bottom-left */}
-        <div className="absolute bottom-10 -left-10 w-[400px] h-[400px] text-[#c5a880] opacity-20">
+        <div className="absolute bottom-10 -left-10 w-[400px] h-[400px] text-[#c5a880] opacity-20 scroll-reveal-bg scroll-reveal-bg-leaf">
           <svg viewBox="0 0 100 100" className="w-full h-full fill-none stroke-current" strokeWidth="0.3">
             <path d="M10 90 Q 50 50, 90 10" />
             <path d="M30 70 Q 20 50, 40 40 Q 50 60, 30 70" />
@@ -67,8 +100,8 @@ export default function PopularDishes() {
       <div className="relative w-full max-w-[1360px] mx-auto px-6 md:px-12 flex flex-col z-10">
 
         {/* Centered Top Heading */}
-        <div className="relative w-full flex flex-col items-center text-center mb-12 select-none">
-          <div className="flex items-center gap-3 text-[#9c1010] font-extrabold tracking-[3px] text-xs uppercase mb-4">
+        <div className="relative w-full flex flex-col items-center text-center mb-12 select-none animate-on-scroll scroll-reveal-heading">
+          <div className="flex items-center gap-3 text-[#e10613] font-extrabold tracking-[3px] text-xs uppercase mb-4">
             <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                <path d="M12 0L24 12L12 24L0 12L12 0ZM12 2.8L2.8 12L12 21.2L21.2 12L12 2.8Z"/>
                <path d="M12 5.6L18.4 12L12 18.4L5.6 12L12 5.6ZM12 8.4L8.4 12L12 15.6L15.6 12L12 8.4Z"/>
@@ -79,7 +112,7 @@ export default function PopularDishes() {
             <span className="font-serif text-5xl md:text-6xl lg:text-[4.5rem] font-medium text-[#2d2219] tracking-tight">
               Signature
             </span>
-            <span className="font-script text-[#9c1010] text-6xl md:text-7xl lg:text-[6.5rem] -mt-4 rotate-[-4deg] lg:-mt-8">
+            <span className="font-script text-[#e10613] text-6xl md:text-7xl lg:text-[6.5rem] mt-0 lg:mt-1 translate-x-16 md:translate-x-24 lg:translate-x-28 rotate-[-4deg]">
               Dishes
             </span>
           </h2>
@@ -87,12 +120,12 @@ export default function PopularDishes() {
              <svg className="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
           </div> */}
           {/* <p className="text-[#594a40] text-sm leading-relaxed max-w-[380px]">
-            A celebration of authentic Turkish cuisine, crafted with passion, <strong className="text-[#9c1010] font-bold">charcoal grilled</strong> to perfection.
+            A celebration of authentic Turkish cuisine, crafted with passion, <strong className="text-[#e10613] font-bold">charcoal grilled</strong> to perfection.
           </p> */}
         </div>
         
         {/* ROW 1: Adana Kebab */}
-        <div className="w-full flex flex-col lg:flex-row items-start justify-between py-4 lg:py-6 relative border-b border-[#2d2219]/10">
+        <div className="w-full flex flex-col lg:flex-row items-start justify-between py-4 lg:py-6 relative border-b border-[#2d2219]/10 scroll-reveal-row scroll-reveal-row-1">
           
           {/* Dish 01 Text (Left 35%) */}
           <div className="w-full lg:w-[35%] flex flex-col lg:pt-4 relative z-10 lg:pl-20 mb-10 lg:mb-0">
@@ -101,15 +134,15 @@ export default function PopularDishes() {
                 {dishes[0].title}
               </h3>
             </div>
-            <div className="flex items-center gap-2 text-[#9c1010] mb-4">
-              <div className="w-[3px] h-[3px] rotate-45 bg-[#9c1010]/60" />
+            <div className="flex items-center gap-2 text-[#e10613] mb-4">
+              <div className="w-[3px] h-[3px] rotate-45 bg-[#e10613]/60" />
               <svg className="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
-              <div className="w-[3px] h-[3px] rotate-45 bg-[#9c1010]/60" />
+              <div className="w-[3px] h-[3px] rotate-45 bg-[#e10613]/60" />
             </div>
             <p className="text-[#2d2219] text-sm font-medium leading-relaxed mb-6 max-w-[240px]">
               {dishes[0].description}
             </p>
-            <a href="#menu" className="inline-flex items-center gap-2 text-xs font-bold tracking-[2px] uppercase text-[#9c1010] hover:text-[#7a0c0c] transition-colors">
+            <a href="#menu" className="inline-flex items-center gap-2 text-xs font-bold tracking-[2px] uppercase text-[#e10613] hover:text-[#c00510] transition-colors">
               Discover Dish <span className="text-xs font-extrabold">&gt;</span>
             </a>
           </div>
@@ -123,14 +156,14 @@ export default function PopularDishes() {
               <svg className="w-3 h-3 text-[#c5a880] fill-current" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z" /></svg>
             </div>
             {/* Image */}
-            <div className="w-full h-full overflow-hidden rounded-tr-[120px] rounded-bl-[120px] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.4)]">
+            <div className="w-full h-full overflow-hidden rounded-tr-[120px] rounded-bl-[120px] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.4)] image-sweep-right">
               <img src={dishes[0].image} alt={dishes[0].title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
             </div>
           </div>
         </div>
 
         {/* ROW 2: Mixed Grill */}
-        <div className="w-full flex flex-col-reverse lg:flex-row items-start justify-between py-4 lg:py-6 relative border-b border-[#2d2219]/10">
+        <div className="w-full flex flex-col-reverse lg:flex-row items-start justify-between py-4 lg:py-6 relative border-b border-[#2d2219]/10 scroll-reveal-row scroll-reveal-row-2">
           {/* Dish 02 Image (Left 62%) */}
           <div className="w-full lg:w-[62%] relative h-[300px] lg:h-[350px] mt-10 lg:mt-0">
              {/* Ribbon */}
@@ -140,46 +173,46 @@ export default function PopularDishes() {
               <svg className="w-3 h-3 text-[#c5a880] fill-current" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z" /></svg>
             </div>
             {/* Image */}
-            <div className="w-full h-full overflow-hidden rounded-tl-[120px] rounded-br-[120px] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.4)]">
+            <div className="w-full h-full overflow-hidden rounded-tl-[120px] rounded-br-[120px] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.4)] image-sweep-left">
               <img src={dishes[1].image} alt={dishes[1].title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
             </div>
           </div>
 
           {/* Dish 02 Text (Right 35%) */}
-          <div className="w-full lg:w-[35%] flex flex-col lg:pt-4 relative z-10 lg:pr-8">
+          <div className="w-full lg:w-[35%] flex flex-col lg:pt-4 relative z-10 lg:pl-20 lg:pr-0">
             <h3 className="font-serif text-2xl lg:text-[1.4rem] font-bold tracking-widest text-[#2d2219] whitespace-nowrap mb-3">
               {dishes[1].title}
             </h3>
-            <div className="flex items-center gap-2 text-[#9c1010] mb-4">
-              <div className="w-[3px] h-[3px] rotate-45 bg-[#9c1010]/60" />
+            <div className="flex items-center gap-2 text-[#e10613] mb-4">
+              <div className="w-[3px] h-[3px] rotate-45 bg-[#e10613]/60" />
               <svg className="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
-              <div className="w-[3px] h-[3px] rotate-45 bg-[#9c1010]/60" />
+              <div className="w-[3px] h-[3px] rotate-45 bg-[#e10613]/60" />
             </div>
             <p className="text-[#2d2219] text-sm font-medium leading-relaxed mb-6 max-w-[240px]">
               {dishes[1].description}
             </p>
-            <a href="#menu" className="inline-flex items-center gap-2 text-xs font-bold tracking-[2px] uppercase text-[#9c1010] hover:text-[#7a0c0c] transition-colors">
+            <a href="#menu" className="inline-flex items-center gap-2 text-xs font-bold tracking-[2px] uppercase text-[#e10613] hover:text-[#c00510] transition-colors">
               Discover Dish <span className="text-xs font-extrabold">&gt;</span>
             </a>
           </div>
         </div>
 
         {/* ROW 3: Baklava */}
-        <div className="w-full flex flex-col lg:flex-row items-start justify-between py-4 lg:py-6 relative">
+        <div className="w-full flex flex-col lg:flex-row items-start justify-between py-4 lg:py-6 relative scroll-reveal-row scroll-reveal-row-3">
           {/* Dish 03 Text (Left 35%) */}
           <div className="w-full lg:w-[35%] flex flex-col lg:pt-4 relative z-10 lg:pl-20 mb-10 lg:mb-0">
             <h3 className="font-serif text-2xl lg:text-[1.4rem] font-bold tracking-widest text-[#2d2219] whitespace-nowrap mb-3">
               {dishes[2].title}
             </h3>
-            <div className="flex items-center gap-2 text-[#9c1010] mb-4">
-              <div className="w-[3px] h-[3px] rotate-45 bg-[#9c1010]/60" />
+            <div className="flex items-center gap-2 text-[#e10613] mb-4">
+              <div className="w-[3px] h-[3px] rotate-45 bg-[#e10613]/60" />
               <svg className="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z"/></svg>
-              <div className="w-[3px] h-[3px] rotate-45 bg-[#9c1010]/60" />
+              <div className="w-[3px] h-[3px] rotate-45 bg-[#e10613]/60" />
             </div>
             <p className="text-[#2d2219] text-sm font-medium leading-relaxed mb-6 max-w-[240px]">
               {dishes[2].description}
             </p>
-            <a href="#menu" className="inline-flex items-center gap-2 text-xs font-bold tracking-[2px] uppercase text-[#9c1010] hover:text-[#7a0c0c] transition-colors">
+            <a href="#menu" className="inline-flex items-center gap-2 text-xs font-bold tracking-[2px] uppercase text-[#e10613] hover:text-[#c00510] transition-colors">
               Discover Dish <span className="text-xs font-extrabold">&gt;</span>
             </a>
           </div>
@@ -193,7 +226,7 @@ export default function PopularDishes() {
               <svg className="w-3 h-3 text-[#c5a880] fill-current" viewBox="0 0 24 24"><path d="M12 2L2 12l10 10 10-10L12 2z" /></svg>
             </div>
             {/* Image */}
-            <div className="w-full h-full overflow-hidden rounded-tr-[120px] rounded-bl-[120px] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.4)]">
+            <div className="w-full h-full overflow-hidden rounded-tr-[120px] rounded-bl-[120px] shadow-[0_15px_40px_-15px_rgba(0,0,0,0.4)] image-sweep-right">
               <img src={dishes[2].image} alt={dishes[2].title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" />
             </div>
           </div>
@@ -202,12 +235,12 @@ export default function PopularDishes() {
       </div>
 
       {/* Explore Menu Button */}
-      <div className="mt-6 flex items-center justify-center gap-4 text-[#9c1010] select-none pb-4 relative z-10">
+      <div className="mt-6 flex items-center justify-center gap-4 text-[#e10613] select-none pb-4 relative z-10 scroll-reveal-footer">
         <svg className="w-[14px] h-[14px] fill-current" viewBox="0 0 24 24">
           <path d="M12 2L2 12l10 10 10-10L12 2z M12 6l6 6-6 6-6-6 6-6z" />
         </svg>
-        <button className="border-2 border-[#c5a880] hover:border-[#9c1010] text-[#2d2219] hover:text-[#9c1010] hover:bg-black/5 px-10 py-3.5 rounded-full text-xs font-extrabold uppercase tracking-[3px] transition-all duration-300 flex items-center gap-2 shadow-[0_2px_10px_rgba(0,0,0,0.03)] bg-transparent">
-          Explore Our Full Menu <span className="text-[#9c1010] font-black text-xs ml-1">&gt;</span>
+        <button className="border-2 border-[#c5a880] hover:border-[#e10613] text-[#2d2219] hover:text-[#e10613] hover:bg-black/5 px-10 py-3.5 rounded-full text-xs font-extrabold uppercase tracking-[3px] transition-all duration-300 flex items-center gap-2 shadow-[0_2px_10px_rgba(0,0,0,0.03)] bg-transparent">
+          Explore Our Full Menu <span className="text-[#e10613] font-black text-xs ml-1">&gt;</span>
         </button>
         <svg className="w-[14px] h-[14px] fill-current" viewBox="0 0 24 24">
           <path d="M12 2L2 12l10 10 10-10L12 2z M12 6l6 6-6 6-6-6 6-6z" />

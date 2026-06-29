@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const menuCategoriesData = [
@@ -16,29 +18,70 @@ const menuCategoriesData = [
 ];
 
 const MenuCategories = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="w-full bg-[#fdfdfb] py-16 px-4">
+    <section 
+      ref={containerRef}
+      className="w-full bg-[#fdfdfb] py-16 px-4"
+    >
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Title */}
-        <h3 className="text-2xl md:text-3xl font-serif text-[#333] mb-4 uppercase tracking-wide">
+        <h3 className={`text-2xl md:text-3xl font-serif text-[#333] mb-4 uppercase tracking-wide transition-all duration-1000 ease-out transform ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+        }`}>
           EXPLORE OUR MENU
         </h3>
+        
         {/* Small Decorative Diamond */}
-        <svg className="w-4 h-4 text-[#B89564] mb-12" fill="currentColor" viewBox="0 0 24 24">
+        <svg className={`w-4 h-4 text-[#B89564] mb-12 transition-all duration-1000 delay-150 ease-out transform ${
+          isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"
+        }`} fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
         </svg>
 
         {/* Grid */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
           {menuCategoriesData.map((category, index) => {
-            // If it's the last item (11th) and we are on desktop (which has 2 columns), center it.
             const isLastOddItem = index === menuCategoriesData.length - 1 && menuCategoriesData.length % 2 !== 0;
+            // Stagger delay based on index for natural waving reveal
+            const delayClass = `delay-[${(index % 4) * 100}ms]`;
+            const staggerStyles = {
+              transitionDelay: `${(index % 4) * 100}ms`
+            };
+
             return (
               <Link
                 href="#"
                 key={category.name}
-                className={`group flex items-center bg-white rounded-3xl p-3 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 ${
+                style={staggerStyles}
+                className={`group flex items-center bg-white rounded-3xl p-3 shadow-sm hover:shadow-md transition-all duration-700 ease-out transform border border-gray-100 ${
                   isLastOddItem ? "md:col-span-2 md:w-[calc(50%-12px)] md:mx-auto" : ""
+                } ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
               >
                 {/* Image */}
@@ -52,7 +95,7 @@ const MenuCategories = () => {
 
                 {/* Text Details */}
                 <div className="flex flex-col ml-4 md:ml-6 flex-grow">
-                  <span className="font-serif text-[#333] font-semibold text-lg md:text-xl tracking-wide group-hover:text-[#7a1f1f] transition-colors">
+                  <span className="font-serif text-[#333] font-semibold text-lg md:text-xl tracking-wide group-hover:text-[#e10613] transition-colors">
                     {category.name}
                   </span>
                   <span className="text-gray-500 font-sans text-sm mt-1">
@@ -61,7 +104,7 @@ const MenuCategories = () => {
                 </div>
 
                 {/* Right Arrow Icon */}
-                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#e6e2d8] text-[#B89564] mr-2 md:mr-4 group-hover:bg-[#B89564] group-hover:text-white transition-colors flex-shrink-0">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border border-[#e6e2d8] text-[#B89564] mr-2 md:mr-4 group-hover:bg-[#e10613] group-hover:border-[#e10613] group-hover:text-white transition-colors flex-shrink-0">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>

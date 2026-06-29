@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 
 interface AddOnItem {
   title: string;
@@ -55,8 +57,36 @@ const addOns: AddOnItem[] = [
 ];
 
 export default function CateringAddOns() {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative w-full py-24 lg:py-32 bg-[#faf6f0] text-[#2d2219] overflow-hidden border-t border-[#e5dacf]/50">
+    <section 
+      ref={containerRef}
+      className="relative w-full py-24 lg:py-32 bg-[#faf6f0] text-[#2d2219] overflow-hidden border-t border-[#e5dacf]/50 select-none"
+    >
       {/* Texture Layer */}
       <div className="absolute inset-0 opacity-[0.015] mix-blend-multiply pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }}></div>
 
@@ -64,11 +94,13 @@ export default function CateringAddOns() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* LEFT SIDE: Text Details & Email box */}
-          <div className="lg:col-span-4 flex flex-col justify-center max-w-lg lg:max-w-none">
+          <div className={`lg:col-span-4 flex flex-col justify-center max-w-lg lg:max-w-none transition-all duration-1000 ease-out transform ${
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+          }`}>
             
             {/* Overtitle */}
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-[#9c1010] text-[11px] md:text-xs font-extrabold tracking-[4px] uppercase">
+              <span className="text-[#e10613] text-[11px] md:text-xs font-extrabold tracking-[4px] uppercase">
                 ✦ Catering Excellence ✦
               </span>
             </div>
@@ -80,14 +112,14 @@ export default function CateringAddOns() {
             </h2>
 
             {/* Description */}
-            <p className="font-sans text-[#2d2219]/80 text-sm sm:text-base leading-relaxed mb-10 font-medium">
+            <p className="font-sans text-[#2d2219]/95 text-sm sm:text-base leading-relaxed mb-10 font-semibold">
               From corporate luncheons to grand celebrations, we create exceptional culinary experiences filled with authentic Turkish flavours and unmatched hospitality.
             </p>
 
             {/* Email Box Callout */}
             <a 
               href="mailto:hello@antalyarestaurant.ca"
-              className="group border border-[#c5a880]/30 hover:border-[#9c1010]/50 bg-white hover:bg-white/80 rounded-2xl p-5 flex items-center justify-between gap-5 transition-all duration-300 shadow-[0_4px_20px_-10px_rgba(45,34,25,0.05)] relative overflow-hidden"
+              className="group border border-[#c5a880]/30 hover:border-[#e10613]/50 bg-white hover:bg-white/80 rounded-2xl p-5 flex items-center justify-between gap-5 transition-all duration-300 shadow-[0_4px_20px_-10px_rgba(45,34,25,0.05)] relative overflow-hidden cursor-pointer"
             >
               <div className="flex items-center gap-4">
                 {/* Mail Icon in Gold Circle */}
@@ -100,17 +132,17 @@ export default function CateringAddOns() {
                   <span className="font-sans font-bold text-[#2d2219] text-xs sm:text-sm">
                     Bring Authentic Turkish Flavour
                   </span>
-                  <span className="font-sans text-[11px] sm:text-xs text-[#2d2219]/60 mt-0.5 font-medium">
+                  <span className="font-sans text-[11px] sm:text-xs text-[#2d2219]/85 mt-0.5 font-semibold">
                     to Your Event – Email Us Today.
                   </span>
-                  <span className="font-sans font-bold text-[#9c1010] text-xs sm:text-sm mt-1 decoration-transparent group-hover:underline">
+                  <span className="font-sans font-bold text-[#e10613] text-xs sm:text-sm mt-1 decoration-transparent group-hover:underline">
                     hello@antalyarestaurant.ca
                   </span>
                 </div>
               </div>
 
               {/* Gold Arrow */}
-              <div className="text-[#9c1010] shrink-0 group-hover:translate-x-1.5 transition-transform duration-300">
+              <div className="text-[#e10613] shrink-0 group-hover:translate-x-1.5 transition-transform duration-300">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
@@ -123,7 +155,10 @@ export default function CateringAddOns() {
             {addOns.map((addOn, index) => (
               <div 
                 key={index} 
-                className="flex flex-col items-center text-center relative group"
+                style={{ transitionDelay: `${index * 150}ms` }}
+                className={`flex flex-col items-center text-center relative group transition-all duration-[1000ms] ease-out transform ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
               >
                 {/* Outlined gold circular icon above arch */}
                 <div className="w-10 h-10 rounded-full border border-[#c5a880]/30 bg-white flex items-center justify-center text-[#c5a880] z-20 shadow-md relative -mb-5 transition-transform duration-500 group-hover:rotate-12">
@@ -147,7 +182,7 @@ export default function CateringAddOns() {
                     {addOn.title}
                   </h3>
                   {addOn.subtitle && (
-                    <span className="block font-serif text-xs text-[#2d2219]/60 mt-1 italic">
+                    <span className="block font-serif text-xs text-[#2d2219]/85 mt-1 italic">
                       {addOn.subtitle}
                     </span>
                   )}
@@ -159,7 +194,7 @@ export default function CateringAddOns() {
                     <div className="h-[0.5px] w-4 bg-[#c5a880]/30"></div>
                   </div>
 
-                  <p className="font-sans text-[11px] sm:text-xs text-[#2d2219]/70 leading-relaxed max-w-[140px] mx-auto font-medium">
+                  <p className="font-sans text-[11px] sm:text-xs text-[#2d2219]/90 leading-relaxed max-w-[140px] mx-auto font-semibold">
                     {addOn.desc}
                   </p>
                 </div>

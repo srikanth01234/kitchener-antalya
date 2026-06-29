@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface Testimonial {
   id: number;
@@ -113,20 +113,75 @@ const stats = [
 ];
 
 export default function TestimonialsSection() {
-  const [activeIndex, setActiveIndex] = useState(2); // Default to index 2 (Michael Ibrahim, third one)
+  const [renderedIndex, setRenderedIndex] = useState(2); // Default to index 2 (Michael Ibrahim, third one)
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [displayedText, setDisplayedText] = useState(testimonials[2].text);
 
-  const activeTestimonial = testimonials[activeIndex];
+  const activeTestimonial = testimonials[renderedIndex];
+
+  // Trigger change with slide animation
+  const triggerIndexChange = (nextIdx: number) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setRenderedIndex(nextIdx);
+      setIsTransitioning(false);
+    }, 400); // matches CSS transitions
+  };
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    const nextIdx = renderedIndex === 0 ? testimonials.length - 1 : renderedIndex - 1;
+    triggerIndexChange(nextIdx);
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    const nextIdx = renderedIndex === testimonials.length - 1 ? 0 : renderedIndex + 1;
+    triggerIndexChange(nextIdx);
   };
 
+  const handleThumbnailClick = (index: number) => {
+    if (index === renderedIndex) return;
+    triggerIndexChange(index);
+  };
+
+  // Typing animation that types the active testimonial text in exactly 1 second
+  useEffect(() => {
+    const fullText = activeTestimonial.text;
+    const textLength = fullText.length;
+    if (textLength === 0) return;
+
+    const startTime = performance.now();
+    let animationFrameId: number;
+
+    const animateTyping = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const duration = 1000; // 1 second (1000ms)
+
+      if (elapsed >= duration) {
+        setDisplayedText(fullText);
+      } else {
+        const progress = elapsed / duration;
+        const charsToShow = Math.floor(progress * textLength);
+        setDisplayedText(fullText.slice(0, charsToShow));
+        animationFrameId = requestAnimationFrame(animateTyping);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(animateTyping);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [activeTestimonial.text]);
+
+  // Autoplay rotation every 3s
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextIdx = (renderedIndex + 1) % testimonials.length;
+      triggerIndexChange(nextIdx);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [renderedIndex]);
+
   return (
-    <section id="reviews" className="relative w-full pt-4 md:pt-6 pb-20 md:pb-28 bg-[#faf6f0] overflow-hidden border-b border-[#2d2219]/10">
+    <section id="reviews" className="relative w-full pt-1 pb-16 md:pb-24 bg-[#faf6f0] overflow-hidden border-b border-[#2d2219]/10">
       {/* Background radial gradient to match site style */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(156,16,16,0.015),transparent_60%)] pointer-events-none" />
 
@@ -146,7 +201,7 @@ export default function TestimonialsSection() {
             </svg>
           </div>
           <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#2d2219] mb-6 leading-none">
-            Loved by <span className="text-[#9c1010]">Our Guests</span>
+            Loved by <span className="text-[#e10613]">Our Guests</span>
           </h2>
           <div className="w-12 h-[1px] bg-gold mb-6" />
           <p className="font-sans text-sm md:text-base text-[#2d2219]/80 font-medium max-w-xl">
@@ -155,13 +210,15 @@ export default function TestimonialsSection() {
         </div>
 
         {/* --- MAIN CAROUSEL CARD AREA --- */}
-        <div className="relative w-full max-w-[1100px] flex flex-col items-center justify-center mb-16 px-4 md:px-12">
+        <div 
+          className="relative w-full max-w-[1100px] flex flex-col items-center justify-center mb-6 px-4 md:px-12"
+        >
           
           {/* Previous Button (far left) */}
           <button
             onClick={handlePrev}
             aria-label="Previous testimonial"
-            className="absolute left-[-16px] md:left-0 z-30 w-12 h-12 rounded-full bg-white border border-[#e5dacf] flex items-center justify-center text-[#c5a880] hover:text-[#9c1010] hover:border-[#9c1010] shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+            className="absolute left-[-16px] md:left-0 z-30 w-12 h-12 rounded-full bg-white border border-[#e5dacf] flex items-center justify-center text-[#c5a880] hover:text-[#e10613] hover:border-[#e10613] shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
           >
             <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -172,7 +229,9 @@ export default function TestimonialsSection() {
           <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-0 lg:gap-8 min-h-[460px] relative">
             
             {/* Left side: Restaurant interior image */}
-            <div className="w-full lg:w-[50%] h-[320px] sm:h-[380px] lg:h-[420px] rounded-3xl overflow-hidden shadow-lg border border-[#c5a880]/20 relative z-10 transition-all duration-500">
+            <div className={`w-full lg:w-[50%] h-[320px] sm:h-[380px] lg:h-[420px] rounded-3xl overflow-hidden shadow-lg border border-[#c5a880]/20 relative z-10 transition-all duration-500 ease-in-out ${
+              isTransitioning ? "opacity-0 -translate-x-6 scale-98 blur-[2px]" : "opacity-100 translate-x-0 scale-100 blur-0"
+            }`}>
               <img
                 src={activeTestimonial.image}
                 alt="Antalya Ambience"
@@ -182,7 +241,9 @@ export default function TestimonialsSection() {
             </div>
 
             {/* Right side: Overlapping Card */}
-            <div className="w-[92%] sm:w-[86%] lg:w-[55%] lg:h-[420px] bg-white rounded-3xl p-8 md:p-10 shadow-[0_15px_45px_-15px_rgba(45,34,25,0.08)] border border-[#e5dacf]/40 flex flex-col justify-between -mt-10 lg:mt-0 lg:-ml-12 relative z-20 transition-all duration-500">
+            <div className={`w-[92%] sm:w-[86%] lg:w-[55%] lg:h-[420px] bg-white rounded-3xl p-8 md:p-10 shadow-[0_15px_45px_-15px_rgba(45,34,25,0.08)] border border-[#e5dacf]/40 flex flex-col justify-between -mt-10 lg:mt-0 lg:-ml-12 relative z-20 transition-all duration-500 ease-in-out ${
+              isTransitioning ? "opacity-0 translate-x-6 scale-98 blur-[2px]" : "opacity-100 translate-x-0 scale-100 blur-0"
+            }`}>
               {/* Quote Mark & Stars Row */}
               <div className="flex items-start justify-between mb-6">
                 {/* Custom Quote Icon */}
@@ -214,8 +275,10 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Testimonial Text */}
-              <p className="font-sans text-[#2d2219] text-[15px] sm:text-base md:text-lg font-medium leading-relaxed mb-8 italic">
-                "{activeTestimonial.text}"
+              <p className="font-sans text-[#2d2219] text-[15px] sm:text-base md:text-lg font-medium leading-relaxed mb-8 italic min-h-[5.5rem] select-none">
+                "{displayedText}"{displayedText.length < activeTestimonial.text.length && (
+                  <span className="inline-block w-[2px] h-[1em] bg-gold ml-1 animate-pulse" style={{ verticalAlign: "middle" }}></span>
+                )}
               </p>
 
               {/* Author Information */}
@@ -245,7 +308,7 @@ export default function TestimonialsSection() {
           <button
             onClick={handleNext}
             aria-label="Next testimonial"
-            className="absolute right-[-16px] md:right-0 z-30 w-12 h-12 rounded-full bg-white border border-[#e5dacf] flex items-center justify-center text-[#c5a880] hover:text-[#9c1010] hover:border-[#9c1010] shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+            className="absolute right-[-16px] md:right-0 z-30 w-12 h-12 rounded-full bg-white border border-[#e5dacf] flex items-center justify-center text-[#c5a880] hover:text-[#e10613] hover:border-[#e10613] shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
           >
             <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -255,17 +318,17 @@ export default function TestimonialsSection() {
         </div>
 
         {/* --- REVIEWERS THUMBNAIL ROW --- */}
-        <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 flex-wrap mb-20 max-w-full">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 flex-wrap mb-6 max-w-full">
           {testimonials.map((item, index) => {
-            const isActive = index === activeIndex;
+            const isActive = index === renderedIndex;
             return (
               <div key={item.id} className="flex flex-col items-center shrink-0 min-w-[70px] min-h-[90px] relative">
                 <button
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => handleThumbnailClick(index)}
                   className={`w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden cursor-pointer transition-all duration-300 shadow-sm relative ${
                     isActive
-                      ? "ring-2 ring-gold ring-offset-2 ring-offset-[#faf6f0] scale-110"
-                      : "opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:scale-105"
+                       ? "ring-2 ring-gold ring-offset-2 ring-offset-[#faf6f0] scale-110"
+                       : "opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:scale-105"
                   }`}
                 >
                   <img
@@ -290,36 +353,6 @@ export default function TestimonialsSection() {
               </div>
             );
           })}
-        </div>
-
-        {/* --- BOTTOM STATS BAR --- */}
-        <div className="w-full max-w-[1100px] bg-white border border-[#e5dacf]/40 rounded-3xl py-8 px-6 md:px-10 shadow-[0_10px_35px_-10px_rgba(45,34,25,0.05)]">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 items-center">
-            {stats.map((stat, i) => (
-              <div
-                key={stat.id}
-                className={`flex items-center justify-center gap-4 px-4 md:px-2 ${
-                  i > 0 && i % 2 !== 0 ? "border-l border-[#e5dacf]/40 md:border-l-0" : ""
-                } ${
-                  i > 0 ? "md:border-l md:border-[#e5dacf]/40" : ""
-                }`}
-              >
-                {/* Icon Circle */}
-                <div className="w-12 h-12 rounded-full border border-gold/30 bg-gold/5 flex items-center justify-center shrink-0">
-                  {stat.icon}
-                </div>
-                {/* Stat Text */}
-                <div className="flex flex-col text-left">
-                  <span className="font-serif text-[#2d2219] text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight leading-none mb-1">
-                    {stat.value}
-                  </span>
-                  <span className="font-sans text-[#2d2219]/60 text-[11px] sm:text-xs font-bold uppercase tracking-wider">
-                    {stat.label}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>

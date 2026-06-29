@@ -1,9 +1,39 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export default function CateringTradition() {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative w-full py-24 lg:py-32 bg-[#faf6f0] text-[#2d2219] overflow-hidden border-t border-[#e5dacf]/50">
+    <section 
+      ref={containerRef}
+      className="relative w-full pt-12 lg:pt-16 pb-8 lg:pb-10 bg-[#faf6f0] text-[#2d2219] overflow-hidden border-t border-[#e5dacf]/50 select-none"
+    >
       {/* Subtle background noise texture */}
       <div className="absolute inset-0 opacity-[0.015] mix-blend-multiply pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }}></div>
 
@@ -13,7 +43,9 @@ export default function CateringTradition() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* LEFT SIDE: Text, bullet points, button */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
+          <div className={`lg:col-span-5 flex flex-col justify-center transition-all duration-1000 ease-out transform ${
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+          }`}>
             
             {/* Overtitle */}
             <div className="flex items-center gap-3 mb-6">
@@ -31,7 +63,7 @@ export default function CateringTradition() {
             {/* Title */}
             <h2 className="font-serif text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.1] text-[#2d2219] tracking-tight mb-6">
               Culinary Experiences <br />
-              Crafted with <span className="font-script text-[#9c1010] text-4xl sm:text-5xl lg:text-6xl -rotate-1 inline-block ml-1">Tradition</span>
+              Crafted with <span className="font-script text-[#e10613] text-4xl sm:text-5xl lg:text-6xl -rotate-1 inline-block ml-1">Tradition</span>
             </h2>
 
             {/* Separator */}
@@ -42,7 +74,7 @@ export default function CateringTradition() {
             </div>
 
             {/* Descriptions */}
-            <p className="font-sans text-[#2d2219]/80 text-sm sm:text-base leading-relaxed mb-8 font-medium">
+            <p className="font-sans text-[#2d2219]/95 text-sm sm:text-base leading-relaxed mb-8 font-semibold">
               From intimate gatherings to grand celebrations, Antalya brings the rich flavours of Turkey to your events. Every dish is prepared with passion, beautifully presented, and served with unmatched hospitality.
             </p>
 
@@ -58,7 +90,7 @@ export default function CateringTradition() {
                 </div>
                 <div>
                   <h4 className="font-sans font-bold text-[#2d2219] text-sm">Signature charcoal-grilled kebabs</h4>
-                  <p className="font-sans text-xs text-[#2d2219]/70 mt-0.5 font-medium">Perfectly seasoned, flame-grilled to perfection.</p>
+                  <p className="font-sans text-xs text-[#2d2219]/90 mt-0.5 font-semibold">Perfectly seasoned, flame-grilled to perfection.</p>
                 </div>
               </div>
 
@@ -71,7 +103,7 @@ export default function CateringTradition() {
                 </div>
                 <div>
                   <h4 className="font-sans font-bold text-[#2d2219] text-sm">Mezze platters & fresh salads</h4>
-                  <p className="font-sans text-xs text-[#2d2219]/70 mt-0.5 font-medium">A variety of vibrant flavours made fresh daily.</p>
+                  <p className="font-sans text-xs text-[#2d2219]/90 mt-0.5 font-semibold">A variety of vibrant flavours made fresh daily.</p>
                 </div>
               </div>
 
@@ -84,7 +116,7 @@ export default function CateringTradition() {
                 </div>
                 <div>
                   <h4 className="font-sans font-bold text-[#2d2219] text-sm">Handcrafted mains & special dishes</h4>
-                  <p className="font-sans text-xs text-[#2d2219]/70 mt-0.5 font-medium">Authentic recipes for every taste and occasion.</p>
+                  <p className="font-sans text-xs text-[#2d2219]/90 mt-0.5 font-semibold">Authentic recipes for every taste and occasion.</p>
                 </div>
               </div>
 
@@ -94,7 +126,7 @@ export default function CateringTradition() {
             <div>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center border border-[#9c1010] hover:bg-[#9c1010] text-[#9c1010] hover:text-white px-8 py-3.5 rounded-sm text-xs font-extrabold tracking-[2px] uppercase transition-all"
+                className="inline-flex items-center justify-center border border-[#e10613] hover:bg-[#e10613] text-[#e10613] hover:text-white px-8 py-3.5 rounded-sm text-xs font-extrabold tracking-[2px] uppercase transition-all cursor-pointer"
               >
                 Explore Our Catering
                 <span className="ml-2">&rarr;</span>
@@ -107,7 +139,9 @@ export default function CateringTradition() {
           <div className="lg:col-span-7 flex flex-col justify-end items-center relative w-full h-[550px] lg:h-[600px] mt-8 lg:mt-0">
             
             {/* Background elements */}
-            <div className="absolute top-0 left-[20%] opacity-[0.08] rotate-12 pointer-events-none scale-125 z-0">
+            <div className={`absolute top-0 left-[20%] opacity-[0.08] rotate-12 pointer-events-none scale-125 z-0 transition-all duration-[1500ms] ease-out transform ${
+              isVisible ? "opacity-[0.08] translate-y-0" : "opacity-0 translate-y-4"
+            }`}>
               <svg width="120" height="120" viewBox="0 0 24 24" className="fill-[#c5a880]">
                 <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
               </svg>
@@ -129,7 +163,9 @@ export default function CateringTradition() {
             </div>
 
             {/* 1. Large back arch: Long dining table layout */}
-            <div className="absolute top-0 right-[15%] w-[65%] sm:w-[55%] aspect-[1/1.2] rounded-t-full border border-[#c5a880]/15 overflow-hidden z-10 shadow-lg">
+            <div className={`absolute top-0 right-[15%] w-[65%] sm:w-[55%] aspect-[1/1.2] rounded-t-full border border-[#c5a880]/15 overflow-hidden z-10 shadow-lg transition-all duration-[1200ms] delay-200 ease-out transform ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-12"
+            }`}>
               <img 
                 src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=800&auto=format&fit=crop" 
                 alt="Intimate banquet table setup" 
@@ -139,7 +175,9 @@ export default function CateringTradition() {
             </div>
 
             {/* 2. Front left arch: Mezze platters */}
-            <div className="absolute bottom-[80px] left-[5%] w-[33%] sm:w-[28%] aspect-[1/1.1] rounded-t-full border-2 border-white overflow-hidden z-20 shadow-2xl">
+            <div className={`absolute bottom-[80px] left-[5%] w-[33%] sm:w-[28%] aspect-[1/1.1] rounded-t-full border-2 border-white overflow-hidden z-20 shadow-2xl transition-all duration-[1000ms] delay-400 ease-out transform ${
+              isVisible ? "opacity-100 translate-x-0 translate-y-0" : "opacity-0 -translate-x-8 translate-y-8"
+            }`}>
               <img 
                 src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=400&auto=format&fit=crop" 
                 alt="Turkish Mezze" 
@@ -148,7 +186,9 @@ export default function CateringTradition() {
             </div>
 
             {/* 3. Front center arch: Grilling kebabs */}
-            <div className="absolute bottom-[40px] left-[35%] w-[38%] sm:w-[32%] aspect-[1/1.3] rounded-t-full border-[3px] border-white overflow-hidden z-30 shadow-[0_20px_45px_rgba(0,0,0,0.25)]">
+            <div className={`absolute bottom-[40px] left-[35%] w-[38%] sm:w-[32%] aspect-[1/1.3] rounded-t-full border-[3px] border-white overflow-hidden z-30 shadow-[0_20px_45px_rgba(0,0,0,0.25)] transition-all duration-[1000ms] delay-600 ease-out transform ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+            }`}>
               <img 
                 src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=400&auto=format&fit=crop" 
                 alt="Grilling Kebabs" 
@@ -158,7 +198,9 @@ export default function CateringTradition() {
             </div>
 
             {/* 4. Front right card (rounded rect): Plate of kebabs */}
-            <div className="absolute bottom-[90px] right-[2%] w-[33%] sm:w-[28%] aspect-[1/1] rounded-2xl border-2 border-white overflow-hidden z-20 shadow-2xl">
+            <div className={`absolute bottom-[90px] right-[2%] w-[33%] sm:w-[28%] aspect-[1/1] rounded-2xl border-2 border-white overflow-hidden z-20 shadow-2xl transition-all duration-[1000ms] delay-800 ease-out transform ${
+              isVisible ? "opacity-100 translate-x-0 translate-y-0" : "opacity-0 translate-x-8 translate-y-8"
+            }`}>
               <img 
                 src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=400&auto=format&fit=crop" 
                 alt="Kebab Platter" 
@@ -167,7 +209,9 @@ export default function CateringTradition() {
             </div>
 
             {/* 5. Intricate circular badge overlapping upper right of collage */}
-            <div className="absolute top-[80px] right-[2%] w-24 h-24 sm:w-28 sm:h-28 z-20 drop-shadow-lg select-none pointer-events-none">
+            <div className={`absolute top-[80px] right-[2%] w-24 h-24 sm:w-28 sm:h-28 z-20 drop-shadow-lg select-none pointer-events-none transition-all duration-1000 delay-1000 ease-out transform ${
+              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-50"
+            }`}>
               <div className="w-full h-full rounded-full bg-white border border-[#c5a880]/30 flex items-center justify-center relative p-1.5 animate-[spin_40s_linear_infinite]">
                 <svg viewBox="0 0 100 100" className="w-full h-full fill-[#2d2219] text-[#2d2219]">
                   <path id="badgeCurve" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" />
@@ -189,7 +233,9 @@ export default function CateringTradition() {
 
             {/* 6. Stone Block Podium Base */}
             <div 
-              className="w-full h-20 bg-gradient-to-b from-[#efe6d8] via-[#e5dacf] to-[#cca779]/30 rounded-xl shadow-[0_20px_40px_-5px_rgba(0,0,0,0.15)] border-t border-white border-b border-[#2d2219]/10 relative overflow-hidden z-25 shrink-0 flex items-center justify-center"
+              className={`w-full h-20 bg-gradient-to-b from-[#efe6d8] via-[#e5dacf] to-[#cca779]/30 rounded-xl shadow-[0_20px_40px_-5px_rgba(0,0,0,0.15)] border-t border-white border-b border-[#2d2219]/10 relative overflow-hidden z-25 shrink-0 flex items-center justify-center transition-all duration-[1200ms] ease-out transform ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"
+              }`}
               style={{
                 backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.75\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' opacity=\'0.1\'/%3E%3C/svg%3E")',
               }}
@@ -205,23 +251,25 @@ export default function CateringTradition() {
         </div>
 
         {/* BOTTOM VALUES BANNER */}
-        <div className="mt-20 lg:mt-28 bg-white border border-[#e5dacf]/70 rounded-3xl p-8 sm:p-10 shadow-[0_15px_40px_-15px_rgba(45,34,25,0.06)] relative z-20">
+        <div className={`mt-8 lg:mt-10 bg-white border border-[#e5dacf]/70 rounded-3xl py-6 px-8 shadow-[0_15px_40px_-15px_rgba(45,34,25,0.06)] relative z-20 transition-all duration-1000 delay-500 ease-out transform ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             
             {/* Value 1 */}
             <div className="flex gap-4 items-center group">
-              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#9c1010]/5 group-hover:border-[#9c1010]/20 group-hover:text-[#9c1010]">
+              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#e10613]/5 group-hover:border-[#e10613]/20 group-hover:text-[#e10613]">
                 <svg className="w-7 h-7 fill-none stroke-current" strokeWidth="1.2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m-7.25 15h14.5a.75.75 0 00.75-.75V17a7 7 0 00-14 0v.25a.75.75 0 00.75.75z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2 19h20M12 6a1 1 0 100-2 1 1 0 000 2z" />
                 </svg>
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-sans font-extrabold text-[11px] text-[#9c1010] tracking-[2px] uppercase">
+                <span className="font-sans font-extrabold text-[11px] text-[#e10613] tracking-[2px] uppercase">
                   TAILORED MENUS
                 </span>
-                <span className="font-sans text-xs text-[#2d2219]/70 mt-1 font-semibold leading-normal">
+                <span className="font-sans text-xs text-[#2d2219]/90 mt-1 font-semibold leading-normal">
                   Customized catering for every occasion and guest preference.
                 </span>
               </div>
@@ -229,16 +277,16 @@ export default function CateringTradition() {
 
             {/* Value 2 */}
             <div className="flex gap-4 items-center group">
-              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#9c1010]/5 group-hover:border-[#9c1010]/20 group-hover:text-[#9c1010]">
+              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#e10613]/5 group-hover:border-[#e10613]/20 group-hover:text-[#e10613]">
                 <svg className="w-7 h-7 fill-none stroke-current" strokeWidth="1.2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l2.4 4.8 5.3.8-3.8 3.7.9 5.3-4.8-2.5-4.8 2.5.9-5.3-3.8-3.7 5.3-.8z" />
                 </svg>
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-sans font-extrabold text-[11px] text-[#9c1010] tracking-[2px] uppercase">
+                <span className="font-sans font-extrabold text-[11px] text-[#e10613] tracking-[2px] uppercase">
                   FRESH INGREDIENTS
                 </span>
-                <span className="font-sans text-xs text-[#2d2219]/70 mt-1 font-semibold leading-normal">
+                <span className="font-sans text-xs text-[#2d2219]/90 mt-1 font-semibold leading-normal">
                   We use the finest local ingredients for exceptional taste and quality.
                 </span>
               </div>
@@ -246,16 +294,16 @@ export default function CateringTradition() {
 
             {/* Value 3 */}
             <div className="flex gap-4 items-center group">
-              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#9c1010]/5 group-hover:border-[#9c1010]/20 group-hover:text-[#9c1010]">
+              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#e10613]/5 group-hover:border-[#e10613]/20 group-hover:text-[#e10613]">
                 <svg className="w-7 h-7 fill-none stroke-current" strokeWidth="1.2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 2a4 4 0 00-4 4v2h8V6a4 4 0 00-4-4zM6 8h12v12a2 2 0 01-2 2H8a2 2 0 01-2-2V8z" />
                 </svg>
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-sans font-extrabold text-[11px] text-[#9c1010] tracking-[2px] uppercase">
+                <span className="font-sans font-extrabold text-[11px] text-[#e10613] tracking-[2px] uppercase">
                   EXPERT CHEFS
                 </span>
-                <span className="font-sans text-xs text-[#2d2219]/70 mt-1 font-semibold leading-normal">
+                <span className="font-sans text-xs text-[#2d2219]/90 mt-1 font-semibold leading-normal">
                   Crafted by experienced chefs who bring authentic Turkish flavours to life.
                 </span>
               </div>
@@ -263,16 +311,16 @@ export default function CateringTradition() {
 
             {/* Value 4 */}
             <div className="flex gap-4 items-center group">
-              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#9c1010]/5 group-hover:border-[#9c1010]/20 group-hover:text-[#9c1010]">
+              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#e10613]/5 group-hover:border-[#e10613]/20 group-hover:text-[#e10613]">
                 <svg className="w-7 h-7 fill-none stroke-current" strokeWidth="1.2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-sans font-extrabold text-[11px] text-[#9c1010] tracking-[2px] uppercase">
+                <span className="font-sans font-extrabold text-[11px] text-[#e10613] tracking-[2px] uppercase">
                   HOSPITALITY FIRST
                 </span>
-                <span className="font-sans text-xs text-[#2d2219]/70 mt-1 font-semibold leading-normal">
+                <span className="font-sans text-xs text-[#2d2219]/90 mt-1 font-semibold leading-normal">
                   Dedicated to providing warm service and memorable experiences.
                 </span>
               </div>

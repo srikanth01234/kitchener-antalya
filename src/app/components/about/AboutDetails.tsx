@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 
 interface DetailCard {
   title: string;
@@ -41,8 +43,39 @@ const cards: DetailCard[] = [
 ];
 
 export default function AboutDetails() {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative w-full py-16 bg-[#faf6f0] text-[#2d2219] overflow-hidden">
+    <section 
+      ref={containerRef}
+      className={`relative w-full py-8 lg:py-10 bg-[#faf6f0] text-[#2d2219] overflow-hidden transition-all duration-700 ${isVisible ? "is-visible" : ""}`}
+    >
       
       {/* SVG ClipPath Definition for the Scoop Notch */}
       <svg width="0" height="0" className="absolute pointer-events-none select-none">
@@ -59,7 +92,8 @@ export default function AboutDetails() {
           {cards.map((card, idx) => (
             <div 
               key={idx}
-              className="bg-[#fdfaf5] border border-[#e5dacf]/70 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group h-full"
+              className="bg-[#fdfaf5] border border-[#e5dacf]/70 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group h-full scroll-reveal-grid-item"
+              style={{ transitionDelay: `${idx * 150}ms` }}
             >
               {/* Top Text Details */}
               <div className="p-8 pb-4 flex flex-col items-center text-center">
@@ -70,7 +104,7 @@ export default function AboutDetails() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif text-[#9c1010] text-lg sm:text-xl font-bold tracking-wider uppercase mb-3">
+                <h3 className="font-serif text-[#e10613] text-lg sm:text-xl font-bold tracking-wider uppercase mb-3">
                   {card.title}
                 </h3>
 
@@ -82,7 +116,7 @@ export default function AboutDetails() {
                 </div>
 
                 {/* Description */}
-                <p className="font-sans text-xs sm:text-sm text-[#2d2219]/80 leading-relaxed font-medium">
+                <p className="font-sans text-xs sm:text-sm text-[#2d2219] leading-relaxed font-medium">
                   {card.desc}
                 </p>
 

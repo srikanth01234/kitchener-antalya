@@ -1,9 +1,42 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export default function AboutStory() {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative w-full py-20 lg:py-28 bg-[#faf6f0] text-[#2d2219] overflow-hidden">
+    <section 
+      ref={containerRef}
+      className={`relative w-full pt-16 pb-10 lg:pt-20 lg:pb-14 bg-[#faf6f0] text-[#2d2219] overflow-hidden transition-all duration-700 ${isVisible ? "is-visible" : ""}`}
+    >
       
       {/* Decorative dot grids and vectors */}
       <div className="absolute top-10 right-[25%] opacity-[0.08] select-none pointer-events-none rotate-12">
@@ -21,7 +54,7 @@ export default function AboutStory() {
           <div className="lg:col-span-6 flex flex-col justify-center text-left">
             
             {/* Overtitle */}
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4 mb-6 scroll-reveal-fade-up">
               {/* Rosette Flower Icon */}
               <div className="w-6 h-6 text-[#c5a880] flex items-center justify-center shrink-0">
                 <svg className="w-full h-full fill-none stroke-current" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -29,19 +62,25 @@ export default function AboutStory() {
                 </svg>
               </div>
               <h2 className="font-serif text-3xl md:text-4xl text-[#2d2219] font-medium leading-none">
-                OUR <span className="text-[#9c1010]">STORY</span>
+                OUR <span className="text-[#e10613]">STORY</span>
               </h2>
             </div>
 
             {/* Subtitle */}
-            <div className="mb-6">
+            <div 
+              className="mb-6 scroll-reveal-fade-up"
+              style={{ transitionDelay: '150ms' }}
+            >
               <span className="font-script text-3xl sm:text-4xl text-[#c5a880] inline-block -ml-1">
                 A Tradition of Taste & Hospitality
               </span>
             </div>
 
             {/* Story Paragraphs */}
-            <div className="flex flex-col gap-5 font-sans text-[#2d2219]/80 text-sm sm:text-base leading-relaxed mb-10 max-w-xl font-medium">
+            <div 
+              className="flex flex-col gap-5 font-sans text-[#2d2219] text-sm sm:text-base leading-relaxed mb-10 max-w-xl font-medium scroll-reveal-fade-up"
+              style={{ transitionDelay: '300ms' }}
+            >
               <p>
                 Antalya began with a simple vision – to share the flavours, warmth, and culinary traditions of Turkey with our community. What started as a humble kitchen has grown into a beloved dining destination, celebrated for its hospitality, charcoal-grilled artistry, and authentic taste.
               </p>
@@ -54,10 +93,13 @@ export default function AboutStory() {
             </div>
 
             {/* Button */}
-            <div>
+            <div 
+              className="scroll-reveal-fade-up"
+              style={{ transitionDelay: '450ms' }}
+            >
               <Link 
                 href="/menu"
-                className="inline-flex items-center justify-center bg-[#7a0c0c] hover:bg-[#5c0909] text-white px-8 py-4 rounded-sm text-xs font-extrabold tracking-[2px] uppercase transition-all shadow-md hover:shadow-lg gap-3"
+                className="inline-flex items-center justify-center bg-[#c00510] hover:bg-[#90040a] text-white px-8 py-4 rounded-sm text-xs font-extrabold tracking-[2px] uppercase transition-all shadow-md hover:shadow-lg gap-3"
               >
                 View Our Menu
                 <span>&rarr;</span>
@@ -70,7 +112,10 @@ export default function AboutStory() {
           <div className="lg:col-span-6 flex items-center justify-center relative w-full h-[450px] sm:h-[500px]">
             
             {/* Dot Grid Watermark */}
-            <div className="absolute top-4 left-[20%] opacity-20 select-none pointer-events-none">
+            <div 
+              className="absolute top-4 left-[20%] opacity-25 select-none pointer-events-none scroll-reveal-fade-in"
+              style={{ transitionDelay: '100ms' }}
+            >
               <svg width="70" height="50" className="text-[#c5a880] fill-current">
                 <pattern id="storyDotGrid" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
                   <circle cx="1.5" cy="1.5" r="1" />
@@ -83,7 +128,10 @@ export default function AboutStory() {
             <div className="absolute bottom-[30px] left-[15%] w-[45%] h-[40px] rounded-full bg-[#efe6d8]/50 z-0 pointer-events-none"></div>
 
             {/* Left Arch Image (Olive tree) */}
-            <div className="absolute left-[8%] bottom-[40px] w-[45%] aspect-[1/1.1] rounded-t-full border border-[#c5a880]/15 overflow-hidden z-10 shadow-lg">
+            <div 
+              className="absolute left-[8%] bottom-[40px] w-[45%] aspect-[1/1.1] rounded-t-full border border-[#c5a880]/15 overflow-hidden z-10 shadow-lg scroll-reveal-grid-item"
+              style={{ transitionDelay: '200ms' }}
+            >
               <img 
                 src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop" 
                 alt="Antalya dining room seating" 
@@ -92,7 +140,10 @@ export default function AboutStory() {
             </div>
 
             {/* Right Arch Image (Kitchen & seating) */}
-            <div className="absolute right-[5%] top-[10px] w-[55%] aspect-[1/1.2] rounded-t-full border border-[#c5a880]/15 overflow-hidden z-10 shadow-2xl">
+            <div 
+              className="absolute right-[5%] top-[10px] w-[55%] aspect-[1/1.2] rounded-t-full border border-[#c5a880]/15 overflow-hidden z-10 shadow-2xl scroll-reveal-grid-item"
+              style={{ transitionDelay: '400ms' }}
+            >
               <img 
                 src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=800&auto=format&fit=crop" 
                 alt="Antalya interior view" 
@@ -102,8 +153,11 @@ export default function AboutStory() {
             </div>
 
             {/* Circular badge overlapping the middle/bottom right */}
-            <div className="absolute bottom-[10px] left-[35%] w-32 h-32 sm:w-36 sm:h-36 z-25 drop-shadow-xl select-none pointer-events-none">
-              <div className="w-full h-full rounded-full bg-[#7a0c0c] border-4 border-[#faf6f0] flex flex-col items-center justify-center relative p-3">
+            <div 
+              className="absolute bottom-[10px] left-[35%] w-32 h-32 sm:w-36 sm:h-36 z-25 drop-shadow-xl select-none pointer-events-none scroll-reveal-scale-in"
+              style={{ transitionDelay: '600ms' }}
+            >
+              <div className="w-full h-full rounded-full bg-[#c00510] border-4 border-[#faf6f0] flex flex-col items-center justify-center relative p-3">
                 {/* Circular Stamp Text */}
                 <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full fill-[#faf6f0] text-[#faf6f0]">
                   <path id="aboutStampCurve" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" />
@@ -128,73 +182,88 @@ export default function AboutStory() {
         </div>
 
         {/* LOWER PART: Values horizontal banner */}
-        <div className="bg-white border border-[#e5dacf]/70 rounded-3xl p-8 sm:p-10 shadow-[0_15px_40px_-15px_rgba(45,34,25,0.06)] relative z-20">
+        <div 
+          className="bg-white border border-[#e5dacf]/70 rounded-3xl p-8 sm:p-10 shadow-[0_15px_40px_-15px_rgba(45,34,25,0.06)] relative z-20 scroll-reveal-fade-up"
+          style={{ transitionDelay: '600ms' }}
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             
             {/* Value 1 */}
-            <div className="flex gap-4 items-center group">
-              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#9c1010]/5 group-hover:border-[#9c1010]/20 group-hover:text-[#9c1010]">
+            <div 
+              className="flex gap-4 items-center group scroll-reveal-fade-up"
+              style={{ transitionDelay: '700ms' }}
+            >
+              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#e10613]/5 group-hover:border-[#e10613]/20 group-hover:text-[#e10613]">
                 <svg className="w-7 h-7 fill-none stroke-current" strokeWidth="1.2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l2.4 4.8 5.3.8-3.8 3.7.9 5.3-4.8-2.5-4.8 2.5.9-5.3-3.8-3.7 5.3-.8z" />
                 </svg>
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-sans font-extrabold text-[11px] text-[#9c1010] tracking-[2px] uppercase">
+                <span className="font-sans font-extrabold text-[11px] text-[#e10613] tracking-[2px] uppercase">
                   OUR HERITAGE
                 </span>
-                <span className="font-sans text-xs text-[#2d2219]/70 mt-1 font-semibold leading-normal">
+                <span className="font-sans text-xs text-[#2d2219]/90 mt-1 font-semibold leading-normal">
                   Rooted in Turkish traditions, crafted with passion.
                 </span>
               </div>
             </div>
 
             {/* Value 2 */}
-            <div className="flex gap-4 items-center group">
-              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#9c1010]/5 group-hover:border-[#9c1010]/20 group-hover:text-[#9c1010]">
+            <div 
+              className="flex gap-4 items-center group scroll-reveal-fade-up"
+              style={{ transitionDelay: '800ms' }}
+            >
+              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#e10613]/5 group-hover:border-[#e10613]/20 group-hover:text-[#e10613]">
                 <svg className="w-7 h-7 fill-none stroke-current" strokeWidth="1.2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 2a4 4 0 00-4 4v2h8V6a4 4 0 00-4-4zM6 8h12v12a2 2 0 01-2 2H8a2 2 0 01-2-2V8z" />
                 </svg>
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-sans font-extrabold text-[11px] text-[#9c1010] tracking-[2px] uppercase">
+                <span className="font-sans font-extrabold text-[11px] text-[#e10613] tracking-[2px] uppercase">
                   OUR CHEFS
                 </span>
-                <span className="font-sans text-xs text-[#2d2219]/70 mt-1 font-semibold leading-normal">
+                <span className="font-sans text-xs text-[#2d2219]/90 mt-1 font-semibold leading-normal">
                   Experienced chefs combining tradition with innovation.
                 </span>
               </div>
             </div>
 
             {/* Value 3 */}
-            <div className="flex gap-4 items-center group">
-              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#9c1010]/5 group-hover:border-[#9c1010]/20 group-hover:text-[#9c1010]">
+            <div 
+              className="flex gap-4 items-center group scroll-reveal-fade-up"
+              style={{ transitionDelay: '900ms' }}
+            >
+              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#e10613]/5 group-hover:border-[#e10613]/20 group-hover:text-[#e10613]">
                 <svg className="w-7 h-7 fill-none stroke-current" strokeWidth="1.2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13" />
                 </svg>
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-sans font-extrabold text-[11px] text-[#9c1010] tracking-[2px] uppercase">
+                <span className="font-sans font-extrabold text-[11px] text-[#e10613] tracking-[2px] uppercase">
                   OUR INGREDIENTS
                 </span>
-                <span className="font-sans text-xs text-[#2d2219]/70 mt-1 font-semibold leading-normal">
+                <span className="font-sans text-xs text-[#2d2219]/90 mt-1 font-semibold leading-normal">
                   Fresh, local, and carefully selected for every dish.
                 </span>
               </div>
             </div>
 
             {/* Value 4 */}
-            <div className="flex gap-4 items-center group">
-              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#9c1010]/5 group-hover:border-[#9c1010]/20 group-hover:text-[#9c1010]">
+            <div 
+              className="flex gap-4 items-center group scroll-reveal-fade-up"
+              style={{ transitionDelay: '1000ms' }}
+            >
+              <div className="w-14 h-14 rounded-full bg-[#faf6f0] border border-[#e5dacf] flex items-center justify-center text-[#c5a880] shrink-0 transition-colors duration-300 group-hover:bg-[#e10613]/5 group-hover:border-[#e10613]/20 group-hover:text-[#e10613]">
                 <svg className="w-7 h-7 fill-none stroke-current" strokeWidth="1.2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5" />
                   <circle cx="12" cy="12" r="9" />
                 </svg>
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-sans font-extrabold text-[11px] text-[#9c1010] tracking-[2px] uppercase">
+                <span className="font-sans font-extrabold text-[11px] text-[#e10613] tracking-[2px] uppercase">
                   OUR PROMISE
                 </span>
-                <span className="font-sans text-xs text-[#2d2219]/70 mt-1 font-semibold leading-normal">
+                <span className="font-sans text-xs text-[#2d2219]/90 mt-1 font-semibold leading-normal">
                   Exceptional food, warm service, and unforgettable experiences.
                 </span>
               </div>

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 
 interface OccasionItem {
   id: string;
@@ -51,11 +53,41 @@ const occasions: OccasionItem[] = [
 ];
 
 export default function CateringOccasions() {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative w-full py-24 lg:py-32 bg-[#faf6f0] overflow-hidden border-b border-[#e5dacf]/50">
+    <section 
+      ref={containerRef}
+      className="relative w-full py-24 lg:py-32 bg-[#faf6f0] overflow-hidden border-b border-[#e5dacf]/50 select-none"
+    >
       
       {/* Background flourishes */}
-      <div className="absolute top-20 right-10 lg:right-40 opacity-10 rotate-45 pointer-events-none scale-150">
+      <div className={`absolute top-20 right-10 lg:right-40 opacity-10 pointer-events-none scale-150 transition-all duration-[2000ms] ease-out transform ${
+        isVisible ? "opacity-10 rotate-[75deg]" : "opacity-0 rotate-0"
+      }`}>
         <svg width="120" height="120" viewBox="0 0 24 24" className="fill-[#c5a880]">
           <path d="M12,2C12,2 4,6 4,13C4,17.41 7.59,21 12,22C16.41,21 20,17.41 20,13C20,6 12,2 12,2ZM12,19.9C8.75,18.96 6.08,15.93 6.08,13C6.08,8.23 10.37,4.89 12,3.84C13.63,4.89 17.92,8.23 17.92,13C17.92,15.93 15.25,18.96 12,19.9Z" />
         </svg>
@@ -64,16 +96,18 @@ export default function CateringOccasions() {
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16 lg:mb-24 flex flex-col items-center">
+        <div className={`text-center mb-16 lg:mb-24 flex flex-col items-center transition-all duration-1000 ease-out transform ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+        }`}>
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[1px] w-8 bg-[#c5a880]"></div>
-            <span className="font-sans text-[#c5a880] text-xs font-extrabold tracking-[3px] uppercase">
+            <span className="font-sans text-[#8a6538] text-xs font-extrabold tracking-[3px] uppercase">
               Perfect For
             </span>
             <div className="h-[1px] w-8 bg-[#c5a880]"></div>
           </div>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#2d2219]">
-            Every <span className="text-[#9c1010] italic">Celebration</span>
+            Every <span className="text-[#e10613] italic">Celebration</span>
           </h2>
         </div>
 
@@ -82,10 +116,16 @@ export default function CateringOccasions() {
           {occasions.map((item, index) => {
             const isImageLeft = index === 1;
 
+            // Stagger direction: Odd slides from left (-translate-x), Even from right (translate-x)
+            const slideInClass = isImageLeft
+              ? (isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12")
+              : (isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12");
+
             return (
               <div 
                 key={item.id}
-                className="flex flex-col lg:flex-row items-stretch bg-white rounded-[2rem] shadow-[0_15px_45px_-15px_rgba(45,34,25,0.06)] border border-[#e5dacf]/30 overflow-hidden relative min-h-[250px]"
+                style={{ transitionDelay: `${index * 150}ms` }}
+                className={`flex flex-col lg:flex-row items-stretch bg-white rounded-[2rem] shadow-[0_15px_45px_-15px_rgba(45,34,25,0.06)] border border-[#e5dacf]/30 overflow-hidden relative min-h-[250px] transition-all duration-[1000ms] ease-out transform ${slideInClass}`}
               >
                 
                 {/* 1. SLANTED IMAGE SEGMENT (Alternating layout on desktop) */}
@@ -115,7 +155,7 @@ export default function CateringOccasions() {
                       </div>
 
                       {/* Number */}
-                      <span className="font-serif text-3xl text-[#9c1010] leading-none shrink-0 select-none">
+                      <span className="font-serif text-3xl text-[#e10613] leading-none shrink-0 select-none">
                         {item.id}
                       </span>
                     </div>
@@ -132,7 +172,7 @@ export default function CateringOccasions() {
                   </div>
 
                   {/* Description */}
-                  <p className="font-sans text-xs sm:text-sm text-[#2d2219]/70 leading-relaxed mb-6 max-w-xl font-medium">
+                  <p className="font-sans text-xs sm:text-sm text-[#2d2219]/90 leading-relaxed mb-6 max-w-xl font-semibold">
                     {item.desc}
                   </p>
 
@@ -146,7 +186,7 @@ export default function CateringOccasions() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                           </svg>
                         </div>
-                        <span className="font-sans text-xs font-bold text-[#2d2219]/80">{pt}</span>
+                        <span className="font-sans text-xs font-extrabold text-[#2d2219]">{pt}</span>
                       </div>
                     ))}
                   </div>
@@ -172,7 +212,7 @@ export default function CateringOccasions() {
                 <div className="w-full lg:w-20 shrink-0 h-16 lg:h-auto flex items-center justify-center bg-[#faf6f0] border-t lg:border-t-0 lg:border-l border-[#e5dacf]/30 z-10 relative">
                   <a 
                     href="/contact" 
-                    className="w-12 h-12 rounded-full border border-[#c5a880]/30 hover:bg-[#c5a880]/15 hover:border-[#9c1010] flex items-center justify-center text-[#9c1010] hover:text-[#9c1010] transition-all shadow-sm"
+                    className="w-12 h-12 rounded-full border border-[#c5a880]/30 hover:bg-[#e10613]/10 hover:border-[#e10613] flex items-center justify-center text-[#e10613] hover:text-[#e10613] transition-all shadow-sm cursor-pointer"
                     aria-label={`Inquire about ${item.title}`}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">

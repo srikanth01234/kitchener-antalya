@@ -1,12 +1,47 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export default function FooterSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => {
+      if (footerRef.current) {
+        observer.unobserve(footerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <footer className="relative w-full bg-[#0f0c08] pt-12 pb-8 overflow-hidden flex flex-col items-center justify-center">
+    <footer 
+      ref={footerRef}
+      className="relative w-full bg-[#0f0c08] pt-12 pb-8 overflow-hidden flex flex-col items-center justify-center"
+    >
       {/* Background Watermark Text "antalya" */}
-      <div className="absolute bottom-[-15px] right-1/2 translate-x-1/2 opacity-20 pointer-events-none select-none z-20">
-        <span className="font-serif text-[16vw] font-black lowercase tracking-widest text-[#c5a880] leading-none">
+      <div className={`absolute bottom-[-15px] right-1/2 translate-x-1/2 pointer-events-none select-none z-20 transition-all duration-[1200ms] ease-out transform ${
+        isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
+      }`}>
+        <span 
+          className="font-serif text-[16vw] font-black lowercase tracking-widest leading-none"
+          style={{ color: "rgba(225, 6, 19, 0.08)" }}
+        >
           antalya
         </span>
       </div>
@@ -25,13 +60,17 @@ export default function FooterSection() {
       <div className="relative w-full max-w-[1360px] mx-auto px-6 sm:px-8 z-10 flex flex-col items-center">
 
         {/* Floating White Card */}
-        <div className="w-full bg-white rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-[#e5dacf]/30 p-6 sm:p-8 lg:p-10 flex flex-col gap-8">
+        <div className={`w-full bg-white rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-[#e5dacf]/30 p-6 sm:p-8 lg:p-10 flex flex-col gap-8 transition-all duration-1000 ease-out transform ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}>
 
           {/* Top Row: 4 Columns Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
 
             {/* Column 1: Brand Info */}
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div className={`flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-700 ease-out delay-150 transform ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}>
               {/* Islamic/Turkish Octagonal Emblem */}
               <div className="w-16 h-16 mb-4 text-[#c5a880]">
                 <svg className="w-full h-full fill-none stroke-current" strokeWidth="1.2" viewBox="0 0 100 100">
@@ -61,7 +100,9 @@ export default function FooterSection() {
             </div>
 
             {/* Column 2: Quick Links */}
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div className={`flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-700 ease-out delay-300 transform ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}>
               <h4 className="font-sans text-sm font-extrabold tracking-[2px] text-[#2d2219] uppercase mb-1">
                 Quick Links
               </h4>
@@ -77,16 +118,16 @@ export default function FooterSection() {
                   { label: "Menu", href: "/menu" },
                   { label: "Catering", href: "/catering" },
                   { label: "Gallery", href: "/gallery" },
-                  { label: "About", href: "/#about" },
+                  { label: "About", href: "/about" },
                   { label: "Blog", href: "/blog" },
                   { label: "Contact", href: "/contact" },
                 ].map((link, idx) => (
                   <li key={idx}>
                     <Link
                       href={link.href}
-                      className="group flex items-center gap-2 hover:text-[#9c1010] transition-all duration-300 transform hover:translate-x-1"
+                      className="group flex items-center gap-2 hover:text-[#e10613] transition-all duration-300 transform hover:translate-x-1"
                     >
-                      <span className="text-[#c5a880] group-hover:text-[#9c1010] transition-colors duration-300">
+                      <span className="text-[#c5a880] group-hover:text-[#e10613] transition-colors duration-300">
                         &rsaquo;
                       </span>
                       {link.label}
@@ -97,7 +138,9 @@ export default function FooterSection() {
             </div>
 
             {/* Column 3: Location */}
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div className={`flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-700 ease-out delay-450 transform ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}>
               <h4 className="font-sans text-sm font-extrabold tracking-[2px] text-[#2d2219] uppercase mb-1">
                 Location
               </h4>
@@ -133,7 +176,7 @@ export default function FooterSection() {
                   </div>
                   <div className="flex flex-col text-center lg:text-left">
                     <span className="font-sans font-bold text-[#2d2219] text-sm mb-0.5">Call Us</span>
-                    <a href="tel:5195816363" className="font-sans text-xs font-bold text-[#2d2219]/70 hover:text-[#9c1010] transition-colors">
+                    <a href="tel:5195816363" className="font-sans text-xs font-bold text-[#2d2219]/70 hover:text-[#e10613] transition-colors">
                       519-581-6363
                     </a>
                   </div>
@@ -148,7 +191,7 @@ export default function FooterSection() {
                   </div>
                   <div className="flex flex-col text-center lg:text-left">
                     <span className="font-sans font-bold text-[#2d2219] text-sm mb-0.5">Email Us</span>
-                    <a href="mailto:hello@antalyarestaurant.ca" className="font-sans text-xs font-bold text-[#2d2219]/70 hover:text-[#9c1010] transition-colors">
+                    <a href="mailto:hello@antalyarestaurant.ca" className="font-sans text-xs font-bold text-[#2d2219]/70 hover:text-[#e10613] transition-colors">
                       hello@antalyarestaurant.ca
                     </a>
                   </div>
@@ -157,7 +200,9 @@ export default function FooterSection() {
             </div>
 
             {/* Column 4: Opening Hours */}
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div className={`flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-700 ease-out delay-600 transform ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}>
               <h4 className="font-sans text-sm font-extrabold tracking-[2px] text-[#2d2219] uppercase mb-1">
                 Opening Hours
               </h4>
@@ -195,7 +240,7 @@ export default function FooterSection() {
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-[#c5a880]/60 flex items-center justify-center text-[#2d2219] hover:bg-[#c5a880]/10 hover:border-[#9c1010] hover:text-[#9c1010] transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-[#c5a880]/60 flex items-center justify-center text-[#2d2219] hover:bg-[#c5a880]/10 hover:border-[#e10613] hover:text-[#e10613] transition-all duration-300"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
@@ -206,7 +251,7 @@ export default function FooterSection() {
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-[#c5a880]/60 flex items-center justify-center text-[#2d2219] hover:bg-[#c5a880]/10 hover:border-[#9c1010] hover:text-[#9c1010] transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-[#c5a880]/60 flex items-center justify-center text-[#2d2219] hover:bg-[#c5a880]/10 hover:border-[#e10613] hover:text-[#e10613] transition-all duration-300"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -217,7 +262,7 @@ export default function FooterSection() {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-[#c5a880]/60 flex items-center justify-center text-[#2d2219] hover:bg-[#c5a880]/10 hover:border-[#9c1010] hover:text-[#9c1010] transition-all duration-300"
+                  className="w-10 h-10 rounded-full border border-[#c5a880]/60 flex items-center justify-center text-[#2d2219] hover:bg-[#c5a880]/10 hover:border-[#e10613] hover:text-[#e10613] transition-all duration-300"
                 >
                   <svg className="w-4 h-4 fill-none stroke-current" strokeWidth="2" viewBox="0 0 24 24">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -231,7 +276,9 @@ export default function FooterSection() {
           </div>
 
           {/* Middle Bar: Divider + Skyline + Reserve Banner */}
-          <div className="w-full border-t border-[#e5dacf]/60 pt-8 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className={`w-full border-t border-[#e5dacf]/60 pt-8 flex flex-col md:flex-row items-center justify-between gap-8 transition-all duration-[800ms] ease-out delay-700 transform ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}>
             {/* Left: Istanbul Skyline Drawing */}
             <div className="flex items-center justify-center text-[#c5a880] opacity-85 select-none w-full md:w-auto overflow-hidden">
               <svg className="w-52 h-14" viewBox="0 0 200 50" fill="none">
@@ -283,7 +330,7 @@ export default function FooterSection() {
               {/* Reserve Button */}
               <Link
                 href="/contact"
-                className="bg-[#b58c58] hover:bg-[#967144] px-8 py-3.5 rounded-lg text-xs font-bold tracking-[2px] uppercase text-white shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto whitespace-nowrap"
+                className="bg-[#e10613] hover:bg-[#c40510] px-8 py-3.5 rounded-lg text-xs font-bold tracking-[2px] uppercase text-white shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto whitespace-nowrap"
               >
                 Reserve Now
                 <span>&rarr;</span>

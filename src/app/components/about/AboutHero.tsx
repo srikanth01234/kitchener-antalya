@@ -10,7 +10,7 @@ export default function AboutHero() {
         <img 
           src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1500&auto=format&fit=crop" 
           alt="Antalya Culinary Selection" 
-          className="w-full h-full object-cover object-[50%_70%] opacity-70"
+          className="w-full h-full object-cover object-[50%_70%] opacity-70 gallery-hero-bg"
         />
         {/* Dark Vignette Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30"></div>
@@ -22,7 +22,7 @@ export default function AboutHero() {
         <div className="flex flex-col text-left max-w-xl">
           
           {/* Logo & Overtitle */}
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-4 gallery-hero-fade-up">
             {/* Cloche Icon */}
             <div className="w-5 h-5 text-[#c5a880] flex items-center justify-center shrink-0">
               <svg className="w-full h-full fill-current" viewBox="0 0 24 24">
@@ -36,21 +36,21 @@ export default function AboutHero() {
           </div>
 
           {/* Heading */}
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl text-white font-medium tracking-tight mb-4">
+          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl text-white font-medium tracking-tight mb-4 gallery-hero-fade-up-d1">
             ABOUT <span className="text-[#c5a880]">US</span>
           </h1>
 
           {/* Gold Diamond Ornament */}
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-6 gallery-hero-fade-up-d2">
             <div className="h-[1px] w-8 bg-[#c5a880]/30"></div>
             <div className="w-1.5 h-1.5 rotate-45 bg-[#c5a880]"></div>
             <div className="h-[1px] w-8 bg-[#c5a880]/30"></div>
           </div>
 
           {/* Breadcrumbs */}
-          <div className="font-sans text-xs md:text-sm text-white/60 font-medium tracking-wider">
+          <div className="font-sans text-xs md:text-sm text-white/85 font-medium tracking-wider gallery-hero-fade-up-d2">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <span className="mx-2.5 text-[#c5a880]/60 select-none">/</span>
+            <span className="mx-2.5 text-[#c5a880]/90 select-none">/</span>
             <span className="text-white">About</span>
           </div>
 

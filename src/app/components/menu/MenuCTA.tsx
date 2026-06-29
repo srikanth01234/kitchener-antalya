@@ -1,9 +1,39 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const MenuCTA = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative w-full py-20 px-4 bg-[#FAF8F5] overflow-hidden flex justify-center">
+    <section 
+      ref={containerRef}
+      className="relative w-full py-20 px-4 bg-[#FAF8F5] overflow-hidden flex justify-center"
+    >
       {/* Background Islamic Geometric Pattern Watermark */}
       <div 
         className="absolute inset-0 opacity-[0.03]"
@@ -13,7 +43,9 @@ const MenuCTA = () => {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-5xl bg-white rounded-3xl md:rounded-[4rem] shadow-xl border border-gray-100 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+      <div className={`relative z-10 w-full max-w-5xl bg-white rounded-3xl md:rounded-[4rem] shadow-xl border border-gray-100 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 transition-all duration-[1000ms] ease-out transform ${
+        isVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-4"
+      }`}>
         
         {/* Left Icon & Text Group */}
         <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
@@ -31,8 +63,8 @@ const MenuCTA = () => {
 
         {/* Right Button */}
         <Link
-          href="#"
-          className="flex items-center justify-center bg-[#7a1f1f] text-white px-8 py-4 md:py-5 rounded-full text-sm md:text-base font-bold tracking-widest uppercase transition-colors hover:bg-[#5c1717] w-full md:w-auto flex-shrink-0"
+          href="/contact"
+          className="flex items-center justify-center bg-[#e10613] text-white px-8 py-4 md:py-5 rounded-full text-sm md:text-base font-bold tracking-widest uppercase transition-colors hover:bg-[#c40510] w-full md:w-auto flex-shrink-0 cursor-pointer"
         >
           RESERVE YOUR TABLE
           <svg className="w-4 h-4 md:w-5 md:h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
