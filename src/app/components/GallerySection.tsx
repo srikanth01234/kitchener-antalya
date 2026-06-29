@@ -74,7 +74,7 @@ const GallerySection = () => {
           {/* Left Column - Large Image */}
           <div className="relative h-[400px] sm:h-[500px] lg:h-auto min-h-[600px] rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-lg scroll-reveal-gallery-left">
             <img 
-              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1200&h=1600" 
+              src="/home/our-gallery/our-gallery-left.webp" 
               alt="Restaurant Interior" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
@@ -109,7 +109,7 @@ const GallerySection = () => {
             {/* Image 1: Signature Dishes */}
             <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md scroll-reveal-gallery-row-1">
               <img 
-                src="https://images.unsplash.com/photo-1544025162-81111420d4d9?auto=format&fit=crop&q=80&w=800&h=400" 
+                src="/home/our-gallery/our-gallery-Signature-Dishes.webp" 
                 alt="Signature Dishes" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -129,7 +129,7 @@ const GallerySection = () => {
             {/* Image 2: Outdoor Ambience */}
             <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md scroll-reveal-gallery-row-2">
               <img 
-                src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=800&h=400" 
+                src="/home/our-gallery/our-gallery-Outdoor-Ambience.webp" 
                 alt="Outdoor Ambience" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -149,7 +149,7 @@ const GallerySection = () => {
             {/* Image 3: Private Events */}
             <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md scroll-reveal-gallery-row-3">
               <img 
-                src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&q=80&w=800&h=400" 
+                src="/home/our-gallery/our-gallery-Private-Events.webp" 
                 alt="Private Events" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -169,7 +169,7 @@ const GallerySection = () => {
             {/* Image 4: Turkish Delights */}
             <div className="relative h-[160px] sm:h-[180px] lg:h-auto lg:flex-1 rounded-2xl overflow-hidden border border-[#c5a880]/30 group shadow-md scroll-reveal-gallery-row-4">
               <img 
-                src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&q=80&w=800&h=400" 
+                src="/home/our-gallery/our-gallery-Turkish-Delights.webp" 
                 alt="Turkish Delights" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

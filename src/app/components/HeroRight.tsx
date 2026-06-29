@@ -20,7 +20,7 @@ export default function HeroRight() {
   ];
 
   return (
-    <div className="relative w-full h-full min-h-[450px] lg:min-h-0 flex items-stretch overflow-visible select-none">
+    <div className="relative w-full h-full min-h-[450px] lg:min-h-0 flex items-stretch overflow-visible select-none hero-img-panel">
       {/* 1. Atmospheric Ambient Layer (Soft Glows) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Glow behind the food */}

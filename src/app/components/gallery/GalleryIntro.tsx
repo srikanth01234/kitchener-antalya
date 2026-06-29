@@ -2,7 +2,12 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-export default function GalleryIntro() {
+interface GalleryIntroProps {
+  selectedCategory: string;
+  setSelectedCategory: (category: string) => void;
+}
+
+export default function GalleryIntro({ selectedCategory, setSelectedCategory }: GalleryIntroProps) {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -87,25 +92,45 @@ export default function GalleryIntro() {
         {/* Filter Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
           <button 
-            className="bg-[#e10613] text-white px-8 py-2.5 rounded-full text-[10px] font-bold tracking-[2px] uppercase shadow-md transition-all hover:bg-[#c00510] scroll-reveal-fade-up"
+            onClick={() => setSelectedCategory("all")}
+            className={`px-8 py-2.5 rounded-full text-[10px] font-bold tracking-[2px] uppercase shadow-md transition-all scroll-reveal-fade-up ${
+              selectedCategory === "all"
+                ? "bg-[#e10613] text-white hover:bg-[#c00510]"
+                : "bg-transparent border border-[#c5a880]/40 text-[#2d2219]/70 hover:border-[#e10613] hover:text-[#e10613] cursor-pointer"
+            }`}
             style={{ transitionDelay: '550ms' }}
           >
             All
           </button>
           <button 
-            className="bg-transparent border border-[#c5a880]/40 text-[#2d2219]/70 hover:border-[#e10613] hover:text-[#e10613] px-8 py-2.5 rounded-full text-[10px] font-bold tracking-[2px] uppercase transition-all scroll-reveal-fade-up"
+            onClick={() => setSelectedCategory("food")}
+            className={`px-8 py-2.5 rounded-full text-[10px] font-bold tracking-[2px] uppercase shadow-md transition-all scroll-reveal-fade-up ${
+              selectedCategory === "food"
+                ? "bg-[#e10613] text-white hover:bg-[#c00510]"
+                : "bg-transparent border border-[#c5a880]/40 text-[#2d2219]/70 hover:border-[#e10613] hover:text-[#e10613] cursor-pointer"
+            }`}
             style={{ transitionDelay: '650ms' }}
           >
             Food
           </button>
           <button 
-            className="bg-transparent border border-[#c5a880]/40 text-[#2d2219]/70 hover:border-[#e10613] hover:text-[#e10613] px-8 py-2.5 rounded-full text-[10px] font-bold tracking-[2px] uppercase transition-all scroll-reveal-fade-up"
+            onClick={() => setSelectedCategory("interior")}
+            className={`px-8 py-2.5 rounded-full text-[10px] font-bold tracking-[2px] uppercase shadow-md transition-all scroll-reveal-fade-up ${
+              selectedCategory === "interior"
+                ? "bg-[#e10613] text-white hover:bg-[#c00510]"
+                : "bg-transparent border border-[#c5a880]/40 text-[#2d2219]/70 hover:border-[#e10613] hover:text-[#e10613] cursor-pointer"
+            }`}
             style={{ transitionDelay: '750ms' }}
           >
             Interior
           </button>
           <button 
-            className="bg-transparent border border-[#c5a880]/40 text-[#2d2219]/70 hover:border-[#e10613] hover:text-[#e10613] px-8 py-2.5 rounded-full text-[10px] font-bold tracking-[2px] uppercase transition-all scroll-reveal-fade-up"
+            onClick={() => setSelectedCategory("experience")}
+            className={`px-8 py-2.5 rounded-full text-[10px] font-bold tracking-[2px] uppercase shadow-md transition-all scroll-reveal-fade-up ${
+              selectedCategory === "experience"
+                ? "bg-[#e10613] text-white hover:bg-[#c00510]"
+                : "bg-transparent border border-[#c5a880]/40 text-[#2d2219]/70 hover:border-[#e10613] hover:text-[#e10613] cursor-pointer"
+            }`}
             style={{ transitionDelay: '850ms' }}
           >
             Experience

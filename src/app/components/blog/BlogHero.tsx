@@ -8,7 +8,7 @@ export default function BlogHero() {
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 w-full h-full">
         <img
-          src="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=1920&auto=format&fit=crop"
+          src="/blog/banner/blog-banner.webp"
           alt="Turkish Food"
           className="w-full h-full object-cover hero-zoom-in"
         />

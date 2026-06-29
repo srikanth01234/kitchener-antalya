@@ -14,24 +14,24 @@ interface Dish {
 const featuredDishes: Dish[] = [
   {
     id: 1,
-    title: "MEZZE PLATTER",
-    description: "A perfect introduction to Turkish cuisine. A variety of hummus, haydari, ezme, and muhammara served with olives, feta, and warm bread.",
-    price: "$24.99",
-    image: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?q=80&w=1000&auto=format&fit=crop",
+    title: "MIXED APPETIZER PLATE",
+    description: "A perfect introduction to Turkish cold mezze. A delicious selection of Hummus, Haydari, Babaganoush, and Ezme, served with warm Turkish flatbread.",
+    price: "$22.00",
+    image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1000&auto=format&fit=crop",
   },
   {
     id: 2,
-    title: "MIXED CHARCOAL KEBAB",
-    description: "An authentic selection of our finest charcoal-grilled meats, including Adana kebab, chicken shish, and beef tenderloin skewers, served with bulgur pilaf.",
-    price: "$34.99",
-    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop",
+    title: "KEBAB MIX PLATTER",
+    description: "A grand selection of our finest charcoal-grilled meats, including Adana kebab, Veal shish, Chicken shish, and Kofta, served with rice and grilled vegetables.",
+    price: "$49.00",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop",
   },
   {
     id: 3,
-    title: "TRADITIONAL KUNAFA",
-    description: "Crispy shredded pastry baked with sweet unsalted cheese, soaked in warm sugar syrup, topped with ground pistachios, and served with clotted cream.",
-    price: "$12.99",
-    image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1000&auto=format&fit=crop",
+    title: "BAKLAVA (3 PIECES)",
+    description: "Classic Turkish pastry made of layers of crispy phyllo dough filled with sweet chopped pistachios, sweetened with hot syrup, served with vanilla cream.",
+    price: "$9.00",
+    image: "https://images.unsplash.com/photo-1519671282429-b44660ead0a7?q=80&w=1000&auto=format&fit=crop",
   }
 ];
 

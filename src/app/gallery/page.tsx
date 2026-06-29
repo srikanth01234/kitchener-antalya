@@ -1,9 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
 import GalleryHero from '../components/gallery/GalleryHero';
-import GalleryIntro from '../components/gallery/GalleryIntro';
-import GalleryGrid from '../components/gallery/GalleryGrid';
-import GalleryFooterText from '../components/gallery/GalleryFooterText';
+import GalleryContent from './GalleryContent';
 import FooterSection from '../components/FooterSection';
 import Navbar from '../components/Navbar';
 
@@ -22,9 +19,7 @@ export default function GalleryPage() {
       {/* --- PAGE CONTENT --- */}
       <main className="w-full flex-1">
         <GalleryHero />
-        <GalleryIntro />
-        <GalleryGrid />
-        <GalleryFooterText />
+        <GalleryContent />
       </main>
 
       {/* --- FOOTER --- */}

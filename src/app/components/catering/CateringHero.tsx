@@ -112,7 +112,7 @@ export default function CateringHero() {
           }}
         >
           <img 
-            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2000&auto=format&fit=crop" 
+            src="/catering/banner/catering-banner.webp" 
             alt="Turkish Catering Feast" 
             className={`w-full h-full object-cover object-[30%_50%] opacity-90 transition-transform duration-[6000ms] ease-out ${
               isMounted ? "scale-100" : "scale-110"

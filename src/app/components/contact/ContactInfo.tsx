@@ -40,7 +40,7 @@ const ContactInfo = () => {
       {/* Background Arched Image */}
       <div className="absolute top-0 left-0 right-0 bottom-48 rounded-t-[10rem] md:rounded-t-[15rem] overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop"
+          src="/contact/contact.webp"
           alt="Candlelit Dining Table"
           className="w-full h-full object-cover hero-zoom-in"
         />

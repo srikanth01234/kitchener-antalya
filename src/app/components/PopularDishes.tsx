@@ -36,19 +36,19 @@ export default function PopularDishes() {
       id: "01",
       title: "ADANA KEBAB",
       description: "Charcoal-grilled minced lamb with warm pita, rice, and meze for a bold authentic Turkish flavour.",
-      image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=800&auto=format&fit=crop",
+      image: "/home/signature-dishes/signature-dishes-1.webp",
     },
     {
       id: "02",
       title: "MIXED GRILL",
       description: "A feast of lamb chops, kebabs, chicken, and meze - perfect for sharing true Turkish taste.",
-      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop",
+      image: "/home/signature-dishes/signature-dishes-2.webp",
     },
     {
       id: "03",
       title: "BAKLAVA",
       description: "Crisp filo pastry layered with pistachios and honey syrup for a classic Turkish dessert.",
-      image: "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=800&auto=format&fit=crop",
+      image: "/home/signature-dishes/signature-dishes-3.webp",
     },
   ];
 

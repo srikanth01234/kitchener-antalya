@@ -28,7 +28,7 @@ const packages: Record<string, PackageData> = {
       "Warm Pita Bread & Garlic Sauce",
       "Traditional Turkish Tea"
     ],
-    imgUrl: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop"
+    imgUrl: "/catering/choose-your-experience-1.webp"
   },
   gold: {
     id: "gold",
@@ -44,7 +44,7 @@ const packages: Record<string, PackageData> = {
       "Dessert (Baklava / Rice Pudding)",
       "Turkish Tea & Soft Drinks"
     ],
-    imgUrl: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop"
+    imgUrl: "/catering/choose-your-experience-2.webp"
   },
   platinum: {
     id: "platinum",
@@ -60,7 +60,7 @@ const packages: Record<string, PackageData> = {
       "Specialty Desserts & Fresh Fruits",
       "Turkish Coffee, Tea & Mocktails"
     ],
-    imgUrl: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?q=80&w=1000&auto=format&fit=crop"
+    imgUrl: "/catering/choose-your-experience-3.webp"
   }
 };
 

@@ -14,7 +14,7 @@ const addOns: AddOnItem[] = [
   {
     title: "Tray of Falafel",
     desc: "Crispy on the outside, tender on the inside. A timeless favourite.",
-    imgUrl: "https://images.unsplash.com/photo-1547058881-aa0edd92aab3?q=80&w=600&auto=format&fit=crop",
+    imgUrl: "/catering/catering-excellence/Tray-of-Falafel.webp",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z" />
@@ -24,7 +24,7 @@ const addOns: AddOnItem[] = [
   {
     title: "Shola Gorbandi",
     desc: "Aromatic rice slow-cooked with tender lamb and chickpeas.",
-    imgUrl: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?q=80&w=600&auto=format&fit=crop",
+    imgUrl: "/catering/catering-excellence/Shola-Gorbandi.webp",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -35,7 +35,7 @@ const addOns: AddOnItem[] = [
     title: "Kavurma",
     subtitle: "(Salted Veal)",
     desc: "Traditional Turkish veal, expertly seasoned and sautéed.",
-    imgUrl: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=600&auto=format&fit=crop",
+    imgUrl: "/catering/catering-excellence/Kavurma.webp",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="9" />
@@ -47,7 +47,7 @@ const addOns: AddOnItem[] = [
     title: "Mantu",
     subtitle: "(Afghan style dumplings)",
     desc: "Delicate dumplings filled with spiced meat and topped with garlic yogurt.",
-    imgUrl: "https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=600&auto=format&fit=crop",
+    imgUrl: "/catering/catering-excellence/Mantu.webp",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21V9.75M3.284 14.253A8.997 8.997 0 0112 3c3.824 0 7.1 2.38 8.448 5.733" />

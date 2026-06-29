@@ -17,7 +17,7 @@ const occasions: OccasionItem[] = [
     title: "Corporate & Social Events",
     desc: "Elevate your corporate meetings, conferences, and social events with menus that leave a lasting impression.",
     points: ["Custom Menus", "Professional Service", "Memorable Experience"],
-    imgUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop",
+    imgUrl: "/catering/every-celebration/every-celebration-corporate.webp",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 .9-.74 1.6-1.6 1.6H5.35c-.9 0-1.6-.7-1.6-1.6V14.15m16.5 0c0-.9-.74-1.6-1.6-1.6H5.35c-.9 0-1.6.7-1.6 1.6m16.5 0V9.85c0-.9-.74-1.6-1.6-1.6H5.35c-.9 0-1.6.7-1.6 1.6m16.5 0a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v4.3" />
@@ -30,7 +30,7 @@ const occasions: OccasionItem[] = [
     title: "Family Gatherings & Weddings",
     desc: "Celebrate life's special moments with authentic flavours and warm Turkish hospitality.",
     points: ["Made With Love", "Authentic Flavours", "Tailored For You"],
-    imgUrl: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?q=80&w=800&auto=format&fit=crop",
+    imgUrl: "/catering/every-celebration/every-celebration-weddings.webp",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="9" />
@@ -43,7 +43,7 @@ const occasions: OccasionItem[] = [
     title: "Birthday Parties & Baby Showers",
     desc: "Delicious menus crafted to make your celebrations joyful, flavourful, and truly unforgettable.",
     points: ["Creative Menus", "Joyful Moments", "Hassle Free Planning"],
-    imgUrl: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=800&auto=format&fit=crop",
+    imgUrl: "/catering/every-celebration/every-celebration-birthdays.webp",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21V9.75" />

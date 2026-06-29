@@ -57,7 +57,7 @@ export default function FeaturedStory() {
 
           <div className="rounded-xl overflow-hidden shadow-2xl aspect-[4/3] md:aspect-[16/10] lg:aspect-[4/3]">
             <img 
-              src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1200&auto=format&fit=crop" 
+              src="/blog/blogs/blog-turkish-tea.webp" 
               alt="Turkish Tea" 
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             />

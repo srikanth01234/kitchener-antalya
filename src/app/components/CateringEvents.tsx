@@ -108,7 +108,7 @@ export default function CateringEvents() {
 
           {/* Main Large Circular Image */}
           <div className="absolute top-0 left-4 lg:left-12 w-[300px] h-[300px] lg:w-[480px] lg:h-[480px] rounded-full overflow-hidden shadow-2xl z-10 border-[6px] lg:border-[8px] border-[#faf6f0] scroll-reveal-circle-img">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop" alt="Restaurant Interior" className="w-full h-full object-cover" />
+            <img src="/home/catering-events/catering-events-circle.webp" alt="Restaurant Interior" className="w-full h-full object-cover" />
           </div>
 
           {/* Floating Circle */}
@@ -129,10 +129,10 @@ export default function CateringEvents() {
           {/* 4 Arched Cards */}
           <div className="absolute bottom-0 left-0 w-full flex justify-center lg:justify-start gap-2 lg:gap-3 z-20 items-end h-[300px] lg:h-[340px]">
             {[
-              { id: '01', title: 'Corporate\nEvents', image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600&auto=format&fit=crop', mt: 'mb-[40px] lg:mb-[60px]' },
-              { id: '02', title: 'Weddings &\nEngagements', image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=600&auto=format&fit=crop', mt: 'mb-[10px] lg:mb-[15px]' },
-              { id: '03', title: 'Birthday\nParties', image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=600&auto=format&fit=crop', mt: 'mb-[30px] lg:mb-[45px]' },
-              { id: '04', title: 'Baby\nShowers', image: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=600&auto=format&fit=crop', mt: 'mb-[0px] lg:mb-[0px]' },
+              { id: '01', title: 'Corporate\nEvents', image: '/home/catering-events/catering-events-1.webp', mt: 'mb-[40px] lg:mb-[60px]' },
+              { id: '02', title: 'Weddings &\nEngagements', image: '/home/catering-events/catering-events-2.webp', mt: 'mb-[10px] lg:mb-[15px]' },
+              { id: '03', title: 'Birthday\nParties', image: '/home/catering-events/catering-events-3.webp', mt: 'mb-[30px] lg:mb-[45px]' },
+              { id: '04', title: 'Baby\nShowers', image: '/home/catering-events/catering-events-4.webp', mt: 'mb-[0px] lg:mb-[0px]' },
             ].map((card, idx) => (
               <div key={idx} className={`relative w-[23%] max-w-[120px] h-[220px] lg:h-[280px] rounded-[35px] lg:rounded-[50px] overflow-hidden shadow-xl border-[3px] lg:border-[4px] border-[#faf6f0] ${card.mt} transition-transform hover:-translate-y-2 scroll-reveal-piano scroll-reveal-piano-${idx + 1}`}>
                 <img src={card.image} alt={card.title} className="w-full h-full object-cover" />

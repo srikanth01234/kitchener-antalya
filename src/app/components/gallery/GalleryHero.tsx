@@ -7,7 +7,7 @@ export default function GalleryHero() {
       {/* Background Image with Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1920&auto=format&fit=crop" 
+          src="/gallery/gallery-banner.webp" 
           alt="Gallery Hero Background" 
           className="w-full h-full object-cover opacity-30 gallery-hero-bg"
         />

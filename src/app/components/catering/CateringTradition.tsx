@@ -167,7 +167,7 @@ export default function CateringTradition() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-12"
             }`}>
               <img 
-                src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=800&auto=format&fit=crop" 
+                src="/catering/antalya-catering/antalya-catering-centre.webp" 
                 alt="Intimate banquet table setup" 
                 className="w-full h-full object-cover brightness-[0.8]"
               />
@@ -179,7 +179,7 @@ export default function CateringTradition() {
               isVisible ? "opacity-100 translate-x-0 translate-y-0" : "opacity-0 -translate-x-8 translate-y-8"
             }`}>
               <img 
-                src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=400&auto=format&fit=crop" 
+                src="/catering/antalya-catering/antalya-catering-1.webp" 
                 alt="Turkish Mezze" 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -190,7 +190,7 @@ export default function CateringTradition() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
             }`}>
               <img 
-                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=400&auto=format&fit=crop" 
+                src="/catering/antalya-catering/antalya-catering-2.webp" 
                 alt="Grilling Kebabs" 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -202,7 +202,7 @@ export default function CateringTradition() {
               isVisible ? "opacity-100 translate-x-0 translate-y-0" : "opacity-0 translate-x-8 translate-y-8"
             }`}>
               <img 
-                src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=400&auto=format&fit=crop" 
+                src="/catering/antalya-catering/antalya-catering-3.webp" 
                 alt="Kebab Platter" 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />

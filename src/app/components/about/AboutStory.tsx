@@ -133,7 +133,7 @@ export default function AboutStory() {
               style={{ transitionDelay: '200ms' }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop" 
+                src="/about/our-story/our-story-left.webp" 
                 alt="Antalya dining room seating" 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -145,7 +145,7 @@ export default function AboutStory() {
               style={{ transitionDelay: '400ms' }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=800&auto=format&fit=crop" 
+                src="/about/our-story/our-story-right.webp" 
                 alt="Antalya interior view" 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />

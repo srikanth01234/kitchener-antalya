@@ -27,6 +27,10 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   title: "Antalya Restaurant | Authentic Turkish Dining",
   description: "Experience the rich heritage and bold flavours of authentic Turkish cuisine cooked on wood-fired charcoal grill.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

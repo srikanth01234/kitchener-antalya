@@ -84,7 +84,7 @@ export default function BlogCTA() {
               style={{ transitionDelay: '400ms' }}
             >
                <img 
-                 src="https://images.unsplash.com/photo-1519671282429-b44660ead0a7?q=80&w=600&auto=format&fit=crop" 
+                 src="/blog/stay-inspired/stay-inspired-left.webp" 
                  alt="Sweet Dessert" 
                  className="w-full h-full object-cover rounded-sm"
                />
@@ -96,7 +96,7 @@ export default function BlogCTA() {
               style={{ transitionDelay: '600ms' }}
             >
                <img 
-                 src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600&auto=format&fit=crop" 
+                 src="/blog/stay-inspired/stay-inspired-centre.webp" 
                  alt="Charcoal Grilling" 
                  className="w-full h-full object-cover rounded-sm"
                />
@@ -108,7 +108,7 @@ export default function BlogCTA() {
               style={{ transitionDelay: '800ms' }}
             >
                <img 
-                 src="https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=600&auto=format&fit=crop" 
+                 src="/blog/stay-inspired/stay-inspired-right.webp" 
                  alt="Turkish Table Spread" 
                  className="w-full h-full object-cover rounded-sm"
                />

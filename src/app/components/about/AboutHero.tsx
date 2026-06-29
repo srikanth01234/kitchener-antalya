@@ -8,7 +8,7 @@ export default function AboutHero() {
       {/* Background Image (Fish platter) */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1500&auto=format&fit=crop" 
+          src="/about/banner/about-banner.webp" 
           alt="Antalya Culinary Selection" 
           className="w-full h-full object-cover object-[50%_70%] opacity-70 gallery-hero-bg"
         />

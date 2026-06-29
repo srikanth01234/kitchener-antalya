@@ -13,7 +13,7 @@ const cards: DetailCard[] = [
   {
     title: "Fresh Ingredients",
     desc: "We source premium local ingredients from trusted suppliers to ensure unmatched freshness in every dish.",
-    imgUrl: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600&auto=format&fit=crop",
+    imgUrl: "/about/section-2/section-2-fresh-ingredients.webp",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M3 12h18" />
@@ -23,7 +23,7 @@ const cards: DetailCard[] = [
   {
     title: "Expert Chefs",
     desc: "Our culinary team brings decades of mastery in Turkish cuisine, crafting flavours with passion.",
-    imgUrl: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=600&auto=format&fit=crop",
+    imgUrl: "/about/section-2/section-2-expert-chefs.webp",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 2a4 4 0 00-4 4v2h8V6a4 4 0 00-4-4zM6 8h12v12a2 2 0 01-2 2H8a2 2 0 01-2-2V8z" />
@@ -33,7 +33,7 @@ const cards: DetailCard[] = [
   {
     title: "Authentic Recipes",
     desc: "Time-honoured family recipes preserved through generations bring true Turkish heritage to your plate.",
-    imgUrl: "https://images.unsplash.com/photo-1547928500-304928bbfb3c?q=80&w=600&auto=format&fit=crop",
+    imgUrl: "/about/section-2/section-2-authentic-recipes.webp",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13" />

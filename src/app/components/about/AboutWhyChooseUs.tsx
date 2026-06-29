@@ -196,7 +196,7 @@ export default function AboutWhyChooseUs() {
             {/* Main Arch Image */}
             <div className="absolute top-[20px] left-[5%] w-[75%] aspect-[1/1.1] rounded-t-full border border-[#c5a880]/15 overflow-hidden z-10 shadow-lg scroll-reveal-grid-item" style={{ transitionDelay: '400ms' }}>
               <img 
-                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop" 
+                src="/about/why-choose-us/why-choose-us-top.webp" 
                 alt="Turkish Food Platter" 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -205,7 +205,7 @@ export default function AboutWhyChooseUs() {
             {/* Smaller Slanted Arch Image Overlapping Bottom-Right */}
             <div className="absolute bottom-[20px] right-[2%] w-[45%] aspect-[1/1.1] rounded-t-full rounded-br-2xl border-2 border-white overflow-hidden z-20 shadow-2xl scroll-reveal-grid-item" style={{ transitionDelay: '600ms' }}>
               <img 
-                src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=500&auto=format&fit=crop" 
+                src="/about/why-choose-us/why-choose-us-bottom.webp" 
                 alt="Antalya interior dining ambiance" 
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />

@@ -160,7 +160,7 @@ export default function LegacySection() {
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full scroll-reveal-image">
           <img
-            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1600&auto=format&fit=crop"
+            src="/home/More-Than-a-Restaurant/More-Than-a-Restaurant.webp"
             alt="Turkish Feast"
             className="w-full h-full object-cover lg:scale-105"
           />

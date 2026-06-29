@@ -20,7 +20,7 @@ const testimonials: Testimonial[] = [
     rating: 5.0,
     text: "An unforgettable dining experience! The food, ambiance, and hospitality were simply outstanding. Antalya truly brings the best of Turkish cuisine to life.",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1000&h=700",
+    image: "/home/testimonial/testimonial.webp",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const testimonials: Testimonial[] = [
     rating: 5.0,
     text: "The charcoal kebabs here are cooked to absolute perfection. The smoky flavour combined with authentic Turkish spices is just incredible. A must-visit!",
     avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150",
-    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=1000&h=700",
+    image: "/home/testimonial/testimonial.webp",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const testimonials: Testimonial[] = [
     rating: 5.0,
     text: "The warm atmosphere and exceptional hospitality made us feel right at home. The mix grill platter was generously portioned and packed with flavor!",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
-    image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1000&h=700",
+    image: "/home/testimonial/testimonial.webp",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const testimonials: Testimonial[] = [
     rating: 4.9,
     text: "The desserts are spectacular! The Kunafa was crispy, warm, and paired perfectly with traditional Turkish tea. Excellent service and lovely decor.",
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=1000&h=700",
+    image: "/home/testimonial/testimonial.webp",
   },
   {
     id: 5,
@@ -56,7 +56,7 @@ const testimonials: Testimonial[] = [
     rating: 5.0,
     text: "We hosted a private corporate event here and the team was outstanding. The catering menu had great vegetarian options, and our guests loved the food!",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
-    image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&q=80&w=1000&h=700",
+    image: "/home/testimonial/testimonial.webp",
   },
   {
     id: 6,
@@ -65,7 +65,7 @@ const testimonials: Testimonial[] = [
     rating: 5.0,
     text: "Every single dish tells a story. From the fresh flatbread served hot from the oven to the perfectly seasoned meze, the attention to detail is stunning.",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150",
-    image: "https://images.unsplash.com/photo-1544025162-81111420d4d9?auto=format&fit=crop&q=80&w=1000&h=700",
+    image: "/home/testimonial/testimonial.webp",
   },
 ];
 

@@ -34,12 +34,12 @@ export default function Home() {
             {/* Main Heading */}
             <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[76px] leading-[1.05] text-[#2d2219]">
               <span className="block overflow-hidden py-1">
-                <span className="block reveal-up-line">Flavours Crafted</span>
+                <span className="hero-line-1">Flavours Crafted</span>
               </span>
               <span className="block overflow-hidden py-1 relative">
-                <span className="block reveal-up-line-d1">
+                <span className="hero-line-2">
                   Over{" "}
-                  <span className="text-primary italic relative inline-block">
+                  <span className="text-primary italic relative inline-block hero-fire-glow">
                     Fire
                     {/* Brush stroke underline */}
                     <span className="absolute -bottom-2 left-0 right-0 h-1.5 flex items-center">
@@ -56,12 +56,12 @@ export default function Home() {
             </h1>
 
             {/* Description */}
-            <p className="font-sans text-[15px] md:text-base text-[#2d2219] leading-relaxed max-w-md font-medium reveal-blur-up">
+            <p className="font-sans text-[15px] md:text-base text-[#2d2219] leading-relaxed max-w-md font-medium hero-paragraph">
               From the heart of Antalya to your table, experience the rich heritage of Turkish cuisine, prepared with passion and grilled to perfection.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 w-full sm:w-auto reveal-up-d2">
+            <div className="flex flex-wrap gap-4 w-full sm:w-auto hero-buttons">
               <a
                 href="/contact"
                 className="flex items-center justify-center gap-2 bg-primary hover:bg-[#c00510] px-6 py-3.5 rounded-sm text-xs font-bold tracking-widest uppercase text-white shadow-md hover:shadow-lg transition-all duration-300 w-full sm:w-auto"
@@ -89,7 +89,7 @@ export default function Home() {
             {/* Value Highlights */}
             <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 border-t border-[#2d2219]/10 w-full mt-2">
               {/* Highlight 1 */}
-              <div className="flex items-center gap-2.5 reveal-up-d3">
+              <div className="flex items-center gap-2.5 hero-stat-1">
                 <div className="w-9 h-9 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0">
                   <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C10 6 7 8 7 11.5c0 2.5 1.8 4.5 4.5 4.5S16 14 16 11.5C16 8 13 6 12 2zm1.8 11.2c-.3.4-.8.8-1.3 1-.3.1-.5.3-.5.5 0 .4.4.8.8.8.2 0 .4-.1.5-.2.5-.3 1-.8 1.2-1.4.1-.3-.2-.7-.7-.7z" />
@@ -106,7 +106,7 @@ export default function Home() {
               </div>
 
               {/* Highlight 2 */}
-              <div className="flex items-center gap-2.5 reveal-up-d4">
+              <div className="flex items-center gap-2.5 hero-stat-2">
                 <div className="w-9 h-9 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0">
                   <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 3v18M12 3c6.075 0 11 4.925 11 11 0 2.761-2.239 5-5 5H12M12 3C5.925 3 1 7.925 1 14c0 2.761 2.239 5 5 5h6" />
@@ -123,7 +123,7 @@ export default function Home() {
               </div>
 
               {/* Highlight 3 */}
-              <div className="flex items-center gap-2.5 reveal-up-d5">
+              <div className="flex items-center gap-2.5 hero-stat-3">
                 <div className="w-9 h-9 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0">
                   <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M17 16a4 4 0 0 0-1.41-7.73 6 6 0 0 0-11.18 0A4 4 0 0 0 3 16h14z" />

@@ -45,7 +45,7 @@ export default function BlogGrid() {
       title: 'Secrets of\nCharcoal Grilling',
       date: 'November 2, 2025',
       excerpt: 'Explore the art of charcoal grilling — mastering heat, smoke, seasoning, and technique for deep flavor and unforgettable dining.',
-      image: 'https://images.unsplash.com/photo-1529148482759-b35b25c5f217?q=80&w=800&auto=format&fit=crop'
+      image: '/blog/blogs/blog-charcoal-grilling.webp'
     },
     {
       id: 2,
@@ -58,7 +58,7 @@ export default function BlogGrid() {
       title: 'A Taste of\nSweet Legacy',
       date: 'November 20, 2025',
       excerpt: 'Explore the heritage and art of Turkish baklava and desserts, where sweet traditions bring people together.',
-      image: 'https://images.unsplash.com/photo-1519671282429-b44660ead0a7?q=80&w=800&auto=format&fit=crop'
+      image: '/blog/blogs/blog-sweet-legacy.webp'
     },
     {
       id: 3,
@@ -71,7 +71,7 @@ export default function BlogGrid() {
       title: 'The Heart of\nMediterranean Ingredients',
       date: 'December 5, 2025',
       excerpt: 'From olive oil to fresh herbs, discover the wholesome ingredients that elevate Turkish cuisine.',
-      image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=800&auto=format&fit=crop'
+      image: '/blog/blogs/blog-Mediterranean-Ingredients.webp'
     }
   ];
 

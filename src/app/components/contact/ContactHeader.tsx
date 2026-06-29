@@ -2,50 +2,60 @@ import React from "react";
 
 const ContactHeader = () => {
   return (
-    <div className="w-full flex flex-col items-center text-center pt-20 pb-12 px-4">
-      {/* Overtitle */}
-      <div className="flex items-center gap-4 mb-4 gallery-hero-fade-up">
-        <svg className="w-3 h-3 text-[#B89564]" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
-        </svg>
-        <span className="font-sans text-[#B89564] text-xs md:text-sm font-bold tracking-[4px] uppercase">
-          ANTALYA
-        </span>
-        <svg className="w-3 h-3 text-[#B89564]" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
-        </svg>
+    <section className="relative w-full h-[45vh] sm:h-[50vh] md:h-[55vh] flex items-center bg-black overflow-hidden z-20">
+      {/* Background Image with Dark Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/contact/contact-banner.webp" 
+          alt="Antalya Contact Banner" 
+          className="w-full h-full object-cover opacity-60 gallery-hero-bg"
+        />
+        {/* Gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/40 to-transparent"></div>
       </div>
 
-      {/* Main Title */}
-      <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-[#333] mb-6 tracking-wide gallery-hero-fade-up-d1">
-        CONTACT <span className="text-[#7a1f1f]">US</span>
-      </h1>
+      {/* Content */}
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 z-10 pt-10 pb-20 relative">
+        <div className="flex flex-col text-left max-w-xl">
+          {/* Logo & Overtitle */}
+          <div className="flex items-center gap-3 mb-4 gallery-hero-fade-up">
+            <div className="w-5 h-5 text-[#c5a880] flex items-center justify-center shrink-0">
+              <svg className="w-full h-full fill-current" viewBox="0 0 24 24">
+                <path d="M12 4C9 4 6 6.5 6 9.5V11H18V9.5C18 6.5 15 4 12 4ZM4 12V14H20V12H4ZM5 15V16C5 18.2 6.8 20 9 20H15C17.2 20 19 18.2 19 16V15H5Z"/>
+                <circle cx="12" cy="2" r="1.5"/>
+              </svg>
+            </div>
+            <span className="w-[1px] h-4.5 bg-[#c5a880]/40"></span>
+            <span className="font-sans text-white text-xs font-black tracking-[4px] uppercase leading-none">
+              ANTALYA
+            </span>
+          </div>
 
-      {/* Decorative Diamond Divider */}
-      <div className="flex items-center justify-center mb-8 gallery-hero-fade-up-d1">
-        <div className="w-16 h-[1px] bg-[#e6e2d8]" />
-        <svg className="w-4 h-4 text-[#e6e2d8] mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4l3 8-3 8-3-8z" />
-        </svg>
-        <div className="w-16 h-[1px] bg-[#e6e2d8]" />
+          {/* Main Heading */}
+          <h1 className="font-serif text-white text-5xl md:text-6xl lg:text-[4.5rem] font-medium leading-[1.1] tracking-wide mb-6 gallery-hero-fade-up-d1">
+            Contact <span className="text-[#c5a880] italic">Us</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="font-sans text-white/90 text-sm md:text-base leading-relaxed max-w-md font-semibold gallery-hero-fade-up-d2">
+            We&apos;d love to hear from you. Reach out to book a table, plan an event, or ask us any questions.
+          </p>
+        </div>
       </div>
 
-      {/* Subtitle */}
-      <p className="font-sans text-gray-900 text-sm md:text-base leading-relaxed max-w-xl mx-auto mb-6 gallery-hero-fade-up-d2">
-        We'd love to hear from you. Whether it's a reservation, a special request, or just a hello.
-      </p>
-
-      {/* Script Text & Underline */}
-      <div className="relative inline-flex flex-col items-center gallery-hero-fade-up-d2">
-        <span className="font-script text-4xl md:text-5xl text-[#B89564] -rotate-2">
-          We are here for you.
-        </span>
-        {/* Squiggly Underline (Approximation with SVG path) */}
-        <svg className="w-48 h-4 text-[#B89564]/50 mt-1" viewBox="0 0 200 20" fill="none" preserveAspectRatio="none">
-          <path d="M5,10 C30,-5 50,25 75,10 C100,-5 120,25 145,10 C170,-5 190,25 195,10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      {/* Decorative Bottom Curve SVG */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20 pointer-events-none transform translate-y-[1px]">
+        <svg 
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none" 
+          className="relative block w-full h-[40px] md:h-[60px] lg:h-[80px]"
+          fill="#fdfdfb"
+        >
+          <path d="M0,110 C400,110 800,10 1200,10 L1200,120 L0,120 Z"></path>
         </svg>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -45,33 +45,33 @@ export default function MenuSection() {
   const dishes = [
     {
       id: 0,
-      title: "Turkish Kebab Platter",
-      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop",
-      alt: "Turkish Kebab Platter",
+      title: "Mixed Appetizer Plate",
+      image: "/home/explore-our-menu/Mixed-Appetizer-Plate.webp",
+      alt: "Mixed Appetizer Plate",
     },
     {
       id: 1,
       title: "Hummus",
-      image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=400&auto=format&fit=crop",
+      image: "/home/explore-our-menu/Hummus.webp",
       alt: "Hummus",
     },
     {
       id: 2,
-      title: "Ezme",
-      image: "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop",
-      alt: "Ezme",
+      title: "Spicy Mashed Salad (Ezme)",
+      image: "/home/explore-our-menu/Spicy-Mashed-Salad.webp",
+      alt: "Spicy Mashed Salad (Ezme)",
     },
     {
       id: 3,
-      title: "Tzatziki",
-      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400&auto=format&fit=crop",
-      alt: "Tzatziki",
+      title: "Haydari",
+      image: "/home/explore-our-menu/Haydari.webp",
+      alt: "Haydari",
     },
     {
       id: 4,
-      title: "Dolma",
-      image: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?q=80&w=400&auto=format&fit=crop",
-      alt: "Dolma",
+      title: "Babaganoush",
+      image: "/home/explore-our-menu/Babaganoush.webp",
+      alt: "Babaganoush",
     }
   ];
 

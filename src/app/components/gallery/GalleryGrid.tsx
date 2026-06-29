@@ -2,7 +2,22 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-export default function GalleryGrid() {
+interface GalleryGridProps {
+  selectedCategory: string;
+}
+
+const galleryItems = [
+  { id: 1, src: "/gallery/images/left.webp", alt: "Restaurant Interior", category: "interior" },
+  { id: 2, src: "/gallery/images/top-1.webp", alt: "Charcoal Grilling", category: "experience" },
+  { id: 3, src: "/gallery/images/top-2.webp", alt: "Turkish Tea and Baklava", category: "food" },
+  { id: 4, src: "/gallery/images/right.webp", alt: "Long Dining Table", category: "interior", isVideo: true },
+  { id: 5, src: "/gallery/images/1.webp", alt: "Meze Spread", category: "food" },
+  { id: 6, src: "/gallery/images/2.webp", alt: "Interior Plates", category: "interior" },
+  { id: 7, src: "/gallery/images/3.webp", alt: "Chef Preparing Food", category: "experience" },
+  { id: 8, src: "/gallery/images/4.webp", alt: "Baklava Dessert", category: "food" }
+];
+
+export default function GalleryGrid({ selectedCategory }: GalleryGridProps) {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -31,6 +46,10 @@ export default function GalleryGrid() {
     };
   }, []);
 
+  const filteredItems = selectedCategory === "all"
+    ? galleryItems
+    : galleryItems.filter(item => item.category === selectedCategory);
+
   return (
     <section 
       ref={containerRef}
@@ -39,119 +58,143 @@ export default function GalleryGrid() {
       
       <div className="max-w-[1300px] mx-auto relative z-10">
         
-        {/* Main Grid Container */}
-        {/* 12 columns on large screens, 1 or 2 on smaller */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-5 auto-rows-[250px] lg:auto-rows-[300px]">
-          
-          {/* 1. Left Tall Image (Col 1-3, Row 1-2) */}
-          <div className="lg:col-span-3 lg:row-span-2 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item">
-            <img 
-              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" 
-              alt="Restaurant Interior" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            {/* Subtle Overlay */}
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
-          </div>
-
-          {/* 2. Middle Left Stack - Top Image (Col 4-6, Row 1) */}
-          <div 
-            className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
-            style={{ transitionDelay: '100ms' }}
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop" 
-              alt="Charcoal Grilling" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-          </div>
-
-          {/* 3. Middle Left Stack - Bottom Image (Col 4-6, Row 2) */}
-          <div 
-            className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
-            style={{ transitionDelay: '200ms' }}
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1519671282429-b44660ead0a7?q=80&w=800&auto=format&fit=crop" 
-              alt="Turkish Tea and Baklava" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-          </div>
-
-          {/* 4. Center Large Video (Col 7-9, Row 1-2) */}
-          <div 
-            className="lg:col-span-3 lg:row-span-2 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
-            style={{ transitionDelay: '300ms' }}
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=800&auto=format&fit=crop" 
-              alt="Long Dining Table" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
-               {/* Play Button */}
-               <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 cursor-pointer">
-                 <svg className="w-6 h-6 text-[#2d2219] ml-1" fill="currentColor" viewBox="0 0 24 24">
-                   <path d="M8 5v14l11-7z" />
-                 </svg>
-               </div>
-            </div>
-          </div>
-
-          {/* 5. Right Side 2x2 Sub-Grid (Col 10-12, Row 1-2) */}
-          <div className="lg:col-span-3 lg:row-span-2 grid grid-cols-2 grid-rows-2 gap-4 lg:gap-5">
+        {selectedCategory === "all" ? (
+          /* Main Grid Container for 'all' (Complex Grid Layout) */
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-5 auto-rows-[250px] lg:auto-rows-[300px]">
             
-            {/* Top Left */}
-            <div 
-              className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
-              style={{ transitionDelay: '400ms' }}
-            >
+            {/* 1. Left Tall Image (Col 1-3, Row 1-2) */}
+            <div className="lg:col-span-3 lg:row-span-2 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item">
               <img 
-                src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop" 
-                alt="Meze Spread" 
+                src="/gallery/images/left.webp" 
+                alt="Restaurant Interior" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
             </div>
-            
-            {/* Top Right */}
+
+            {/* 2. Middle Left Stack - Top Image (Col 4-6, Row 1) */}
             <div 
-              className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
-              style={{ transitionDelay: '500ms' }}
+              className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+              style={{ transitionDelay: '100ms' }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=400&auto=format&fit=crop" 
-                alt="Interior Plates" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            
-            {/* Bottom Left */}
-            <div 
-              className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
-              style={{ transitionDelay: '600ms' }}
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400&auto=format&fit=crop" 
-                alt="Chef Preparing Food" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            
-            {/* Bottom Right */}
-            <div 
-              className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
-              style={{ transitionDelay: '700ms' }}
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=400&auto=format&fit=crop" 
-                alt="Baklava Dessert" 
+                src="/gallery/images/top-1.webp" 
+                alt="Charcoal Grilling" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
 
-          </div>
+            {/* 3. Middle Left Stack - Bottom Image (Col 4-6, Row 2) */}
+            <div 
+              className="lg:col-span-3 lg:row-span-1 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+              style={{ transitionDelay: '200ms' }}
+            >
+              <img 
+                src="/gallery/images/top-2.webp" 
+                alt="Turkish Tea and Baklava" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
 
-        </div>
+            {/* 4. Center Large Video (Col 7-9, Row 1-2) */}
+            <div 
+              className="lg:col-span-3 lg:row-span-2 rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+              style={{ transitionDelay: '300ms' }}
+            >
+              <img 
+                src="/gallery/images/right.webp" 
+                alt="Long Dining Table" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
+                 <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 cursor-pointer">
+                   <svg className="w-6 h-6 text-[#2d2219] ml-1" fill="currentColor" viewBox="0 0 24 24">
+                     <path d="M8 5v14l11-7z" />
+                   </svg>
+                 </div>
+              </div>
+            </div>
+
+            {/* 5. Right Side 2x2 Sub-Grid (Col 10-12, Row 1-2) */}
+            <div className="lg:col-span-3 lg:row-span-2 grid grid-cols-2 grid-rows-2 gap-4 lg:gap-5">
+              
+              <div 
+                className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+                style={{ transitionDelay: '400ms' }}
+              >
+                <img 
+                  src="/gallery/images/1.webp" 
+                  alt="Meze Spread" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              
+              <div 
+                className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+                style={{ transitionDelay: '500ms' }}
+              >
+                <img 
+                  src="/gallery/images/2.webp" 
+                  alt="Interior Plates" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              
+              <div 
+                className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+                style={{ transitionDelay: '600ms' }}
+              >
+                <img 
+                  src="/gallery/images/3.webp" 
+                  alt="Chef Preparing Food" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              
+              <div 
+                className="rounded-2xl overflow-hidden group relative shadow-md scroll-reveal-grid-item"
+                style={{ transitionDelay: '700ms' }}
+              >
+                <img 
+                  src="/gallery/images/4.webp" 
+                  alt="Baklava Dessert" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+
+            </div>
+
+          </div>
+        ) : (
+          /* Filtered Category Uniform Grid Layout */
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredItems.map((item, idx) => (
+              <div 
+                key={item.id} 
+                className="rounded-2xl overflow-hidden group relative shadow-md aspect-[4/3] scroll-reveal-grid-item"
+                style={{ transitionDelay: `${idx * 100}ms` }}
+              >
+                <img 
+                  src={item.src} 
+                  alt={item.alt} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                
+                {item.isVideo ? (
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
+                    <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 cursor-pointer">
+                      <svg className="w-6 h-6 text-[#2d2219] ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Decorative Circular Badge ("CAPTURING THE ESSENCE") */}
         <div 
