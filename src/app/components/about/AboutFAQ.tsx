@@ -15,34 +15,14 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "What are Antalya's opening hours?",
-    detailedQuestion: <>What are Antalya's <span className="text-[#c5a880] italic font-semibold font-serif">opening hours?</span></>,
+    question: "What makes Antalya Restaurant authentic?",
+    detailedQuestion: <>What makes Antalya <span className="text-[#c5a880] italic font-semibold font-serif">authentic?</span></>,
     answerParagraphs: [
-      "We are open Tuesday through Sunday from 11:30 AM to 10:00 PM. We are closed on Mondays.",
-      "Join us for lunch, dinner, or weekend dining. We look forward to serving you our authentic charcoal grill selection."
+      "We prepare every dish using traditional Turkish recipes, fresh local ingredients, and charcoal grilling, delivering authentic flavours and warm hospitality inspired by generations of Turkish culinary heritage."
     ],
-    ctaText: "GET DIRECTIONS",
-    ctaLink: "/contact",
+    ctaText: "EXPLORE OUR STORY",
+    ctaLink: "/about",
     imageUrl: "/faq_hours.png",
-    icon: (
-      <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-        <line x1="16" y1="2" x2="16" y2="6" />
-        <line x1="8" y1="2" x2="8" y2="6" />
-        <line x1="3" y1="10" x2="21" y2="10" />
-      </svg>
-    )
-  },
-  {
-    question: "Do you offer vegetarian, vegan, or gluten-free options?",
-    detailedQuestion: <>Do you accommodate <span className="text-[#c5a880] italic font-semibold font-serif">dietary restrictions?</span></>,
-    answerParagraphs: [
-      "Yes, our menu features a wide selection of vegetarian, vegan, and gluten-free traditional Turkish dishes, including mezze platters, falafel, salads, and vegetable stews.",
-      "Please inform your server of any allergies before ordering so our culinary team can take exceptional care of your dining needs."
-    ],
-    ctaText: "EXPLORE MENU",
-    ctaLink: "/menu",
-    imageUrl: "/faq_dietary.png",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13m9-13c1.168-1.077 2.754-1.553 4.5-1.553S19.832 5.477 21 6.253v13" />
@@ -50,51 +30,66 @@ const faqs: FAQItem[] = [
     )
   },
   {
-    question: "How can I make a reservation?",
-    detailedQuestion: <>How can I <span className="text-[#c5a880] italic font-semibold font-serif">make a reservation?</span></>,
+    question: "Do you offer vegetarian and vegan options?",
+    detailedQuestion: <>Vegetarian & Vegan <span className="text-[#c5a880] italic font-semibold font-serif">Options?</span></>,
     answerParagraphs: [
-      "You can easily make a reservation online through our Reservations page or by calling us directly.",
-      "We recommend booking in advance, especially for weekend dining and group gatherings, to ensure your table is ready."
+      "Yes! We serve a delicious range of vegetarian and vegan-friendly mezze, grilled vegetables, fresh salads, authentic pides, and customisable dishes prepared to suit every preference."
     ],
-    ctaText: "RESERVE A TABLE",
-    ctaLink: "/contact",
-    imageUrl: "/faq_reservation.png",
+    ctaText: "EXPLORE MENU",
+    ctaLink: "/menu",
+    imageUrl: "/faq_dietary.png",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M3 12h18" />
       </svg>
     )
   },
   {
-    question: "Is there parking available at the restaurant?",
-    detailedQuestion: <>Is there <span className="text-[#c5a880] italic font-semibold font-serif">parking available?</span></>,
+    question: "Can you accommodate large groups or private events?",
+    detailedQuestion: <>Private Events & <span className="text-[#c5a880] italic font-semibold font-serif">Groups?</span></>,
     answerParagraphs: [
-      "Yes, we offer complimentary on-site parking for all our guests in our private parking lot located directly behind the restaurant.",
-      "Additional street parking is also available in the surrounding area if the lot is full."
-    ],
-    ctaText: "GET DIRECTIONS",
-    ctaLink: "/contact",
-    imageUrl: "/faq_parking.png",
-    icon: (
-      <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.8C2.1 11.1 2 11.5 2 12v4c0 .6.4 1 1 1h2m10 0h2m-12 0a2 2 0 104 0m-4 0a2 2 0 114 0m8 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-      </svg>
-    )
-  },
-  {
-    question: "Do you offer private event hosting or catering?",
-    detailedQuestion: <>Do you offer <span className="text-[#c5a880] italic font-semibold font-serif">catering services?</span></>,
-    answerParagraphs: [
-      "Absolutely. Antalya provides authentic Turkish catering for weddings, corporate events, birthday celebrations, and private gatherings.",
-      "Our team customizes menus based on your guest count, dietary preferences, and event requirements — delivering unforgettable flavours and exceptional service."
+      "Absolutely. We welcome family gatherings, corporate dinners, birthdays, and private celebrations, offering spacious seating and customised dining experiences tailored to your group and occasion."
     ],
     ctaText: "EXPLORE CATERING",
     ctaLink: "/catering",
     imageUrl: "/faq_catering.png",
     icon: (
       <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    )
+  },
+  {
+    question: "What are your most popular dishes?",
+    detailedQuestion: <>Most Popular <span className="text-[#c5a880] italic font-semibold font-serif">Dishes?</span></>,
+    answerParagraphs: [
+      "Our signature favourites include charcoal-grilled kebabs, mixed grill platters, freshly prepared döner, authentic Turkish pides, and handcrafted baklava, loved by guests for their rich flavours."
+    ],
+    ctaText: "EXPLORE MENU",
+    ctaLink: "/menu",
+    imageUrl: "/about/faq/faq.webp",
+    icon: (
+      <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C6.48 2 2 6.48 2 12h20c0-5.52-4.48-10-10-10zm0 7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M2 14h20v2H2zM6 18h12v2H6z" />
+      </svg>
+    )
+  },
+  {
+    question: "Do you take reservations?",
+    detailedQuestion: <>Do you take <span className="text-[#c5a880] italic font-semibold font-serif">reservations?</span></>,
+    answerParagraphs: [
+      "Yes. We recommend reserving your table in advance, especially on weekends and holidays, to enjoy your preferred dining time and a smooth, welcoming restaurant experience."
+    ],
+    ctaText: "RESERVE A TABLE",
+    ctaLink: "/contact",
+    imageUrl: "/faq_reservation.png",
+    icon: (
+      <svg className="w-5 h-5 stroke-current fill-none" strokeWidth="2" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
       </svg>
     )
   }
@@ -147,16 +142,16 @@ export default function AboutFAQ() {
   };
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      id="faq" 
+      id="faq"
       className={`relative w-full pt-12 pb-16 lg:pt-16 lg:pb-24 bg-[#faf6f0] text-[#2d2219] overflow-hidden transition-all duration-700 ${isVisible ? "is-visible" : ""}`}
     >
       {/* Background soft lighting effects */}
       <div className="absolute top-0 right-0 w-[50%] h-[120%] bg-white rounded-l-full opacity-60 pointer-events-none transform translate-x-1/4 -translate-y-1/4 blur-3xl"></div>
-      
+
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
-        
+
         {/* Header Section */}
         <div className="text-center mb-16 lg:mb-20">
           <div className="flex items-center justify-center gap-3.5 mb-5 text-[#c5a880] scroll-reveal-fade-up">
@@ -190,7 +185,7 @@ export default function AboutFAQ() {
 
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
+
           {/* Left Column: FAQ Accordion Selector */}
           <div className="lg:col-span-5 flex flex-col gap-4">
             {faqs.map((faq, index) => {
@@ -199,29 +194,26 @@ export default function AboutFAQ() {
                 <button
                   key={index}
                   onClick={() => handleFAQChange(index)}
-                  className={`w-full flex items-center justify-between p-5 text-left transition-all duration-500 rounded-2xl border cursor-pointer group focus:outline-none scroll-reveal-fade-up ${
-                    isActive
+                  className={`w-full flex items-center justify-between p-5 text-left transition-all duration-500 rounded-2xl border cursor-pointer group focus:outline-none scroll-reveal-fade-up ${isActive
                       ? "bg-[#90040a] border-[#90040a] shadow-lg shadow-primary/10 translate-x-1"
                       : "bg-[#fdfaf5] border-[#e5dacf]/70 hover:border-[#c5a880]/50 hover:bg-white"
-                  }`}
+                    }`}
                   style={{ transitionDelay: `${200 + index * 100}ms` }}
                 >
                   <div className="flex items-center gap-4">
                     {/* Circle Icon Container */}
                     <div
-                      className={`w-11 h-11 rounded-full border flex items-center justify-center shrink-0 transition-all duration-500 ${
-                        isActive
+                      className={`w-11 h-11 rounded-full border flex items-center justify-center shrink-0 transition-all duration-500 ${isActive
                           ? "border-white/20 bg-white/10 text-white"
                           : "border-[#c5a880]/30 bg-white text-[#c5a880] group-hover:scale-105"
-                      }`}
+                        }`}
                     >
                       {faq.icon}
                     </div>
                     {/* Question Text */}
                     <span
-                      className={`font-sans font-bold text-sm sm:text-base leading-snug transition-colors duration-500 ${
-                        isActive ? "text-white" : "text-[#2d2219] group-hover:text-primary"
-                      }`}
+                      className={`font-sans font-bold text-sm sm:text-base leading-snug transition-colors duration-500 ${isActive ? "text-white" : "text-[#2d2219] group-hover:text-primary"
+                        }`}
                     >
                       {faq.question}
                     </span>
@@ -229,9 +221,8 @@ export default function AboutFAQ() {
 
                   {/* Plus / Minus Indicator */}
                   <div
-                    className={`text-lg font-bold shrink-0 ml-4 transition-colors duration-500 ${
-                      isActive ? "text-white" : "text-[#c5a880]"
-                    }`}
+                    className={`text-lg font-bold shrink-0 ml-4 transition-colors duration-500 ${isActive ? "text-white" : "text-[#c5a880]"
+                      }`}
                   >
                     {isActive ? "—" : "+"}
                   </div>
@@ -243,7 +234,7 @@ export default function AboutFAQ() {
           {/* Right Column: Detailed content display */}
           <div className="lg:col-span-7 h-full scroll-reveal-fade-up" style={{ transitionDelay: '350ms' }}>
             <div className="bg-[#231513] text-white rounded-3xl border border-[#2d2219]/20 shadow-xl overflow-hidden p-8 sm:p-12 relative flex flex-col md:flex-row gap-8 items-stretch min-h-[500px]">
-              
+
               {/* Lace/mandala watermark in bottom right */}
               <div className="absolute bottom-0 right-0 w-48 h-48 text-[#c5a880]/8 pointer-events-none translate-x-8 translate-y-8 select-none">
                 <svg className="w-full h-full fill-none stroke-current" strokeWidth="1" viewBox="0 0 100 100">
@@ -330,7 +321,7 @@ export default function AboutFAQ() {
         </div>
 
         {/* Brand Highlights Footer Bar */}
-        <div 
+        <div
           className="w-full mt-24 border border-[#e5dacf]/60 bg-[#fdfaf5] rounded-3xl py-10 px-8 relative overflow-hidden shadow-sm scroll-reveal-fade-up"
           style={{ transitionDelay: '300ms' }}
         >
@@ -351,9 +342,9 @@ export default function AboutFAQ() {
 
           {/* Grid items */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 divide-y sm:divide-y-0 lg:divide-x divide-[#e5dacf]/50 relative z-10">
-            
+
             {/* Highlight 1 */}
-            <div 
+            <div
               className="flex flex-col items-center text-center px-4 pt-6 sm:pt-0 lg:first:pl-0 first:pt-0 scroll-reveal-fade-up"
               style={{ transitionDelay: '400ms' }}
             >
@@ -371,7 +362,7 @@ export default function AboutFAQ() {
             </div>
 
             {/* Highlight 2 */}
-            <div 
+            <div
               className="flex flex-col items-center text-center px-4 pt-6 sm:pt-0 lg:pl-4 scroll-reveal-fade-up"
               style={{ transitionDelay: '500ms' }}
             >
@@ -389,7 +380,7 @@ export default function AboutFAQ() {
             </div>
 
             {/* Highlight 3 */}
-            <div 
+            <div
               className="flex flex-col items-center text-center px-4 pt-6 sm:pt-0 lg:pl-4 scroll-reveal-fade-up"
               style={{ transitionDelay: '600ms' }}
             >
@@ -407,7 +398,7 @@ export default function AboutFAQ() {
             </div>
 
             {/* Highlight 4 */}
-            <div 
+            <div
               className="flex flex-col items-center text-center px-4 pt-6 sm:pt-0 lg:pl-4 scroll-reveal-fade-up"
               style={{ transitionDelay: '700ms' }}
             >
@@ -426,7 +417,7 @@ export default function AboutFAQ() {
             </div>
 
             {/* Highlight 5 */}
-            <div 
+            <div
               className="flex flex-col items-center text-center px-4 pt-6 sm:pt-0 lg:pl-4 lg:last:pr-0 scroll-reveal-fade-up"
               style={{ transitionDelay: '800ms' }}
             >
