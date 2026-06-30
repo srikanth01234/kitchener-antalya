@@ -40,7 +40,7 @@ export default function LegacySection() {
     >
 
       {/* LEFT SIDE: Text Content */}
-      <div className="relative w-full lg:w-[40%] flex flex-col justify-center px-6 md:px-12 lg:pl-[calc((100vw-min(100vw,1440px))/2+4rem)] lg:pr-16 py-20 lg:py-24 z-20 bg-[#faf6f0]">
+      <div className="relative w-full lg:w-[40%] flex flex-col justify-center px-4 sm:px-6 md:px-12 lg:pl-[calc((100vw-min(100vw,1440px))/2+4rem)] lg:pr-16 py-20 lg:py-24 z-20 bg-[#faf6f0]">
 
         {/* Faded Watermark Background Text */}
         <div className="absolute top-12 left-10 lg:top-20 lg:left-[calc((100vw-min(100vw,1440px))/2+2rem)] pointer-events-none select-none z-0 scroll-reveal-watermark">
@@ -78,7 +78,7 @@ export default function LegacySection() {
           </p>
 
           {/* Features Icons */}
-          <div className="flex items-start gap-8 md:gap-12 mb-14 w-full border-l border-[#c5a880]/30 pl-4 py-2 relative">
+          <div className="flex items-start gap-2 sm:gap-8 md:gap-12 mb-14 w-full border-l border-[#c5a880]/30 pl-4 py-2 relative">
             {/* Subtle line decoration */}
             <div className="absolute left-[-3px] top-0 bottom-0 w-[5px] bg-[#faf6f0] flex flex-col justify-between items-center">
               <div className="w-1.5 h-1.5 rounded-full bg-[#c5a880]/60"></div>

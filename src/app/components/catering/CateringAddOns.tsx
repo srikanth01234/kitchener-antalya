@@ -91,10 +91,10 @@ export default function CateringAddOns() {
       <div className="absolute inset-0 opacity-[0.015] mix-blend-multiply pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }}></div>
 
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 xl:gap-16 items-center">
           
           {/* LEFT SIDE: Text Details & Email box */}
-          <div className={`lg:col-span-4 flex flex-col justify-center max-w-lg lg:max-w-none transition-all duration-1000 ease-out transform ${
+          <div className={`xl:col-span-4 flex flex-col justify-center max-w-lg xl:max-w-none transition-all duration-1000 ease-out transform ${
             isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
           }`}>
             
@@ -119,31 +119,31 @@ export default function CateringAddOns() {
             {/* Email Box Callout */}
             <a 
               href="mailto:hello@antalyarestaurant.ca"
-              className="group border border-[#c5a880]/30 hover:border-[#e10613]/50 bg-white hover:bg-white/80 rounded-2xl p-5 flex items-center justify-between gap-5 transition-all duration-300 shadow-[0_4px_20px_-10px_rgba(45,34,25,0.05)] relative overflow-hidden cursor-pointer"
+              className="group border border-[#c5a880]/30 hover:border-[#e10613]/50 bg-white hover:bg-white/80 rounded-2xl p-3 min-[360px]:p-4 xl:p-5 flex items-center justify-between gap-2.5 sm:gap-5 transition-all duration-300 shadow-[0_4px_20px_-10px_rgba(45,34,25,0.05)] relative overflow-hidden cursor-pointer w-full"
             >
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 sm:gap-4">
                 {/* Mail Icon in Gold Circle */}
-                <div className="w-12 h-12 rounded-full border border-[#c5a880]/40 flex items-center justify-center text-[#c5a880] bg-[#faf6f0] shrink-0 transition-transform duration-300 group-hover:scale-105">
-                  <svg className="w-5 h-5 fill-none stroke-current" strokeWidth="1.5" viewBox="0 0 24 24">
+                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full border border-[#c5a880]/40 flex items-center justify-center text-[#c5a880] bg-[#faf6f0] shrink-0 transition-transform duration-300 group-hover:scale-105">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 fill-none stroke-current" strokeWidth="1.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                   </svg>
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="font-sans font-bold text-[#2d2219] text-xs sm:text-sm">
+                  <span className="font-sans font-bold text-[#2d2219] text-[10px] min-[360px]:text-xs xl:text-sm">
                     Bring Authentic Turkish Flavour
                   </span>
-                  <span className="font-sans text-[11px] sm:text-xs text-[#2d2219]/85 mt-0.5 font-semibold">
+                  <span className="font-sans text-[9px] min-[360px]:text-[11px] xl:text-xs text-[#2d2219]/85 mt-0.5 font-semibold">
                     to Your Event – Email Us Today.
                   </span>
-                  <span className="font-sans font-bold text-[#e10613] text-xs sm:text-sm mt-1 decoration-transparent group-hover:underline">
+                  <span className="font-sans font-bold text-[#e10613] text-[10px] min-[360px]:text-xs xl:text-sm mt-1 decoration-transparent group-hover:underline">
                     hello@antalyarestaurant.ca
                   </span>
                 </div>
               </div>
 
               {/* Gold Arrow */}
-              <div className="text-[#e10613] shrink-0 group-hover:translate-x-1.5 transition-transform duration-300">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <div className="text-[#e10613] shrink-0 group-hover:translate-x-1.5 transition-transform duration-300 hidden min-[360px]:block">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </div>
@@ -151,7 +151,7 @@ export default function CateringAddOns() {
           </div>
 
           {/* RIGHT SIDE: 4 Dome Arched Cards */}
-          <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-6 w-full">
+          <div className="xl:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-6 w-full">
             {addOns.map((addOn, index) => (
               <div 
                 key={index} 

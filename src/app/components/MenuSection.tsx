@@ -152,7 +152,7 @@ export default function MenuSection() {
       <div className="relative w-full max-w-[1360px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between z-10">
 
         {/* Left: Text Content (width ~30%) */}
-        <div className="w-full lg:w-[30%] flex flex-col items-start justify-center pr-10 mb-20 lg:mb-0 relative z-20">
+        <div className="w-full lg:w-[30%] flex flex-col items-start justify-center pr-10 mb-8 sm:mb-12 lg:mb-0 relative z-20">
           <div className="flex items-center gap-4 text-[#e10613] font-extrabold tracking-[4px] text-xs uppercase mb-6 scroll-reveal-menu-title">
             <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
               <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
@@ -196,13 +196,13 @@ export default function MenuSection() {
         </div>
 
         {/* Right: Circular Food Layout (width ~70%) */}
-        <div className="w-full lg:w-[70%] flex justify-center lg:justify-center lg:-ml-12 items-center relative min-h-[600px] lg:min-h-[800px] select-none scroll-reveal-menu-orbit">
+        <div className="w-full lg:w-[70%] flex justify-center lg:justify-center lg:-ml-12 items-center relative min-h-[360px] min-[480px]:min-h-[420px] sm:min-h-[500px] lg:min-h-[800px] select-none scroll-reveal-menu-orbit">
 
           {/* The Orbit Container */}
           <div 
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="relative w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] lg:w-[650px] lg:h-[650px] rounded-full border-[1px] border-[#c5a880]/50 flex items-center justify-center"
+            className="relative w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] lg:w-[650px] lg:h-[650px] rounded-full border-[1px] border-[#c5a880]/50 flex items-center justify-center scale-[0.68] min-[480px]:scale-[0.8] sm:scale-100 origin-center"
           >
 
             {/* The decorative diamonds on the orbit line (diagonal positions) */}

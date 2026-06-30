@@ -77,17 +77,6 @@ export default function CateringHero() {
               Explore Catering Menu
               <span>&rarr;</span>
             </Link>
-
-            <button className="group flex items-center gap-3 text-[#2d2219] hover:text-[#e10613] transition-colors w-full sm:w-auto justify-center cursor-pointer">
-              <div className="w-12 h-12 rounded-full border border-[#c5a880]/50 flex items-center justify-center group-hover:border-[#e10613] group-hover:bg-[#e10613]/5 transition-all">
-                <svg className="w-4 h-4 text-[#e10613] ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <span className="font-sans text-[11px] font-extrabold tracking-[2px] uppercase">
-                Watch Our Story
-              </span>
-            </button>
           </div>
         </div>
       </div>

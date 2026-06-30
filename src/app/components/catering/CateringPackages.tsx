@@ -323,7 +323,7 @@ export default function CateringPackages() {
                 </div>
 
                 {/* Footer of card: Price & Button */}
-                <div className="border-t border-[#e5dacf] pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="border-t border-[#e5dacf] pt-6 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4">
                   <div className="flex flex-col">
                     <span className="font-sans text-[9px] font-black text-[#c5a880] tracking-[2px] uppercase">
                       STARTING FROM
@@ -338,7 +338,7 @@ export default function CateringPackages() {
 
                   <Link 
                     href="/contact"
-                    className="w-full sm:w-auto bg-[#c5a880] hover:bg-[#b0936b] text-white px-6 py-3.5 rounded-sm text-[10px] font-extrabold tracking-[2px] uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full xl:w-auto bg-[#c5a880] hover:bg-[#b0936b] text-white px-6 py-3.5 rounded-sm text-[10px] font-extrabold tracking-[2px] uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer"
                   >
                     View Full Menu
                     <span>&rarr;</span>

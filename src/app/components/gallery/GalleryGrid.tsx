@@ -10,7 +10,7 @@ const galleryItems = [
   { id: 1, src: "/gallery/images/left.webp", alt: "Restaurant Interior", category: "interior" },
   { id: 2, src: "/gallery/images/top-1.webp", alt: "Charcoal Grilling", category: "experience" },
   { id: 3, src: "/gallery/images/top-2.webp", alt: "Turkish Tea and Baklava", category: "food" },
-  { id: 4, src: "/gallery/images/right.webp", alt: "Long Dining Table", category: "interior", isVideo: true },
+  { id: 4, src: "/gallery/images/right.webp", alt: "Long Dining Table", category: "interior", isVideo: false },
   { id: 5, src: "/gallery/images/1.webp", alt: "Meze Spread", category: "food" },
   { id: 6, src: "/gallery/images/2.webp", alt: "Interior Plates", category: "interior" },
   { id: 7, src: "/gallery/images/3.webp", alt: "Chef Preparing Food", category: "experience" },
@@ -106,13 +106,7 @@ export default function GalleryGrid({ selectedCategory }: GalleryGridProps) {
                 alt="Long Dining Table" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-500 flex items-center justify-center">
-                 <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 cursor-pointer">
-                   <svg className="w-6 h-6 text-[#2d2219] ml-1" fill="currentColor" viewBox="0 0 24 24">
-                     <path d="M8 5v14l11-7z" />
-                   </svg>
-                 </div>
-              </div>
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
             </div>
 
             {/* 5. Right Side 2x2 Sub-Grid (Col 10-12, Row 1-2) */}
@@ -198,7 +192,7 @@ export default function GalleryGrid({ selectedCategory }: GalleryGridProps) {
 
         {/* Decorative Circular Badge ("CAPTURING THE ESSENCE") */}
         <div 
-          className="hidden lg:flex absolute top-[40%] -right-16 w-28 h-28 bg-[#faf6f0] border-[1px] border-[#c5a880]/30 rounded-full items-center justify-center shadow-sm z-30 transform -translate-y-1/2 scroll-reveal-scale-in"
+          className="hidden lg:flex absolute top-[40%] right-4 xl:-right-8 w-28 h-28 bg-[#faf6f0] border-[1px] border-[#c5a880]/30 rounded-full items-center justify-center shadow-sm z-30 transform -translate-y-1/2 scroll-reveal-scale-in"
           style={{ transitionDelay: '800ms' }}
         >
            {/* Outer circular text (approximation using SVG textPath) */}

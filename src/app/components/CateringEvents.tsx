@@ -79,7 +79,7 @@ export default function CateringEvents() {
     <section
       ref={containerRef}
       id="catering"
-      className={`relative w-full py-20 lg:py-28 bg-[#faf6f0] text-[#2d2219] overflow-hidden border-b border-[#2d2219]/10 transition-all duration-700 ${isVisible ? "is-visible" : ""}`}
+      className={`relative w-full py-10 sm:py-16 lg:py-28 bg-[#faf6f0] text-[#2d2219] overflow-hidden border-b border-[#2d2219]/10 transition-all duration-700 ${isVisible ? "is-visible" : ""}`}
     >
 
       {/* Background Watermark (Galata Tower) */}
@@ -139,7 +139,7 @@ export default function CateringEvents() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col items-center justify-end pb-4 lg:pb-6 px-1 lg:px-2 text-center">
                   <span className="text-white font-serif text-2xl lg:text-3xl italic leading-none mb-1">{card.id}</span>
                   <div className="w-4 h-[1px] bg-[#c5a880] mb-2" />
-                  <span className="text-white text-[9px] lg:text-[10px] font-bold uppercase tracking-widest whitespace-pre-line leading-tight">
+                  <span className="text-white text-[8px] sm:text-[9px] lg:text-[10px] font-bold uppercase tracking-normal sm:tracking-widest whitespace-pre-line leading-tight px-0.5">
                     {card.title}
                   </span>
                 </div>

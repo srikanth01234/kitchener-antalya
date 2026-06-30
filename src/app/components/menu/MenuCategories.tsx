@@ -16,49 +16,49 @@ const menuData: Record<string, MenuItem[]> = {
       name: "Babaganoush", 
       description: "Smoky roasted eggplant blended with tahini, olive oil, garlic, and yogurt.", 
       price: "$9.00", 
-      image: "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/babaganoush.png",
       tags: ["Vegetarian"] 
     },
     { 
       name: "Spicy Mashed Salad (Ezme)", 
       description: "Finely chopped tomatoes, peppers, onions, walnuts, garlic, and pomegranate molasses.", 
       price: "$9.00", 
-      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/spicy-mashed-salad.png",
       tags: ["Spicy", "Vegetarian"] 
     },
     { 
       name: "Mixed Appetizer Plate", 
       description: "A selection of our best cold starters including Hummus, Haydari, Babaganoush, and Ezme.", 
       price: "$22.00", 
-      image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/mixed-appetizer-plate.png",
       tags: ["Popular"] 
     },
     { 
       name: "Sigara Boregi (5 pcs)", 
       description: "Crispy rolled pastry filled with feta cheese and parsley, fried to golden perfection.", 
       price: "$10.00", 
-      image: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/sigara-boregi.png",
       tags: ["Traditional"] 
     },
     { 
       name: "Haydari", 
       description: "Thick creamy strained yogurt infused with fresh dill, mint, garlic, and olive oil.", 
       price: "$9.00", 
-      image: "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/haydari.png",
       tags: ["Vegetarian"] 
     },
     { 
       name: "Hummus", 
       description: "Smooth blend of chickpeas, tahini, garlic, fresh lemon juice, and olive oil.", 
       price: "$9.00", 
-      image: "https://images.unsplash.com/photo-1577906096429-f73cf183222e?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/hummus.png",
       tags: ["Vegetarian"] 
     },
     { 
       name: "Lentil Soup", 
       description: "Traditional Turkish soup made with red lentils, herbs, and spices, served with fresh bread.", 
       price: "$8.00", 
-      image: "https://images.unsplash.com/photo-1547592165-e1d17fed6005?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/lentil-soup.png",
       tags: ["Warm & Hearty"] 
     },
   ],
@@ -67,28 +67,28 @@ const menuData: Record<string, MenuItem[]> = {
       name: "Green Salad", 
       description: "Crisp seasonal greens, cucumber, tomato, green pepper, olive oil, and lemon dressing.", 
       price: "$11.00", 
-      image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/green-salad.png",
       tags: ["Fresh"] 
     },
     { 
       name: "Greek Salad", 
       description: "Fresh romaine lettuce, tomatoes, cucumbers, red onion, feta cheese, and kalamata olives.", 
       price: "$13.00", 
-      image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/greek-salad.png",
       tags: ["Vegetarian"] 
     },
     { 
       name: "Shepherd Salad", 
       description: "Diced tomatoes, cucumbers, onions, and parsley tossed in olive oil and lemon juice.", 
       price: "$12.00", 
-      image: "https://images.unsplash.com/photo-1515516969-d4008cc6241a?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/shepherd-salad.png",
       tags: ["Traditional"] 
     },
     { 
       name: "Caesar Salad", 
       description: "Romaine lettuce tossed in Caesar dressing, topped with parmesan cheese and garlic croutons.", 
       price: "$12.00", 
-      image: "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/caesar-salad.png"
     },
   ],
   "Kebabs": [
@@ -96,92 +96,92 @@ const menuData: Record<string, MenuItem[]> = {
       name: "Adana (Mild)", 
       description: "Skewered minced lamb seasoned with red bell pepper, grilled over charcoal, served with rice.", 
       price: "$21.00", 
-      image: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/adana(mild).png",
       tags: ["Charcoal Grilled"] 
     },
     { 
       name: "Veal Shish", 
       description: "Tender chunks of marinated veal, skewered and charcoal grilled, served with rice and salad.", 
       price: "$23.00", 
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/veal-shish.png",
       tags: ["Charcoal Grilled"] 
     },
     { 
       name: "Lamb Chops", 
       description: "Marinated tender lamb chops grilled to perfection, served with rice and seasonal vegetables.", 
       price: "$29.00", 
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/lamb-chops.png",
       tags: ["Popular", "Charcoal Grilled"] 
     },
     { 
       name: "Lamb Shish", 
       description: "Skewered cubes of marinated tender lamb grilled over hot charcoal, served with rice.", 
       price: "$25.00", 
-      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/lamb-shish.png",
       tags: ["Charcoal Grilled"] 
     },
     { 
       name: "Kofta", 
       description: "Turkish style grilled lamb meatballs blended with spices and herbs, served with rice.", 
       price: "$20.00", 
-      image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/kofta.png",
       tags: ["Traditional"] 
     },
     { 
       name: "Chicken Shish", 
       description: "Charcoal grilled skewered chunks of marinated chicken breast, served with rice.", 
       price: "$21.00", 
-      image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/chicken-shish.png",
       tags: ["Popular"] 
     },
     { 
       name: "Chicken Wings", 
       description: "Marinated chicken wings grilled over hot charcoal, served with rice and salad.", 
       price: "$20.00", 
-      image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/chicken-wings.png"
     },
     { 
       name: "Chicken Adana", 
       description: "Minced chicken seasoned with red peppers and spices, grilled on skewers, served with rice.", 
       price: "$20.00", 
-      image: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/chicken-adana.png"
     },
     { 
       name: "Doner", 
       description: "Authentic vertical spit-roasted shaved meat doner, served with rice and salad.", 
       price: "$21.00", 
-      image: "https://images.unsplash.com/photo-1529144415895-6aaf8be872fb?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/doner.png"
     },
     { 
       name: "Mixed Doner", 
       description: "A combination of spit-roasted shaved meat doner and chicken doner, served with rice.", 
       price: "$22.00", 
-      image: "https://images.unsplash.com/photo-1529144415895-6aaf8be872fb?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/mixed-doner.png"
     },
     { 
       name: "Meat Doner", 
       description: "Shaved vertical spit-roasted beef and lamb doner served over traditional Turkish rice.", 
       price: "$21.00", 
-      image: "https://images.unsplash.com/photo-1633383718081-22ac93e3dbf1?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/meat-doner.png"
     },
     { 
       name: "Chicken Doner", 
       description: "Seasoned spit-roasted chicken shaved doner meat, served with rice and fresh salad.", 
       price: "$19.00", 
-      image: "https://images.unsplash.com/photo-1524351199679-46cddf530c04?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/chicken-doner.png"
     },
     { 
       name: "Iskender Kebab", 
       description: "Shaved meat doner served over pita pieces, topped with hot tomato sauce, melted butter, and yogurt.", 
       price: "$24.00", 
-      image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/iskender-kebab.png",
       tags: ["Signature"] 
     },
     { 
       name: "Chicken Iskender", 
       description: "Shaved chicken doner served over warm pita pieces, finished with tomato sauce and yogurt.", 
       price: "$22.00", 
-      image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/chicken-iskender.png"
     },
   ],
   "Sandwiches & Wraps": [
@@ -189,39 +189,39 @@ const menuData: Record<string, MenuItem[]> = {
       name: "Meat Doner Sandwich", 
       description: "Shaved meat doner stuffed in fresh Turkish bread with lettuce, onion, and tomato.", 
       price: "$14.00", 
-      image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/meat-doner-sandwich.png"
     },
     { 
       name: "Meat Doner Wrap", 
       description: "Shaved meat doner wrapped in thin lavash bread with fresh vegetables and house sauce.", 
       price: "$14.00", 
-      image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/wraps.png",
       tags: ["Popular"] 
     },
     { 
       name: "Chicken Doner Wrap", 
       description: "Spit-roasted chicken doner wrapped in warm lavash with garlic sauce and salad.", 
       price: "$13.00", 
-      image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/chicken-doner-wrap.png"
     },
     { 
       name: "Chicken Doner Sandwich", 
       description: "Shaved chicken doner served inside toasted bread with tomato, lettuce, and onions.", 
       price: "$13.00", 
-      image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/chicken-doner-sandwich.png"
     },
     { 
       name: "Adana Wrap", 
       description: "Charcoal grilled minced lamb Adana shish wrapped in lavash bread with sumac onions.", 
       price: "$15.00", 
-      image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/adana-wrap.png",
       tags: ["Spicy"] 
     },
     { 
       name: "Kofta Wrap", 
       description: "Turkish grilled meatballs wrapped in lavash bread with tomato, lettuce, and onions.", 
       price: "$14.00", 
-      image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/kofta-wrap.png"
     },
   ],
   "Special Mix Platters": [
@@ -229,20 +229,20 @@ const menuData: Record<string, MenuItem[]> = {
       name: "Kebab Mix", 
       description: "A grand selection of Adana kebab, Veal shish, Chicken shish, and Kofta, served with rice.", 
       price: "$49.00", 
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/kebab-mix.png",
       tags: ["For 2 People"] 
     },
     { 
       name: "Chicken Lovers Mix", 
       description: "A platter of Chicken shish, Chicken Adana, and Chicken wings, served with rice and sides.", 
       price: "$45.00", 
-      image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/chicken-lovers-mix.png"
     },
     { 
       name: "The Antalya Special", 
       description: "The ultimate feast: Lamb shish, Chicken shish, Adana kebab, Lamb chops, and Meat doner.", 
       price: "$79.00", 
-      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/antalalya-special.png",
       tags: ["Chef's Selection", "For 3-4 People"] 
     },
   ],
@@ -251,27 +251,27 @@ const menuData: Record<string, MenuItem[]> = {
       name: "Manti", 
       description: "Tiny boiled Turkish dumplings filled with seasoned ground beef, topped with garlic yogurt and hot butter sauce.", 
       price: "$19.00", 
-      image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/manti.png",
       tags: ["Traditional"] 
     },
     { 
       name: "Ali Nazik", 
       description: "Smoky roasted eggplant puree with yogurt, topped with tender sautéed veal cubes.", 
       price: "$23.00", 
-      image: "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/ali-nazik.png",
       tags: ["Signature"] 
     },
     { 
       name: "Adana Ali Nazik", 
       description: "Eggplant puree with garlic yogurt, topped with a skewer of hot charcoal-grilled Adana kebab.", 
       price: "$22.00", 
-      image: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/adana-ali-nazik.png"
     },
     { 
       name: "Yogurtlu Kuzu", 
       description: "Tender cubes of lamb cooked in a savory broth, served over yogurt and crispy toasted bread pieces.", 
       price: "$24.00", 
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/yogurtlu-kuzu.png"
     },
   ],
   "Pides": [
@@ -279,60 +279,60 @@ const menuData: Record<string, MenuItem[]> = {
       name: "Lahmacun", 
       description: "Very thin flatbread topped with minced beef, lamb, tomatoes, onions, garlic, and herbs.", 
       price: "$8.00", 
-      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/lahmacun.png",
       tags: ["Popular"] 
     },
     { 
       name: "Sujuk Pide", 
       description: "Boat-shaped Turkish flatbread baked with spicy garlic beef sausage and mozzarella cheese.", 
       price: "$17.00", 
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/sujuk-pide.png"
     },
     { 
       name: "Cheese Pide", 
       description: "Flatbread topped with rich mozzarella cheese and baked in a stone oven.", 
       price: "$15.00", 
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/cheese-pide.png",
       tags: ["Vegetarian"] 
     },
     { 
       name: "Veal Doner Pide with Mozzarella Cheese", 
       description: "Stone baked flatbread filled with shaved veal doner and melted mozzarella cheese.", 
       price: "$18.00", 
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/veal-doner-pide.png"
     },
     { 
       name: "Veggie Pide", 
       description: "Baked flatbread topped with tomatoes, peppers, olives, mushrooms, and mozzarella cheese.", 
       price: "$16.00", 
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/veggie-pide.png",
       tags: ["Vegetarian"] 
     },
     { 
       name: "Ground Beef Pide", 
       description: "Baked flatbread stuffed with sautéed ground beef, onions, tomatoes, and mozzarella.", 
       price: "$17.00", 
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/ground-beef-pide.png"
     },
     { 
       name: "Spinach Cheese Pide", 
       description: "Flatbread stuffed with fresh spinach, feta cheese, and mozzarella, baked golden.", 
       price: "$16.00", 
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/spinach-cheese-pide.png",
       tags: ["Vegetarian"] 
     },
     { 
       name: "Mixed Pide", 
       description: "Baked flatbread topped with sujuk, ground beef, veal doner, and mozzarella cheese.", 
       price: "$19.00", 
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/mixed-pide.png",
       tags: ["Traditional"] 
     },
     { 
       name: "Chicken Doner Pide with Mozzarella Cheese", 
       description: "Baked flatbread stuffed with spit-roasted chicken doner and melted mozzarella.", 
       price: "$17.00", 
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/chicken-doner-pide.png"
     },
   ],
   "Sides": [
@@ -340,61 +340,61 @@ const menuData: Record<string, MenuItem[]> = {
       name: "Rice", 
       description: "Buttery traditional Turkish pilaf.", 
       price: "$4.00", 
-      image: "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/rice.png"
     },
     { 
       name: "Yogurt", 
       description: "Thick and creamy house-strained yogurt.", 
       price: "$4.00", 
-      image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/yogurt.png"
     },
     { 
       name: "Kofta (1 Skewer)", 
       description: "One skewer of charcoal-grilled lamb meatballs.", 
       price: "$8.00", 
-      image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/kofta(skw).png"
     },
     { 
       name: "Lamb Chops (4 pcs)", 
       description: "Four pieces of marinated charcoal-grilled lamb chops.", 
       price: "$22.00", 
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/lamb-chops(4pcs).png"
     },
     { 
       name: "Veal Shish (1 Skewer)", 
       description: "One skewer of tender marinated veal shish cubes.", 
       price: "$9.00", 
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/veal-shish(skw).png"
     },
     { 
       name: "French Fries (Regular)", 
       description: "Crispy golden fried regular-cut potatoes.", 
       price: "$5.00", 
-      image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/french-fries.png"
     },
     { 
       name: "French Fries (Large)", 
       description: "Large portion of crispy golden fried fries.", 
       price: "$8.00", 
-      image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/french-fries-large.png"
     },
     { 
       name: "Bulgur", 
       description: "Cracked wheat pilaf cooked with tomatoes and onions.", 
       price: "$4.00", 
-      image: "https://images.unsplash.com/photo-1516685018646-549198525c1b?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/bulgur.png"
     },
     { 
       name: "Bread", 
       description: "Freshly baked traditional Turkish flatbread.", 
       price: "$2.00", 
-      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/bread.png"
     },
     { 
       name: "Adana (1 Skewer)", 
       description: "One skewer of spicy charcoal-grilled minced lamb shish.", 
       price: "$8.00", 
-      image: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/adana(skw).png"
     },
   ],
   "Drinks": [
@@ -402,64 +402,64 @@ const menuData: Record<string, MenuItem[]> = {
       name: "Soda", 
       description: "Coke, Diet Coke, Coke Zero, Sprite, Ginger Ale, Iced Tea, or Sparkling Water.", 
       price: "$2.50", 
-      image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/soda.png"
     },
     { 
       name: "Bottle of Water", 
       description: "Chilled bottled spring water.", 
       price: "$2.00", 
-      image: "https://images.unsplash.com/photo-1608889175123-8ec330b86f84?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/water.png"
     },
     { 
       name: "Uludag (Orange / White)", 
       description: "Traditional sweet carbonated soft drink from Turkey.", 
       price: "$3.00", 
-      image: "https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/uludag.png"
     },
     { 
       name: "Ayran (Yogurt Drink)", 
       description: "Traditional cold yogurt beverage mixed with salt.", 
       price: "$3.50", 
-      image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/ayran.png",
       tags: ["Traditional"] 
     },
     { 
       name: "Turkish Tea Pot", 
       description: "Brewed black tea served in a traditional double teapot.", 
       price: "$9.00", 
-      image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/tea-pot.png",
       tags: ["For sharing"] 
     },
     { 
       name: "Perrier (Carbonated Water)", 
       description: "Sparkling natural mineral water.", 
       price: "$3.00", 
-      image: "https://images.unsplash.com/photo-1559839914-17aae19cec71?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/parrier.png"
     },
     { 
       name: "Turkish Tea", 
       description: "A single glass of freshly brewed hot black tea.", 
       price: "$2.50", 
-      image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/tea.png"
     },
     { 
       name: "Turkish Coffee", 
       description: "Rich, strong Turkish coffee brewed in traditional pots, served with Turkish delight.", 
       price: "$4.00", 
-      image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/coffee.png",
       tags: ["Popular"] 
     },
     { 
       name: "Shalgam", 
       description: "Traditional pickled turnip juice, spicy or mild option.", 
       price: "$3.00", 
-      image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/shalgam.png"
     },
     { 
       name: "Dimes Juice", 
       description: "Delicious premium fruit juices imported from Turkey.", 
       price: "$3.00", 
-      image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?q=80&w=400&auto=format&fit=crop"
+      image: "/menu/dimes-juice.png"
     },
   ],
   "Desserts": [
@@ -467,28 +467,28 @@ const menuData: Record<string, MenuItem[]> = {
       name: "Baklava (3 Pieces)", 
       description: "Layered phyllo pastry filled with crushed pistachios and sweetened with syrup.", 
       price: "$9.00", 
-      image: "https://images.unsplash.com/photo-1519671282429-b44660ead0a7?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/baklava.png",
       tags: ["Signature"] 
     },
     { 
       name: "Trilice (Milk Cake)", 
       description: "Soft sponge cake soaked in three kinds of milk, topped with caramel layer.", 
       price: "$9.00", 
-      image: "https://images.unsplash.com/photo-1508737027454-e6454ef45afd?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/trilice.png",
       tags: ["Popular"] 
     },
     { 
       name: "Sutlac", 
       description: "Classic oven-baked creamy Turkish rice pudding, served chilled.", 
       price: "$8.00", 
-      image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/sutlac.png",
       tags: ["Traditional"] 
     },
     { 
       name: "Cold Baklava (3 Pieces)", 
       description: "Modern chilled baklava soaked in milk syrup and dusted with cocoa powder.", 
       price: "$10.00", 
-      image: "https://images.unsplash.com/photo-1519671282429-b44660ead0a7?q=80&w=400&auto=format&fit=crop",
+      image: "/menu/cold-baklava.png",
       tags: ["New Specialty"] 
     },
   ]

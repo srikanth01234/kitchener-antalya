@@ -17,21 +17,21 @@ const featuredDishes: Dish[] = [
     title: "MIXED APPETIZER PLATE",
     description: "A perfect introduction to Turkish cold mezze. A delicious selection of Hummus, Haydari, Babaganoush, and Ezme, served with warm Turkish flatbread.",
     price: "$22.00",
-    image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1000&auto=format&fit=crop",
+    image: "/menu/mixed-appetizer-plate.png",
   },
   {
     id: 2,
     title: "KEBAB MIX PLATTER",
     description: "A grand selection of our finest charcoal-grilled meats, including Adana kebab, Veal shish, Chicken shish, and Kofta, served with rice and grilled vegetables.",
     price: "$49.00",
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop",
+    image: "/menu/kebab-mix.png",
   },
   {
     id: 3,
     title: "BAKLAVA (3 PIECES)",
     description: "Classic Turkish pastry made of layers of crispy phyllo dough filled with sweet chopped pistachios, sweetened with hot syrup, served with vanilla cream.",
     price: "$9.00",
-    image: "https://images.unsplash.com/photo-1519671282429-b44660ead0a7?q=80&w=1000&auto=format&fit=crop",
+    image: "/menu/baklava.png",
   }
 ];
 
@@ -61,7 +61,7 @@ const FeaturedDish = () => {
   };
 
   return (
-    <section className="w-full bg-[#fdfdfb] py-16 px-4">
+    <section className="w-full bg-[#fdfdfb] py-16 px-6 md:px-12">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         {/* Left Side: Image with Badge */}
         <div className={`relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-visible transition-all duration-300 ${
@@ -76,7 +76,7 @@ const FeaturedDish = () => {
           </div>
           
           {/* Chef's Recommendation Badge */}
-          <div className="absolute -bottom-8 -left-8 md:-bottom-12 md:-left-12 w-32 h-32 md:w-40 md:h-40 bg-[#fdfdfb] rounded-full flex items-center justify-center p-2 shadow-lg border border-[#e6e2d8]">
+          <div className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-8 md:-bottom-12 md:-left-12 w-32 h-32 md:w-40 md:h-40 bg-[#fdfdfb] rounded-full flex items-center justify-center p-2 shadow-lg border border-[#e6e2d8]">
             <div className="w-full h-full rounded-full border border-dashed border-[#B89564] flex flex-col items-center justify-center gap-1 relative p-4">
                <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full animate-[spin_20s_linear_infinite]">
                  <path id="curve" d="M 15 50 a 35 35 0 1 1 70 0 a 35 35 0 1 1 -70 0" fill="transparent" />

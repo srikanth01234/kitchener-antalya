@@ -15,7 +15,7 @@ const MenuHero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2000&auto=format&fit=crop"
+          src="/menu/menu-banner.webp"
           alt="Antalya Turkish Cuisine Dining Table"
           className={`w-full h-full object-cover transition-transform duration-[5000ms] ease-out ${
             isMounted ? "scale-100" : "scale-110"

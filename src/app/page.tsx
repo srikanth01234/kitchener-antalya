@@ -87,7 +87,7 @@ export default function Home() {
             </div>
 
             {/* Value Highlights */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 border-t border-[#2d2219]/10 w-full mt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-6 border-t border-[#2d2219]/10 w-full mt-2">
               {/* Highlight 1 */}
               <div className="flex items-center gap-2.5 hero-stat-1">
                 <div className="w-9 h-9 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0">

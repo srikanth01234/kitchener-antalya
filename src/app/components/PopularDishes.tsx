@@ -55,7 +55,7 @@ export default function PopularDishes() {
   return (
     <section
       ref={containerRef}
-      className={`relative w-full bg-[#faf6f0] text-[#2d2219] pt-0 pb-6 flex flex-col items-center overflow-hidden z-30 transition-all duration-700 ${isVisible ? "is-visible" : ""}`}
+      className={`relative w-full bg-[#faf6f0] text-[#2d2219] pt-8 sm:pt-14 pb-6 flex flex-col items-center overflow-hidden z-30 transition-all duration-700 ${isVisible ? "is-visible" : ""}`}
     >
       
       {/* Background Drawings */}
@@ -102,11 +102,11 @@ export default function PopularDishes() {
         {/* Centered Top Heading */}
         <div className="relative w-full flex flex-col items-center text-center mb-12 select-none animate-on-scroll scroll-reveal-heading">
           <div className="flex items-center gap-3 text-[#e10613] font-extrabold tracking-[3px] text-xs uppercase mb-4">
-            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            {/* <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                <path d="M12 0L24 12L12 24L0 12L12 0ZM12 2.8L2.8 12L12 21.2L21.2 12L12 2.8Z"/>
                <path d="M12 5.6L18.4 12L12 18.4L5.6 12L12 5.6ZM12 8.4L8.4 12L12 15.6L15.6 12L12 8.4Z"/>
             </svg>
-            <span>Our Finest Selection</span>
+            <span>Our Finest Selection</span> */}
           </div>
           <h2 className="relative flex flex-col items-center mb-4 leading-none">
             <span className="font-serif text-5xl md:text-6xl lg:text-[4.5rem] font-medium text-[#2d2219] tracking-tight">
